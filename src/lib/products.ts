@@ -6,6 +6,19 @@ import p5 from "@/assets/p5.jpg";
 import p6 from "@/assets/p6.jpg";
 import hero from "@/assets/hero.jpg";
 import gift from "@/assets/gift.jpg";
+import i0 from "@/assets/kesar-attar.jpg";
+import i1 from "@/assets/midnight-leather.jpg";
+import i2 from "@/assets/mitti.jpg";
+import i3 from "@/assets/velvet-vanilla.jpg";
+import i4 from "@/assets/azure-coast.jpg";
+import i5 from "@/assets/neroli-sun.jpg";
+import i6 from "@/assets/rose-rooh.jpg";
+import i7 from "@/assets/smoked-cedar.jpg";
+import i8 from "@/assets/tuberose-nights.jpg";
+import i9 from "@/assets/royal-oud.jpg";
+import i10 from "@/assets/vetiver-mist.jpg";
+import i11 from "@/assets/monsoon-lily.jpg";
+import i12 from "@/assets/dhara-signature.jpg";
 
 export type Product = {
   slug: string;
@@ -20,7 +33,6 @@ export type Product = {
   base: string;
 };
 
-const imgs = { Oriental: hero, Floral: p4, Attar: p3, Fresh: p6, Aquatic: p5, Woody: p1 } as const;
 
 const raw: Omit<Product, "slug" | "image">[] = [
   { name: "Amber Noir", family: "Oriental", for: "Unisex", price: 2499, tagline: "Molten amber after midnight", top: "Saffron, Pink Pepper", heart: "Amber, Labdanum", base: "Vanilla, Benzoin" },
@@ -45,11 +57,12 @@ const raw: Omit<Product, "slug" | "image">[] = [
   { name: "Dhara Signature", family: "Oriental", for: "Unisex", price: 4499, tagline: "The essence of Dhara", top: "Saffron, Bergamot", heart: "Rose, Oud", base: "Amber, Sandalwood" },
 ];
 
-export const products: Product[] = raw.map((p) => ({
-  ...p,
-  slug: p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-  image: p.name === "Fleur Noire" ? p1 : p.name === "Ivory Jasmine" ? p2 : p.name === "Dhara Signature" ? gift : imgs[p.family],
-}));
+const imgBySlug: Record<string, string> = {"amber-noir": hero, "fleur-noire": p1, "ivory-jasmine": p2, "shahi-oud": p3, "peony-veil": p4, "tide": p5, "bergamot-bloom": p6, "kesar-attar": i0, "midnight-leather": i1, "mitti": i2, "velvet-vanilla": i3, "azure-coast": i4, "neroli-sun": i5, "rose-rooh": i6, "smoked-cedar": i7, "tuberose-nights": i8, "royal-oud-intense": i9, "vetiver-mist": i10, "monsoon-lily": i11, "dhara-signature": i12};
+
+export const products: Product[] = raw.map((p) => {
+  const slug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return { ...p, slug, image: imgBySlug[slug] ?? gift };
+});
 
 export const getProduct = (slug: string) => products.find((p) => p.slug === slug);
 export const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
