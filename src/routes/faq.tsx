@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import p5 from "@/assets/p5.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { PageHero } from "@/components/site";
+import { CtaBanner, InfoColumns, PageHero } from "@/components/site";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -37,6 +37,24 @@ function Faq() {
           ))}
         </Accordion>
       </div>
+
+      <InfoColumns
+        eyebrow="Good to Know"
+        title="The essentials, at a glance"
+        cols={[
+          ["Delivery", "Orders ship within 24 hours from Jaipur and typically arrive in 2–5 working days across India, with tracking on every parcel."],
+          ["Payment", "We accept all major cards, UPI and net banking. Cash on delivery is available on orders up to ₹5,000."],
+          ["Authenticity", "Every bottle carries a batch code and seal. Buy only from dhara.in or our listed partners to guarantee a genuine product."],
+        ]}
+      />
+
+      <CtaBanner
+        eyebrow="Still Curious?"
+        title="We love a good question"
+        text="If your question isn't answered here, write to us — a real person from the Dhara team replies within one working day."
+        to="/contact"
+        label="Contact us"
+      />
     </>
   );
 }
