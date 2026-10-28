@@ -4,10 +4,10 @@ import hero from "@/assets/hero.jpg";
 import { products } from "@/lib/products";
 import { PageHero, ProductCard, Reveal } from "@/components/site";
 
-type S = { family?: string };
+type S = { family?: string | undefined };
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (s: Record<string, unknown>): S => ({ family: typeof s.family === "string" ? s.family : undefined }),
+  validateSearch: (s: Record<string, unknown>): S => ({ family: typeof s["family"] === "string" ? s["family"] : undefined }),
   head: () => ({
     meta: [
       { title: "Shop All Perfumes — Dhara" },

@@ -82,7 +82,7 @@ export function Footer() {
           <div key={h as string}>
             <p className="eyebrow mb-4">{h as string}</p>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              {(links as string[][]).map(([to, l]) => (
+              {(links as [string, string][]).map(([to, l]) => (
                 <li key={to}><Link to={to} className="hover:text-gold">{l}</Link></li>
               ))}
             </ul>
@@ -120,7 +120,7 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current; if (!el) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add("in"); io.disconnect(); } }, { threshold: 0.15 });
+    const io = new IntersectionObserver(([e]) => { if (e?.isIntersecting) { el.classList.add("in"); io.disconnect(); } }, { threshold: 0.15 });
     io.observe(el);
     return () => io.disconnect();
   }, []);

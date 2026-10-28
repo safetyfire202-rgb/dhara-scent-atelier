@@ -15,7 +15,7 @@ export const Route = createFileRoute("/faq")({
   component: Faq,
 });
 
-const qa = [
+const qa: [string, string][] = [
   ["How long do Dhara perfumes last?", "Our Eau de Parfums are made at high concentration and typically last 8–12 hours on skin."],
   ["Do you ship across India?", "Yes, we ship everywhere in India. Shipping is free on orders above ₹999."],
   ["Are attars alcohol free?", "Yes. All Dhara attars are pure oil perfumes with no alcohol."],
