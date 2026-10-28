@@ -34,6 +34,7 @@ export function Header() {
   const right = nav.slice(4);
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${overlay ? "border-b border-on-image/20 bg-transparent" : "border-b bg-background/90 shadow-soft backdrop-blur-xl"}`}>
+      {overlay && <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/45 to-transparent" />}
       <div className="mx-auto grid h-20 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-6 lg:px-10">
         <div className="flex items-center gap-8">
           <button className={`lg:hidden ${overlay ? "text-on-image" : ""}`} onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
@@ -46,10 +47,10 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <Link to="/" className={`flex flex-col items-center justify-center self-start px-7 transition-all duration-500 ${scrolled || path !== "/" ? "h-20" : "h-28"}`}>
-          <img src={overlay ? logo : logoDeep} alt="" width={30} height={30} className={`h-9 w-9 transition-all duration-500 ${overlay ? "drop-shadow-[0_2px_8px_oklch(0_0_0/55%)]" : ""}`} />
-          <span className={`font-display text-2xl font-semibold tracking-[0.3em] transition-colors duration-500 ${overlay ? "text-on-image" : "text-primary"}`}>DHARA</span>
-          <span className={`text-[0.55rem] tracking-[0.45em] transition-colors duration-500 ${overlay ? "text-on-image/80" : "text-primary/55"}`}>PARFUMS</span>
+        <Link to="/" className="flex h-20 flex-col items-center justify-center px-7">
+          <img src={overlay ? logo : logoDeep} alt="" width={30} height={30} className={`h-8 w-8 transition-all duration-500 ${overlay ? "[filter:drop-shadow(0_0_5px_oklch(0_0_0/85%))_drop-shadow(0_1px_2px_oklch(0_0_0/80%))]" : ""}`} />
+          <span className={`font-display text-xl font-semibold tracking-[0.3em] transition-colors duration-500 ${overlay ? "text-on-image [text-shadow:0_1px_12px_oklch(0_0_0/60%)]" : "text-primary"}`}>DHARA</span>
+          <span className={`text-[0.55rem] tracking-[0.45em] transition-colors duration-500 ${overlay ? "text-on-image/85 [text-shadow:0_1px_8px_oklch(0_0_0/70%)]" : "text-primary/55"}`}>PARFUMS</span>
         </Link>
         <div className="flex items-center justify-end gap-8">
           <nav className="hidden gap-8 lg:flex">
