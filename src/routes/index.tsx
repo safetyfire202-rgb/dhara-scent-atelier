@@ -1,5 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import slide1 from "@/assets/slide1.jpg";
+import slide2 from "@/assets/slide2.jpg";
+import slide3 from "@/assets/slide3.jpg";
 import hero from "@/assets/hero.jpg";
 import p1 from "@/assets/p1.jpg";
 import p3 from "@/assets/p3.jpg";
@@ -24,49 +28,13 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [m, setM] = useState({ x: 0, y: 0 });
-  const [sy, setSy] = useState(0);
-  useEffect(() => {
-    const f = () => setSy(window.scrollY);
-    window.addEventListener("scroll", f);
-    return () => window.removeEventListener("scroll", f);
-  }, []);
   const families = [
     { n: "Oriental", img: hero }, { n: "Woody", img: p1 }, { n: "Attar", img: p3 },
     { n: "Floral", img: p4 }, { n: "Aquatic", img: p5 }, { n: "Fresh", img: p6 },
   ];
   return (
     <>
-      <section
-        className="relative -mt-[72px] flex min-h-screen items-center overflow-hidden"
-        onMouseMove={(e) => setM({ x: e.clientX / window.innerWidth - 0.5, y: e.clientY / window.innerHeight - 0.5 })}
-      >
-        <img src={hero} alt="" width={1600} height={1008} className="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-sm" style={{ transform: `translateY(${sy * 0.3}px) scale(1.1)` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 pt-24 md:grid-cols-2">
-          <div style={{ transform: `translate3d(${m.x * -20}px, ${m.y * -20}px, 0)` }}>
-            <p className="eyebrow">Maison de Parfum · Est. India</p>
-            <h1 className="mt-6 text-7xl leading-[0.95] md:text-9xl">The art of <em className="text-gold-gradient">lingering</em></h1>
-            <p className="mt-6 max-w-md text-lg text-muted-foreground">Perfumes and attars that stay with you from first light to last dance.</p>
-            <div className="mt-10 flex gap-4">
-              <Link to="/shop" className="bg-gold-gradient px-8 py-4 text-sm font-semibold tracking-widest text-primary-foreground uppercase shadow-glow transition hover:scale-105">Shop Now</Link>
-              <Link to="/collections" className="border border-gold px-8 py-4 text-sm tracking-widest text-gold uppercase transition hover:bg-gold/10">Explore</Link>
-            </div>
-          </div>
-          <div className="perspective flex justify-center">
-            <div className="preserve-3d animate-float3d" style={{ transform: `rotateY(${m.x * 30}deg) rotateX(${-m.y * 20}deg)` }}>
-              <div className="preserve-3d relative" style={{ transform: `rotateY(${m.x * 30}deg) rotateX(${-m.y * 20}deg)` }}>
-                <img src={hero} alt="Amber Noir bottle" width={1600} height={1008} className="h-[520px] w-[420px] rounded-sm object-cover shadow-glow" />
-                <div className="absolute -inset-6 -z-10 rounded-full bg-gold/20 blur-3xl" />
-                <div className="absolute -bottom-6 -left-10 border bg-card/80 px-5 py-3 backdrop-blur" style={{ transform: "translateZ(80px)" }}>
-                  <p className="eyebrow text-[0.6rem]">Bestseller</p>
-                  <p className="font-display text-2xl">Amber Noir</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <Reveal>
@@ -78,7 +46,7 @@ function Index() {
             <Reveal key={f.n}>
               <Tilt max={20}>
                 <Link to="/shop" search={{ family: f.n }} className="group block">
-                  <div className="aspect-square overflow-hidden rounded-full border-2 border-gold/40">
+                  <div className="aspect-square overflow-hidden rounded-full border border-border p-1 shadow-soft">
                     <img src={f.img} alt={f.n} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-125" />
                   </div>
                   <p className="mt-4 text-center font-display text-xl group-hover:text-gold">{f.n}</p>
@@ -107,7 +75,7 @@ function Index() {
             {products.slice(0, 8).map((p, i) => (
               <Link key={p.slug} to="/product/$slug" params={{ slug: p.slug }} className="absolute inset-0 block overflow-hidden border border-gold/40" style={{ transform: `rotateY(${i * 45}deg) translateZ(420px)` }}>
                 <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-cover" />
-                <span className="absolute bottom-0 w-full bg-ink/80 py-2 text-center font-display text-lg">{p.name}</span>
+                <span className="absolute bottom-0 w-full bg-card/90 py-2 text-center font-display text-lg">{p.name}</span>
               </Link>
             ))}
           </div>
@@ -144,5 +112,67 @@ function Index() {
         ))}
       </section>
     </>
+  );
+}
+
+const slides = [
+  { img: slide1, eyebrow: "Oud & Sandalwood", title: "Find the fragrance that defines you", text: "A curated house of perfumes crafted from the finest ingredients, made for moments worth remembering.", to: "/shop" as const },
+  { img: slide2, eyebrow: "The White Rose Edit", title: "Soft light, lasting impressions", text: "Luminous florals that whisper from morning until midnight.", to: "/collections" as const },
+  { img: slide3, eyebrow: "The Attar House", title: "Heritage, distilled", text: "Pure, alcohol-free attars made the way Indian royalty wore them.", to: "/attars" as const },
+];
+
+function HeroSlider() {
+  const [i, setI] = useState(0);
+  const [m, setM] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    const t = setTimeout(() => setI((v) => (v + 1) % slides.length), 6500);
+    return () => clearTimeout(t);
+  }, [i]);
+  const s = slides[i]!;
+  return (
+    <section
+      className="relative h-screen min-h-[640px] overflow-hidden bg-ink"
+      onMouseMove={(e) => setM({ x: e.clientX / window.innerWidth - 0.5, y: e.clientY / window.innerHeight - 0.5 })}
+    >
+      {slides.map((sl, k) => (
+        <div key={k} className={`absolute inset-0 transition-opacity duration-[1400ms] ${k === i ? "opacity-100" : "opacity-0"}`}>
+          <img
+            src={sl.img}
+            alt=""
+            width={1920}
+            height={1088}
+            className={`h-full w-full object-cover ${k === i ? "animate-kenburns" : ""}`}
+            style={{ translate: `${m.x * -24}px ${m.y * -16}px` }}
+          />
+        </div>
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
+
+      <div key={i} className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-6 pb-24 lg:px-10">
+        <p className="eyebrow animate-in fade-in slide-in-from-bottom-4 text-gold-soft duration-700">{s.eyebrow}</p>
+        <h1 className="animate-in fade-in slide-in-from-bottom-6 mt-5 max-w-3xl text-5xl leading-[1.05] text-on-image duration-1000 md:text-7xl">{s.title}</h1>
+        <p className="animate-in fade-in slide-in-from-bottom-6 mt-6 max-w-xl text-lg font-light text-on-image/85 duration-1000">{s.text}</p>
+        <Link to={s.to} className="group animate-in fade-in mt-10 flex w-fit items-center gap-1 duration-1000">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-on-image text-ink transition-transform duration-500 group-hover:rotate-45">
+            <ArrowUpRight className="h-5 w-5" />
+          </span>
+          <span className="flex h-14 items-center rounded-full bg-on-image px-9 text-sm tracking-wider text-ink transition group-hover:bg-gold-soft">Shop Now</span>
+        </Link>
+      </div>
+
+      <div className="absolute right-6 bottom-24 hidden gap-5 md:flex lg:right-10">
+        {slides.map((sl, k) => (
+          <button key={k} onClick={() => setI(k)} aria-label={`Show ${sl.eyebrow}`} className="perspective relative h-24 w-24">
+            <svg viewBox="0 0 100 100" className="absolute -inset-2 h-28 w-28 -rotate-90">
+              {k === i && <circle key={i} cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="283" className="text-on-image [animation:ring_6.5s_linear_forwards]" />}
+            </svg>
+            <img src={sl.img} alt="" className={`h-24 w-24 rounded-full object-cover transition duration-500 ${k === i ? "scale-100" : "scale-90 opacity-70 grayscale hover:opacity-100 hover:grayscale-0"}`} />
+          </button>
+        ))}
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-[0.65rem] tracking-[0.4em] text-on-image/70 uppercase md:block">Scroll</div>
+    </section>
   );
 }
