@@ -111,6 +111,34 @@ function Index() {
           <Reveal key={b}><Tilt><div className="border bg-card p-8 text-center"><p className="font-display text-5xl text-gold-gradient">{a}</p><p className="mt-2 text-sm tracking-widest text-muted-foreground uppercase">{b}</p></div></Tilt></Reveal>
         ))}
       </section>
+
+      <ProcessSteps
+        eyebrow="The Ritual"
+        title="How to wear Dhara"
+        steps={[
+          ["Prepare the skin", "Apply to freshly moisturised skin — scent clings longest where the skin is soft and warm."],
+          ["Pulse points only", "Wrists, neck and behind the ears. Two to four sprays is enough; never rub the scent in."],
+          ["Let it settle", "Give the top notes ten minutes to open. The heart and base reveal themselves through the day."],
+        ]}
+      />
+
+      <SplitInfo
+        eyebrow="Ingredient Spotlight"
+        title="Kannauj rose, Kashmir saffron"
+        body="Each harvest season we travel to the source: damask roses picked before dawn in Kannauj, saffron threads graded by hand in Pampore, sandalwood aged in Mysore. These raw materials are what give every Dhara blend its depth."
+        image={p2}
+        alt="Kannauj roses"
+        flip
+        link={["/about", "Meet our makers"]}
+      />
+
+      <CtaBanner
+        eyebrow="Begin Here"
+        title="Not sure where to start?"
+        text="Our Discovery Box holds six miniature vials of the bestsellers — find the one that feels like you before committing to a full bottle."
+        to="/gifting"
+        label="Explore the Discovery Box"
+      />
     </>
   );
 }

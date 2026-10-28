@@ -172,3 +172,103 @@ export function PageHero({ eyebrow, title, image, children }: { eyebrow: string;
     </section>
   );
 }
+
+const trustIcons: Record<string, LucideIcon> = { Leaf, ShieldCheck, Sparkles, Truck };
+
+export function TrustBar({ items }: { items: [string, string][] }) {
+  return (
+    <section className="mx-auto grid max-w-7xl gap-6 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4">
+      {items.map(([icon, t, d]) => {
+        const Icon = trustIcons[icon] ?? Sparkles;
+        return (
+          <Reveal key={t}>
+            <Tilt max={10}>
+              <div className="flex h-full flex-col items-center border bg-card p-8 text-center shadow-soft">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/40 text-gold"><Icon className="h-6 w-6" strokeWidth={1.5} /></span>
+                <h3 className="mt-5 text-2xl">{t}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+              </div>
+            </Tilt>
+          </Reveal>
+        );
+      })}
+    </section>
+  );
+}
+
+export function ProcessSteps({ eyebrow, title, steps }: { eyebrow: string; title: string; steps: [string, string][] }) {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-24">
+      <Reveal>
+        <p className="eyebrow text-center">{eyebrow}</p>
+        <h2 className="mt-3 text-center text-5xl md:text-6xl">{title}</h2>
+      </Reveal>
+      <div className="mt-14 grid gap-10 md:grid-cols-3">
+        {steps.map(([t, d], i) => (
+          <Reveal key={t}>
+            <div className="relative border-t-2 border-gold/50 pt-8">
+              <span className="font-display text-6xl text-gold-gradient">0{i + 1}</span>
+              <h3 className="mt-4 text-3xl">{t}</h3>
+              <p className="mt-3 text-muted-foreground">{d}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function SplitInfo({ eyebrow, title, body, image, alt, flip = false, link }: { eyebrow: string; title: string; body: string; image: string; alt: string; flip?: boolean; link?: [string, string] }) {
+  return (
+    <section className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-12 md:grid-cols-2">
+      <Reveal className={flip ? "md:order-2" : ""}>
+        <Tilt><img src={image} alt={alt} loading="lazy" className="w-full shadow-glow" /></Tilt>
+      </Reveal>
+      <Reveal>
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="mt-3 text-5xl md:text-6xl">{title}</h2>
+        <p className="mt-6 text-muted-foreground">{body}</p>
+        {link && <Link to={link[0] as "/"} className="mt-8 inline-block border-b border-gold pb-1 text-sm tracking-widest text-gold uppercase">{link[1]}</Link>}
+      </Reveal>
+    </section>
+  );
+}
+
+export function CtaBanner({ eyebrow, title, text, to, label }: { eyebrow: string; title: string; text: string; to: string; label: string }) {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-24">
+      <Reveal>
+        <div className="relative overflow-hidden border bg-secondary px-8 py-20 text-center shadow-soft">
+          <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" />
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 className="mx-auto mt-4 max-w-2xl text-5xl md:text-6xl">{title}</h2>
+          <p className="mx-auto mt-5 max-w-xl text-muted-foreground">{text}</p>
+          <Link to={to as "/"} className="mt-9 inline-block bg-gold-gradient px-10 py-4 text-sm font-semibold tracking-widest text-primary-foreground uppercase shadow-glow transition hover:scale-[1.03]">{label}</Link>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+export function InfoColumns({ eyebrow, title, cols }: { eyebrow: string; title: string; cols: [string, string][] }) {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-20">
+      <Reveal>
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="mt-3 text-5xl md:text-6xl">{title}</h2>
+      </Reveal>
+      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {cols.map(([t, d]) => (
+          <Reveal key={t}>
+            <Tilt max={8}>
+              <div className="h-full border bg-card p-8 shadow-soft">
+                <h3 className="text-3xl text-gold-gradient">{t}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{d}</p>
+              </div>
+            </Tilt>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
