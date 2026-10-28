@@ -175,7 +175,7 @@ export function PageHero({ eyebrow, title, image, children }: { eyebrow: string;
 
 const trustIcons: Record<string, LucideIcon> = { Leaf, ShieldCheck, Sparkles, Truck };
 
-export function TrustBar({ items }: { items: [string, string][] }) {
+export function TrustBar({ items }: { items: [string, string, string][] }) {
   return (
     <section className="mx-auto grid max-w-7xl gap-6 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4">
       {items.map(([icon, t, d]) => {
