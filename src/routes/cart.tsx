@@ -20,7 +20,7 @@ function Cart() {
   const items = lines.map((l) => ({ ...l, p: getProduct(l.slug)! })).filter((i) => i.p);
   const total = items.reduce((a, i) => a + i.p.price * i.qty, 0);
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
+    <div className="mx-auto max-w-5xl px-6 pt-36 pb-20">
       <h1 className="text-6xl">Your Bag</h1>
       {items.length === 0 ? (
         <div className="mt-12 text-center"><p className="text-muted-foreground">Your bag is empty.</p><Link to="/shop" className="mt-6 inline-block bg-gold-gradient px-8 py-4 text-sm tracking-widest text-primary-foreground uppercase">Shop perfumes</Link></div>

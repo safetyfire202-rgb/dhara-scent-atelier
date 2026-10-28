@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { toast } from "sonner";
@@ -20,58 +20,66 @@ export function Header() {
   const { count } = useCart();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const path = useRouterState({ select: (r) => r.location.pathname });
   useEffect(() => {
-    const f = () => setScrolled(window.scrollY > 30);
+    const f = () => setScrolled(window.scrollY > 40);
+    f();
     window.addEventListener("scroll", f);
     return () => window.removeEventListener("scroll", f);
   }, []);
+  const overlay = path === "/" && !scrolled && !open;
+  const linkCls = `group relative text-[0.78rem] tracking-[0.22em] uppercase transition ${overlay ? "text-on-image/90 hover:text-on-image" : "text-foreground/75 hover:text-primary"}`;
+  const left = nav.slice(0, 4);
+  const right = nav.slice(4);
   return (
-    <>
-      <div className="overflow-hidden border-b bg-ink py-2 text-xs tracking-[0.3em] text-gold">
-        <div className="flex w-max animate-marquee gap-16 whitespace-nowrap uppercase">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span key={i}>Free shipping above ₹999 · Long-lasting perfumes · Handcrafted in India</span>
-          ))}
-        </div>
-      </div>
-      <header className={`sticky top-0 z-50 transition-all duration-500 ${scrolled ? "border-b bg-background/85 backdrop-blur-xl" : "bg-transparent"}`}>
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Dhara" width={40} height={40} className="h-10 w-10" />
-            <span className="font-display text-3xl tracking-[0.25em] text-gold-gradient">DHARA</span>
-          </Link>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${overlay ? "border-b border-on-image/20 bg-transparent" : "border-b bg-background/90 shadow-soft backdrop-blur-xl"}`}>
+      <div className="mx-auto grid h-20 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-6 lg:px-10">
+        <div className="flex items-center gap-8">
+          <button className={`lg:hidden ${overlay ? "text-on-image" : ""}`} onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
           <nav className="hidden gap-8 lg:flex">
-            {nav.map((n) => (
-              <Link key={n.to} to={n.to} className="group relative text-sm tracking-widest text-foreground/80 uppercase transition hover:text-gold" activeProps={{ className: "text-gold" }}>
+            {left.map((n) => (
+              <Link key={n.to} to={n.to} className={linkCls}>
                 {n.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-4">
-            <Link to="/cart" className="relative text-foreground hover:text-gold" aria-label="Cart">
-              <ShoppingBag className="h-5 w-5" />
-              {count > 0 && <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">{count}</span>}
-            </Link>
-            <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
-          </div>
         </div>
-        {open && (
-          <nav className="flex flex-col gap-4 border-t bg-background px-6 py-6 lg:hidden">
-            {nav.map((n) => <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="font-display text-2xl">{n.label}</Link>)}
+        <Link to="/" className={`flex flex-col items-center justify-center self-start bg-primary px-7 text-primary-foreground transition-all duration-500 ${scrolled || path !== "/" ? "h-20" : "h-28 shadow-glow"}`}>
+          <img src={logo} alt="" width={30} height={30} className="h-7 w-7" />
+          <span className="mt-1 font-display text-2xl tracking-[0.35em]">DHARA</span>
+          <span className="text-[0.55rem] tracking-[0.45em] text-gold-soft">PARFUMS</span>
+        </Link>
+        <div className="flex items-center justify-end gap-8">
+          <nav className="hidden gap-8 lg:flex">
+            {right.map((n) => (
+              <Link key={n.to} to={n.to} className={linkCls}>
+                {n.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
           </nav>
-        )}
-      </header>
-    </>
+          <Link to="/cart" className={`relative ${overlay ? "text-on-image" : "text-foreground hover:text-primary"}`} aria-label="Bag">
+            <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
+            {count > 0 && <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-semibold text-on-image">{count}</span>}
+          </Link>
+        </div>
+      </div>
+      {open && (
+        <nav className="flex flex-col gap-4 border-t bg-background px-6 py-8 lg:hidden">
+          {nav.map((n) => <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="font-display text-3xl">{n.label}</Link>)}
+        </nav>
+      )}
+    </header>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="mt-32 border-t bg-ink">
+    <footer className="mt-32 border-t bg-secondary">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div>
-          <p className="font-display text-4xl tracking-[0.25em] text-gold-gradient">DHARA</p>
+          <p className="font-display text-4xl tracking-[0.3em] text-primary">DHARA</p>
           <p className="mt-4 text-sm text-muted-foreground">Fine fragrances and attars, crafted to linger like a memory.</p>
         </div>
         {[
@@ -131,7 +139,7 @@ export function ProductCard({ p }: { p: Product }) {
   const { add } = useCart();
   return (
     <Tilt className="group">
-      <div className="overflow-hidden border bg-card">
+      <div className="overflow-hidden bg-card shadow-soft">
         <Link to="/product/$slug" params={{ slug: p.slug }} className="block overflow-hidden">
           <img src={p.image} alt={p.name} loading="lazy" width={800} height={1008} className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-110" />
         </Link>
@@ -140,8 +148,8 @@ export function ProductCard({ p }: { p: Product }) {
           <Link to="/product/$slug" params={{ slug: p.slug }}><h3 className="mt-2 text-2xl">{p.name}</h3></Link>
           <p className="text-sm text-muted-foreground italic">{p.tagline}</p>
           <div className="mt-4 flex items-center justify-between">
-            <span className="text-gold">{inr(p.price)}</span>
-            <button onClick={() => { add(p.slug); toast.success(`${p.name} added to bag`); }} className="border border-gold px-4 py-2 text-xs tracking-widest text-gold uppercase transition hover:bg-primary hover:text-primary-foreground">Add</button>
+            <span className="font-medium text-foreground">{inr(p.price)}</span>
+            <button onClick={() => { add(p.slug); toast.success(`${p.name} added to bag`); }} className="rounded-full border border-primary px-5 py-2 text-xs tracking-widest text-primary uppercase transition hover:bg-primary hover:text-primary-foreground">Add</button>
           </div>
         </div>
       </div>
@@ -151,12 +159,12 @@ export function ProductCard({ p }: { p: Product }) {
 
 export function PageHero({ eyebrow, title, image, children }: { eyebrow: string; title: string; image?: string; children?: ReactNode }) {
   return (
-    <section className="relative flex min-h-[50vh] items-center overflow-hidden">
-      {image && <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 to-background" />
-      <div className="relative mx-auto max-w-7xl px-6 py-24">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl text-6xl md:text-8xl">{title}</h1>
+    <section className="relative mb-16 flex min-h-[60vh] items-end overflow-hidden pt-20">
+      {image && <img src={image} alt="" className="absolute inset-0 h-full w-full animate-kenburns object-cover" />}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/10" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-16 text-on-image/85">
+        <p className="eyebrow text-gold-soft">{eyebrow}</p>
+        <h1 className="mt-4 max-w-3xl text-5xl text-on-image md:text-7xl">{title}</h1>
         {children}
       </div>
     </section>

@@ -34,19 +34,19 @@ function ProductPage() {
   const price = Math.round(p.price * (size === 100 ? 1.7 : size === 20 ? 0.5 : 1));
   const related = products.filter((x) => x.family === p.family && x.slug !== p.slug).slice(0, 4);
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-7xl px-6 pt-32 pb-16">
       <div className="grid gap-16 md:grid-cols-2">
         <Tilt max={18}>
           <div className="relative">
             <img src={p.image} alt={p.name} width={800} height={1008} className="aspect-[4/5] w-full object-cover shadow-glow" />
-            <div className="absolute top-6 left-6 border bg-ink/70 px-4 py-2 backdrop-blur" style={{ transform: "translateZ(60px)" }}><span className="eyebrow">{p.family}</span></div>
+            <div className="absolute top-6 left-6 bg-card/85 px-4 py-2 backdrop-blur" style={{ transform: "translateZ(60px)" }}><span className="eyebrow">{p.family}</span></div>
           </div>
         </Tilt>
         <div className="flex flex-col justify-center">
           <p className="eyebrow">For {p.for} · Eau de Parfum</p>
           <h1 className="mt-4 text-6xl md:text-7xl">{p.name}</h1>
           <p className="mt-3 font-display text-2xl text-muted-foreground italic">{p.tagline}</p>
-          <p className="mt-8 font-display text-4xl text-gold">{inr(price)}</p>
+          <p className="mt-8 font-display text-4xl text-primary">{inr(price)}</p>
           <div className="mt-8 flex gap-3">
             {[20, 50, 100].map((s) => (
               <button key={s} onClick={() => setSize(s)} className={`border px-6 py-3 text-sm transition ${size === s ? "border-gold bg-gold/10 text-gold" : "hover:border-gold"}`}>{s} ml</button>
