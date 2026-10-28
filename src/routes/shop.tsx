@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import hero from "@/assets/hero.jpg";
 import { products } from "@/lib/products";
-import { PageHero, ProductCard, Reveal } from "@/components/site";
+import { InfoColumns, PageHero, ProductCard, Reveal, TrustBar } from "@/components/site";
 
 type S = { family?: string | undefined };
 
