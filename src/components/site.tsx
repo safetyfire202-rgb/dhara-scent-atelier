@@ -47,7 +47,7 @@ export function Header() {
         </div>
         <Link to="/" className={`flex flex-col items-center justify-center self-start bg-primary px-7 text-primary-foreground transition-all duration-500 ${scrolled || path !== "/" ? "h-20" : "h-28 shadow-glow"}`}>
           <img src={logo} alt="" width={30} height={30} className="h-7 w-7" />
-          <span className="mt-1 font-display text-2xl tracking-[0.35em]">DHARA</span>
+          <span className="mt-1 font-display text-2xl font-semibold tracking-[0.3em]">DHARA</span>
           <span className="text-[0.55rem] tracking-[0.45em] text-gold-soft">PARFUMS</span>
         </Link>
         <div className="flex items-center justify-end gap-8">
