@@ -2,7 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { toast } from "sonner";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-bright.png";
+import logoDeep from "@/assets/logo-deep.png";
 import { useCart } from "@/lib/cart";
 import { inr, type Product } from "@/lib/products";
 
@@ -46,9 +47,9 @@ export function Header() {
           </nav>
         </div>
         <Link to="/" className={`flex flex-col items-center justify-center self-start px-7 transition-all duration-500 ${scrolled || path !== "/" ? "h-20" : "h-28"}`}>
-          <img src={logo} alt="" width={30} height={30} className="h-8 w-8 drop-shadow-[0_2px_10px_oklch(0_0_0/35%)]" />
+          <img src={overlay ? logo : logoDeep} alt="" width={30} height={30} className={`h-9 w-9 transition-all duration-500 ${overlay ? "drop-shadow-[0_2px_8px_oklch(0_0_0/55%)]" : ""}`} />
           <span className={`font-display text-2xl font-semibold tracking-[0.3em] transition-colors duration-500 ${overlay ? "text-on-image" : "text-primary"}`}>DHARA</span>
-          <span className={`text-[0.55rem] tracking-[0.45em] transition-colors duration-500 ${overlay ? "text-on-image/70" : "text-gold"}`}>PARFUMS</span>
+          <span className={`text-[0.55rem] tracking-[0.45em] transition-colors duration-500 ${overlay ? "text-on-image/80" : "text-primary/55"}`}>PARFUMS</span>
         </Link>
         <div className="flex items-center justify-end gap-8">
           <nav className="hidden gap-8 lg:flex">
