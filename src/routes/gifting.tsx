@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
 import gift from "@/assets/gift.jpg";
-import { PageHero, Reveal, Tilt } from "@/components/site";
+import { CtaBanner, InfoColumns, PageHero, Reveal, Tilt, TrustBar } from "@/components/site";
 import { inr } from "@/lib/products";
 
 export const Route = createFileRoute("/gifting")({
@@ -45,6 +45,33 @@ function Gifting() {
           </Reveal>
         ))}
       </div>
+
+      <InfoColumns
+        eyebrow="The Details"
+        title="Every gift, wrapped with care"
+        cols={[
+          ["Signature wrapping", "Hand-folded ivory paper, a burgundy ribbon and a wax seal — no extra charge, on every gift order."],
+          ["A personal note", "Add a message at checkout and we will hand-write it on a card inside the box."],
+          ["Occasion ready", "Weddings, anniversaries, festivals and corporate gifting — tell us the occasion and we will suggest the right set."],
+        ]}
+      />
+
+      <TrustBar
+        items={[
+          ["Sparkles", "Keepsake boxes", "Packaging beautiful enough to keep."],
+          ["Truck", "Timed delivery", "Choose a delivery date for the big day."],
+          ["ShieldCheck", "Gift receipts", "Prices stay hidden inside the box."],
+          ["Leaf", "Thoughtful materials", "Recycled paper and reusable cases."],
+        ]}
+      />
+
+      <CtaBanner
+        eyebrow="Need Advice?"
+        title="Let us help you choose"
+        text="Tell us who the gift is for and what they love, and our team will suggest the perfect scent within a day."
+        to="/contact"
+        label="Ask for a suggestion"
+      />
     </>
   );
 }

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import hero from "@/assets/hero.jpg";
 import { products } from "@/lib/products";
-import { PageHero, ProductCard, Reveal } from "@/components/site";
+import { InfoColumns, PageHero, ProductCard, Reveal, TrustBar } from "@/components/site";
 
 type S = { family?: string | undefined };
 
@@ -51,6 +51,25 @@ function Shop() {
           {list.map((p) => <Reveal key={p.slug}><ProductCard p={p} /></Reveal>)}
         </div>
       </div>
+
+      <InfoColumns
+        eyebrow="Shopping Guide"
+        title="Choosing your scent"
+        cols={[
+          ["By family", "Oriental and woody scents feel warm and evening-ready; fresh and aquatic stay crisp for daytime; florals sit softly in between."],
+          ["By occasion", "Office days call for lighter concentrations and clean musks; celebrations deserve oud, amber and rose at full strength."],
+          ["By season", "Citrus and marine notes shine in summer heat; vanilla, leather and spice bloom beautifully in winter air."],
+        ]}
+      />
+
+      <TrustBar
+        items={[
+          ["Truck", "Free shipping", "On all orders above ₹999, anywhere in India."],
+          ["ShieldCheck", "Easy returns", "Unopened bottles can be returned within 7 days."],
+          ["Leaf", "Cruelty free", "Never tested on animals, ever."],
+          ["Sparkles", "High concentration", "Eau de Parfum strength for 8–12 hour wear."],
+        ]}
+      />
     </>
   );
 }

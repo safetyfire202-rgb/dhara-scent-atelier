@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
 import p2 from "@/assets/p2.jpg";
-import { PageHero, Tilt } from "@/components/site";
+import { CtaBanner, InfoColumns, PageHero, Tilt } from "@/components/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -34,6 +34,24 @@ function Contact() {
           </form>
         </Tilt>
       </div>
+
+      <InfoColumns
+        eyebrow="How We Can Help"
+        title="More ways to reach us"
+        cols={[
+          ["Order support", "Questions about an existing order, delivery dates or returns — include your order number for the fastest help."],
+          ["Fragrance consultations", "Tell us your tastes and the occasion, and our team will recommend scents from the collection within one working day."],
+          ["Bulk & corporate", "Wedding favours, festive gifting and corporate orders of twenty pieces or more receive dedicated assistance and pricing."],
+        ]}
+      />
+
+      <CtaBanner
+        eyebrow="Quick Answers"
+        title="Looking for something simple?"
+        text="Shipping times, returns, longevity and more are already answered on our FAQ page — it may save you a wait."
+        to="/faq"
+        label="Visit the FAQ"
+      />
     </>
   );
 }
