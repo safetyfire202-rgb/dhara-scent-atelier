@@ -4,7 +4,7 @@ import atelier from "@/assets/atelier.jpg";
 import p1 from "@/assets/p1.jpg";
 import p3 from "@/assets/p3.jpg";
 import p6 from "@/assets/p6.jpg";
-import { PageHero, Reveal, Tilt } from "@/components/site";
+import { CtaBanner, InfoColumns, PageHero, Reveal, Tilt } from "@/components/site";
 
 export const Route = createFileRoute("/journal")({
   head: () => ({
@@ -47,6 +47,24 @@ function Journal() {
           </Reveal>
         ))}
       </div>
+
+      <InfoColumns
+        eyebrow="Topics We Cover"
+        title="Learn the language of scent"
+        cols={[
+          ["Wearing well", "Practical guides on application, layering, storage and making your perfume last from morning to night."],
+          ["Ingredients", "Deep dives into rose, oud, saffron, vetiver and the other raw materials behind your favourite bottles."],
+          ["Traditions", "Stories from Kannauj's distilleries, Mughal perfume courts and the rituals of Indian fragrance."],
+        ]}
+      />
+
+      <CtaBanner
+        eyebrow="Stay Close"
+        title="New notes, every month"
+        text="Fresh stories and guides are added regularly. Follow the journal and never miss a chapter of the Dhara story."
+        to="/about"
+        label="Read our story"
+      />
     </>
   );
 }
