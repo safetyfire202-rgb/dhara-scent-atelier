@@ -5,7 +5,7 @@ import p4 from "@/assets/p4.jpg";
 import p5 from "@/assets/p5.jpg";
 import p6 from "@/assets/p6.jpg";
 import hero from "@/assets/hero.jpg";
-import { PageHero, Reveal, Tilt } from "@/components/site";
+import { CtaBanner, InfoColumns, PageHero, Reveal, Tilt } from "@/components/site";
 import { products } from "@/lib/products";
 
 export const Route = createFileRoute("/collections")({
@@ -50,6 +50,24 @@ function Collections() {
           </Reveal>
         ))}
       </div>
+
+      <InfoColumns
+        eyebrow="A Short Guide"
+        title="Reading the families"
+        cols={[
+          ["Warm families", "Oriental and woody scents are built on amber, vanilla, cedar and leather. They project confidently and suit evenings, winters and occasions."],
+          ["Light families", "Fresh and aquatic scents lean on citrus, green leaves and marine air. They feel clean and effortless — ideal for daily wear and hot weather."],
+          ["Petal & oil", "Florals celebrate a single bloom or a whole bouquet, while attars are pure oil perfumes: alcohol-free, intimate, and remarkably long-lived on skin."],
+        ]}
+      />
+
+      <CtaBanner
+        eyebrow="Still Deciding?"
+        title="Let the Discovery Box choose for you"
+        text="Six miniature vials spanning every family — wear each for a day and let your skin pick the winner."
+        to="/gifting"
+        label="See the Discovery Box"
+      />
     </>
   );
 }
