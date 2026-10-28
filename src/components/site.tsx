@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, Menu, X, Leaf, ShieldCheck, Sparkles, Truck, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/logo-bright.png";
 import logoDeep from "@/assets/logo-deep.png";
