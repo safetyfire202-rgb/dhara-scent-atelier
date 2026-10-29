@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { getProduct, inr, products } from "@/lib/products";
 import { useCart } from "@/lib/cart";
-import { ProductCard, Reveal, Tilt } from "@/components/site";
+import { ProductCard, Reveal, Tilt, TrustBar, InfoColumns } from "@/components/site";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -60,6 +60,8 @@ function ProductPage() {
           </div>
         </div>
       </div>
+      <TrustBar items={[["Leaf", "Pure oils", "High-concentration extrait blended in small batches."], ["Sparkles", "8–12 hour wear", "Layered to unfold from opening to dry-down."], ["ShieldCheck", "Authentic", "Sealed and batch-numbered at our atelier."], ["Truck", "Free shipping", "On orders above ₹999, beautifully boxed."]]} />
+      <InfoColumns eyebrow="The Ritual" title="Wearing it well" cols={[["Pulse points", "Apply to wrists, neck and behind the ears where warmth lifts the scent."], ["Don't rub", "Let it settle on its own — rubbing breaks the top notes too soon."], ["Store gently", "Keep away from sunlight and heat to protect the oils for years."]]} />
       {related.length > 0 && (
         <section className="mt-32">
           <h2 className="text-5xl">You may also love</h2>
