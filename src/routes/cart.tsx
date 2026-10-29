@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { useCart } from "@/lib/cart";
 import { getProduct, inr } from "@/lib/products";
+import { TrustBar } from "@/components/site";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
@@ -52,6 +53,9 @@ function Cart() {
           </div>
         </div>
       )}
+      <div className="-mx-6 mt-16">
+        <TrustBar items={[["Truck", "Free shipping", "Complimentary on orders above ₹999."], ["ShieldCheck", "Secure payment", "Encrypted checkout, every time."], ["Sparkles", "Gift wrapped", "Each order arrives in our signature box."], ["Leaf", "Easy returns", "Unopened bottles within 7 days."]]} />
+      </div>
     </div>
   );
 }
