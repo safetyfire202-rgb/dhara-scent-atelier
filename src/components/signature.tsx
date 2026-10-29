@@ -8,7 +8,7 @@ const origins = [
   { n: "Mitti", r: "Kannauj, Uttar Pradesh", x: 50, y: 36, s: "Sun-baked earth distilled to capture the scent of the first monsoon rain.", slug: "mitti" },
   { n: "Vetiver", r: "Bharatpur, Rajasthan", x: 38, y: 38, s: "Cool, smoky roots of khus — the grass once woven into summer screens.", slug: "vetiver-mist" },
   { n: "Jasmine", r: "Madurai, Tamil Nadu", x: 48, y: 82, s: "Malli buds gathered closed at dusk, opening their scent through the night.", slug: "tuberose-nights" },
-  { n: "Sandalwood", r: "Mysuru, Karnataka", x: 42, y: 74, s: "Creamy heartwood, aged slowly — the soft base of every Dhara attar.", slug: "royal-oud" },
+  { n: "Sandalwood", r: "Mysuru, Karnataka", x: 42, y: 74, s: "Creamy heartwood, aged slowly — the soft base of every Dhara attar.", slug: "shahi-oud" },
 ];
 
 export function ScentOrigins() {
