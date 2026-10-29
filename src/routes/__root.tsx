@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CartProvider } from "@/lib/cart";
 import { Header, Footer } from "@/components/site";
 import { Toaster } from "@/components/ui/sonner";
+import { GoldCursor } from "@/components/signature";
 
 function NotFoundComponent() {
   return (
@@ -128,6 +129,7 @@ function RootComponent() {
         </main>
         <Footer />
         <Toaster theme="light" position="bottom-right" />
+        <GoldCursor />
       </CartProvider>
     </QueryClientProvider>
   );
