@@ -15,7 +15,6 @@ import gift from "@/assets/gift.jpg";
 import atelier from "@/assets/atelier.jpg";
 import { products } from "@/lib/products";
 import { CtaBanner, ProcessSteps, ProductCard, Reveal, SplitInfo, Tilt } from "@/components/site";
-import { ScentOrigins } from "@/components/signature";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -134,7 +133,6 @@ function Index() {
         link={["/about", "Meet our makers"]}
       />
 
-      <ScentOrigins />
 
       <CtaBanner
         eyebrow="Begin Here"
