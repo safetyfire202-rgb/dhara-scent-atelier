@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import hero from "@/assets/hero.jpg";
-import { products } from "@/lib/products";
+import { products, type Product } from "@/lib/products";
 import { InfoColumns, PageHero, ProductCard, Reveal, TrustBar } from "@/components/site";
 
 type S = { family?: string | undefined };
@@ -11,45 +11,124 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
       { title: "Shop All Perfumes — Dhara" },
-      { name: "description", content: "Browse all 20 Dhara perfumes and attars by family, gender and price." },
+      { name: "description", content: "Browse Dhara perfumes and attars by ingredient, scent family and occasion." },
       { property: "og:title", content: "Shop All Perfumes — Dhara" },
-      { property: "og:description", content: "Browse all Dhara perfumes and attars." },
+      { property: "og:description", content: "Find your Dhara scent by ingredient, family and occasion." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Shop,
 });
 
-const fams = ["All", "Oriental", "Woody", "Floral", "Attar", "Fresh", "Aquatic"];
+const fams = ["Oriental", "Woody", "Floral", "Attar", "Fresh", "Aquatic"];
+const ingredients = ["Saffron", "Rose", "Oud", "Amber", "Vanilla", "Jasmine", "Sandal", "Vetiver", "Musk", "Leather", "Citrus"];
+const citrus = /lemon|bergamot|mandarin|grapefruit|lime|neroli|petitgrain/i;
+const hasIngredient = (p: Product, i: string) => {
+  const notes = `${p.top} ${p.heart} ${p.base}`;
+  return i === "Citrus" ? citrus.test(notes) : notes.toLowerCase().includes(i.toLowerCase());
+};
+
+const occasionMap: Record<string, Product["family"][]> = {
+  "Everyday": ["Fresh", "Aquatic", "Floral"],
+  "Office": ["Fresh", "Floral"],
+  "Evening": ["Oriental", "Woody"],
+  "Wedding & Festive": ["Attar", "Oriental"],
+  "Summer": ["Fresh", "Aquatic"],
+  "Winter": ["Oriental", "Woody", "Attar"],
+};
+const occasions = Object.keys(occasionMap);
+
+function Chip({ on, children, onClick }: { on: boolean; children: React.ReactNode; onClick: () => void }) {
+  return (
+    <button onClick={onClick} aria-pressed={on} className={`border px-4 py-2 text-xs tracking-widest uppercase transition duration-300 ${on ? "border-primary bg-primary text-primary-foreground shadow-soft" : "bg-card hover:border-gold hover:text-gold"}`}>
+      {children}
+    </button>
+  );
+}
+
+const toggle = (arr: string[], v: string) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
 
 function Shop() {
   const { family } = Route.useSearch();
-  const [fam, setFam] = useState(family ?? "All");
+  const [fam, setFam] = useState<string[]>(family ? [family] : []);
+  const [ing, setIng] = useState<string[]>([]);
+  const [occ, setOcc] = useState<string>("");
   const [who, setWho] = useState("All");
   const [sort, setSort] = useState("featured");
-  let list = products.filter((p) => (fam === "All" || p.family === fam) && (who === "All" || p.for === who));
-  if (sort === "low") list = [...list].sort((a, b) => a.price - b.price);
-  if (sort === "high") list = [...list].sort((a, b) => b.price - a.price);
+
+  const list = useMemo(() => {
+    let l = products.filter((p) =>
+      (fam.length === 0 || fam.includes(p.family)) &&
+      (ing.length === 0 || ing.some((i) => hasIngredient(p, i))) &&
+      (!occ || occasionMap[occ]!.includes(p.family)) &&
+      (who === "All" || p.for === who));
+    if (sort === "low") l = [...l].sort((a, b) => a.price - b.price);
+    if (sort === "high") l = [...l].sort((a, b) => b.price - a.price);
+    return l;
+  }, [fam, ing, occ, who, sort]);
+
+  const active = fam.length + ing.length + (occ ? 1 : 0) + (who !== "All" ? 1 : 0);
+  const reset = () => { setFam([]); setIng([]); setOcc(""); setWho("All"); };
+
   return (
     <>
       <PageHero eyebrow="The Collection" title="All Perfumes" image={hero} />
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-wrap items-center gap-3 border-y py-6">
-          {fams.map((f) => (
-            <button key={f} onClick={() => setFam(f)} className={`border px-4 py-2 text-xs tracking-widest uppercase transition ${fam === f ? "bg-primary text-primary-foreground" : "hover:border-gold hover:text-gold"}`}>{f}</button>
-          ))}
-          <div className="ml-auto flex gap-3">
-            <select value={who} onChange={(e) => setWho(e.target.value)} className="border bg-card px-3 py-2 text-sm">
-              {["All", "Him", "Her", "Unisex"].map((w) => <option key={w}>{w}</option>)}
-            </select>
-            <select value={sort} onChange={(e) => setSort(e.target.value)} className="border bg-card px-3 py-2 text-sm">
-              <option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option>
-            </select>
+        <div className="border bg-card p-6 shadow-soft md:p-10">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">Find your scent</p>
+              <h2 className="mt-2 text-3xl md:text-4xl">Browse by what you love</h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <select aria-label="For" value={who} onChange={(e) => setWho(e.target.value)} className="border bg-background px-3 py-2 text-sm">
+                {["All", "Him", "Her", "Unisex"].map((w) => <option key={w} value={w}>{w === "All" ? "For everyone" : `For ${w}`}</option>)}
+              </select>
+              <select aria-label="Sort" value={sort} onChange={(e) => setSort(e.target.value)} className="border bg-background px-3 py-2 text-sm">
+                <option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-8">
+            <div>
+              <p className="mb-3 font-display text-lg italic">Ingredient</p>
+              <div className="flex flex-wrap gap-2">
+                {ingredients.map((i) => <Chip key={i} on={ing.includes(i)} onClick={() => setIng(toggle(ing, i))}>{i}</Chip>)}
+              </div>
+            </div>
+            <div>
+              <p className="mb-3 font-display text-lg italic">Scent family</p>
+              <div className="flex flex-wrap gap-2">
+                {fams.map((f) => <Chip key={f} on={fam.includes(f)} onClick={() => setFam(toggle(fam, f))}>{f}</Chip>)}
+              </div>
+            </div>
+            <div>
+              <p className="mb-3 font-display text-lg italic">Occasion</p>
+              <div className="flex flex-wrap gap-2">
+                {occasions.map((o) => <Chip key={o} on={occ === o} onClick={() => setOcc(occ === o ? "" : o)}>{o}</Chip>)}
+              </div>
+            </div>
           </div>
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">{list.length} fragrances</p>
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {list.map((p) => <Reveal key={p.slug}><ProductCard p={p} /></Reveal>)}
+
+        <div className="mt-8 flex items-center justify-between border-b pb-4">
+          <p className="text-sm text-muted-foreground">{list.length} {list.length === 1 ? "fragrance" : "fragrances"}</p>
+          {active > 0 && <button onClick={reset} className="border-b border-gold pb-0.5 text-xs tracking-widest text-gold uppercase">Clear {active} filter{active > 1 ? "s" : ""}</button>}
         </div>
+
+        {list.length === 0 ? (
+          <div className="py-24 text-center">
+            <p className="font-display text-3xl italic">No scent matches every choice</p>
+            <p className="mt-3 text-muted-foreground">Try removing a filter to see more of the collection.</p>
+            <button onClick={reset} className="mt-8 bg-primary px-8 py-3 text-xs tracking-widest text-primary-foreground uppercase">Show all perfumes</button>
+          </div>
+        ) : (
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {list.map((p) => <Reveal key={p.slug}><ProductCard p={p} /></Reveal>)}
+          </div>
+        )}
       </div>
 
       <InfoColumns
