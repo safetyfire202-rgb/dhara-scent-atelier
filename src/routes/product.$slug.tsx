@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { getProduct, inr, products } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { ProductCard, Reveal, Tilt, TrustBar, InfoColumns } from "@/components/site";
+import { noteMeta, originsFor, stories } from "@/lib/editorial";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -33,6 +34,7 @@ function ProductPage() {
   const [size, setSize] = useState(50);
   const price = Math.round(p.price * (size === 100 ? 1.7 : size === 20 ? 0.5 : 1));
   const related = products.filter((x) => x.family === p.family && x.slug !== p.slug).slice(0, 4);
+  const origins = originsFor(p);
   return (
     <div className="mx-auto max-w-7xl px-6 pt-32 pb-16">
       <div className="grid gap-16 md:grid-cols-2">
@@ -60,6 +62,46 @@ function ProductPage() {
           </div>
         </div>
       </div>
+      <Reveal>
+        <section className="mx-auto mt-32 max-w-3xl text-center">
+          <p className="eyebrow text-center">The Story</p>
+          <h2 className="mt-4 text-4xl md:text-5xl">Behind {p.name}</h2>
+          <p className="mt-8 font-display text-xl leading-relaxed italic md:text-2xl">“{stories[p.slug] ?? p.tagline}”</p>
+          <p className="mt-6 text-xs tracking-[0.35em] text-muted-foreground uppercase">— The Dhara Atelier</p>
+        </section>
+      </Reveal>
+
+      <section className="mt-32">
+        <Reveal><p className="eyebrow">The Composition</p><h2 className="mt-3 text-4xl md:text-5xl">How it unfolds</h2></Reveal>
+        <div className="mt-12 grid border-t md:grid-cols-3">
+          {noteMeta.map((m, i) => (
+            <Reveal key={m.k}>
+              <div className={`h-full border-b py-10 md:border-b-0 md:px-8 ${i > 0 ? "md:border-l" : "md:pl-0"}`}>
+                <p className="font-display text-5xl text-gold-gradient">0{i + 1}</p>
+                <p className="mt-6 eyebrow">{m.k} Notes · {m.when}</p>
+                <h3 className="mt-4 text-3xl">{i === 0 ? p.top : i === 1 ? p.heart : p.base}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{m.d}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {origins.length > 0 && (
+        <section className="mt-32 border bg-card p-8 shadow-soft md:p-14">
+          <Reveal><p className="eyebrow">Ingredient Origins</p><h2 className="mt-3 text-4xl md:text-5xl">Where it comes from</h2></Reveal>
+          <div className="mt-12 grid gap-10 md:grid-cols-3">
+            {origins.map((o) => (
+              <Reveal key={o.region}>
+                <p className="text-xs tracking-[0.3em] text-gold uppercase">{o.region}</p>
+                <h3 className="mt-3 text-3xl">{o.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{o.note}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
+
       <TrustBar items={[["Leaf", "Pure oils", "High-concentration extrait blended in small batches."], ["Sparkles", "8–12 hour wear", "Layered to unfold from opening to dry-down."], ["ShieldCheck", "Authentic", "Sealed and batch-numbered at our atelier."], ["Truck", "Free shipping", "On orders above ₹999, beautifully boxed."]]} />
       <InfoColumns eyebrow="The Ritual" title="Wearing it well" cols={[["Pulse points", "Apply to wrists, neck and behind the ears where warmth lifts the scent."], ["Don't rub", "Let it settle on its own — rubbing breaks the top notes too soon."], ["Store gently", "Keep away from sunlight and heat to protect the oils for years."]]} />
       {related.length > 0 && (
