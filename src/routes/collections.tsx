@@ -6,7 +6,7 @@ import p5 from "@/assets/p5.jpg";
 import p6 from "@/assets/p6.jpg";
 import hero from "@/assets/hero.jpg";
 import { CtaBanner, InfoColumns, PageHero, Reveal, Tilt } from "@/components/site";
-import { products } from "@/lib/products";
+import { useProducts } from "@/lib/catalog";
 
 export const Route = createFileRoute("/collections")({
   head: () => ({
@@ -30,6 +30,7 @@ const cols = [
 ];
 
 function Collections() {
+  const products = useProducts();
   return (
     <>
       <PageHero eyebrow="Fragrance Families" title="Collections" image={p1} />

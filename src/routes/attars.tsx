@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import p3 from "@/assets/p3.jpg";
-import { products } from "@/lib/products";
+import { useProducts } from "@/lib/catalog";
 import { InfoColumns, PageHero, ProcessSteps, ProductCard, Reveal, TrustBar } from "@/components/site";
 
 export const Route = createFileRoute("/attars")({
@@ -16,6 +16,7 @@ export const Route = createFileRoute("/attars")({
 });
 
 function Attars() {
+  const products = useProducts();
   return (
     <>
       <PageHero eyebrow="Alcohol Free · Traditional" title="The Attar House" image={p3}>

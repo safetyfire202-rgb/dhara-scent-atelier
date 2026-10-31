@@ -13,7 +13,7 @@ import p5 from "@/assets/p5.jpg";
 import p6 from "@/assets/p6.jpg";
 import gift from "@/assets/gift.jpg";
 import atelier from "@/assets/atelier.jpg";
-import { products } from "@/lib/products";
+import { useProducts } from "@/lib/catalog";
 import { CtaBanner, ProcessSteps, ProductCard, Reveal, SplitInfo, Tilt } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -29,6 +29,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const products = useProducts();
   const families = [
     { n: "Oriental", img: hero }, { n: "Woody", img: p1 }, { n: "Attar", img: p3 },
     { n: "Floral", img: p4 }, { n: "Aquatic", img: p5 }, { n: "Fresh", img: p6 },
