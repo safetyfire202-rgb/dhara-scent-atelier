@@ -1,16 +1,18 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import { getProduct, inr, products } from "@/lib/products";
+import { inr, fromRow } from "@/lib/products";
+import { productsQuery, useProducts } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
 import { ProductCard, Reveal, Tilt, TrustBar, InfoColumns } from "@/components/site";
 import { noteMeta, originsFor, stories } from "@/lib/editorial";
 
 export const Route = createFileRoute("/product/$slug")({
-  loader: ({ params }) => {
-    const p = getProduct(params.slug);
-    if (!p) throw notFound();
-    return p;
+  loader: async ({ params, context }) => {
+    const rows = await context.queryClient.ensureQueryData(productsQuery);
+    const r = rows.find((x) => x.slug === params.slug);
+    if (!r) throw notFound();
+    return fromRow(r);
   },
   head: ({ loaderData }) => ({
     meta: loaderData
@@ -22,6 +24,7 @@ export const Route = createFileRoute("/product/$slug")({
         ]
       : [{ title: "Fragrance not found — Dhara" }, { name: "robots", content: "noindex" }],
   }),
+  errorComponent: () => <div className="py-40 text-center"><h1 className="text-4xl">This fragrance didn't load</h1><Link to="/shop" className="mt-6 inline-block text-gold">Back to shop</Link></div>,
   notFoundComponent: () => (
     <div className="py-40 text-center"><h1 className="text-5xl">Fragrance not found</h1><Link to="/shop" className="mt-6 inline-block text-gold">Back to shop</Link></div>
   ),
@@ -30,6 +33,7 @@ export const Route = createFileRoute("/product/$slug")({
 
 function ProductPage() {
   const p = Route.useLoaderData();
+  const products = useProducts();
   const { add } = useCart();
   const [size, setSize] = useState(50);
   const price = Math.round(p.price * (size === 100 ? 1.7 : size === 20 ? 0.5 : 1));
@@ -54,7 +58,7 @@ function ProductPage() {
               <button key={s} onClick={() => setSize(s)} className={`border px-6 py-3 text-sm transition ${size === s ? "border-gold bg-gold/10 text-gold" : "hover:border-gold"}`}>{s} ml</button>
             ))}
           </div>
-          <button onClick={() => { add(p.slug); toast.success(`${p.name} added to bag`); }} className="mt-8 bg-gold-gradient py-4 text-sm font-semibold tracking-widest text-primary-foreground uppercase shadow-glow transition hover:scale-[1.02]">Add to Bag</button>
+          <button disabled={p.stock < 1} onClick={() => { add(p.slug); toast.success(`${p.name} added to bag`); }} className="mt-8 bg-gold-gradient py-4 text-sm font-semibold tracking-widest text-primary-foreground uppercase shadow-glow transition hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100">{p.stock < 1 ? "Sold out" : "Add to Bag"}</button>
           <div className="mt-12 grid grid-cols-3 gap-4">
             {[["Top", p.top], ["Heart", p.heart], ["Base", p.base]].map(([k, v]) => (
               <Tilt key={k}><div className="border bg-card p-4 text-center"><p className="eyebrow text-[0.6rem]">{k} Notes</p><p className="mt-2 text-sm">{v}</p></div></Tilt>

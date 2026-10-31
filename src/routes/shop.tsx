@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import hero from "@/assets/hero.jpg";
-import { products, type Product } from "@/lib/products";
+import type { Product } from "@/lib/products";
+import { useProducts } from "@/lib/catalog";
 import { InfoColumns, PageHero, ProductCard, Reveal, TrustBar } from "@/components/site";
 
 type S = { family?: string | undefined };
@@ -50,6 +51,7 @@ function Chip({ on, children, onClick }: { on: boolean; children: React.ReactNod
 const toggle = (arr: string[], v: string) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
 
 function Shop() {
+  const products = useProducts();
   const { family } = Route.useSearch();
   const [fam, setFam] = useState<string[]>(family ? [family] : []);
   const [ing, setIng] = useState<string[]>([]);
@@ -66,7 +68,7 @@ function Shop() {
     if (sort === "low") l = [...l].sort((a, b) => a.price - b.price);
     if (sort === "high") l = [...l].sort((a, b) => b.price - a.price);
     return l;
-  }, [fam, ing, occ, who, sort]);
+  }, [products, fam, ing, occ, who, sort]);
 
   const active = fam.length + ing.length + (occ ? 1 : 0) + (who !== "All" ? 1 : 0);
   const reset = () => { setFam([]); setIng([]); setOcc(""); setWho("All"); };

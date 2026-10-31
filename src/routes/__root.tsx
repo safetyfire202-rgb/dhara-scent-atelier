@@ -16,6 +16,8 @@ import { CartProvider } from "@/lib/cart";
 import { Header, Footer } from "@/components/site";
 import { Toaster } from "@/components/ui/sonner";
 import { GoldCursor } from "@/components/signature";
+import { productsQuery } from "@/lib/catalog";
+import { useLocation } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -97,6 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&display=swap" },
     ],
   }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -119,15 +122,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const staff = useLocation({ select: (l) => l.pathname.startsWith("/admin") });
 
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
-        <Header />
+        {!staff && <Header />}
         <main>
           <Outlet />
         </main>
-        <Footer />
+        {!staff && <Footer />}
         <Toaster theme="light" position="bottom-right" />
         <GoldCursor />
       </CartProvider>
