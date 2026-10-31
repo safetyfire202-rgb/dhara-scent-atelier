@@ -21,7 +21,7 @@ export const Route = createFileRoute("/admin")({
       { name: "robots", content: "noindex" },
     ],
   }),
-  errorComponent: ({ error }) => <div className="p-20 text-center">{error.message}</div>,
+  errorComponent: ({ error }) => <div className="p-20 text-center">{error instanceof Error ? error.message : "Something went wrong"}</div>,
   component: AdminPage,
 });
 
@@ -169,8 +169,8 @@ function Editor({ draft, onClose, onSaved }: { draft: Draft; onClose: () => void
   const preview = useMemo(() => imgOf(d), [d]);
 
   async function pick(file: File) {
-    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) return toast.error("Use a JPG, PNG or WEBP photo");
-    if (file.size > 5 * 1024 * 1024) return toast.error("Photo must be under 5 MB");
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) { toast.error("Use a JPG, PNG or WEBP photo"); return; }
+    if (file.size > 5 * 1024 * 1024) { toast.error("Photo must be under 5 MB"); return; }
     setUploading(true);
     try {
       const buf = new Uint8Array(await file.arrayBuffer());
