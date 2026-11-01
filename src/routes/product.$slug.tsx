@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import { inr, fromRow } from "@/lib/products";
+import { inr } from "@/lib/products";
 import { productsQuery, useProducts } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
 import { ProductCard, Reveal, Tilt, TrustBar, InfoColumns } from "@/components/site";
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/product/$slug")({
     const rows = await context.queryClient.ensureQueryData(productsQuery);
     const r = rows.find((x) => x.slug === params.slug);
     if (!r) throw notFound();
-    return fromRow(r);
+    return r;
   },
   head: ({ loaderData }) => ({
     meta: loaderData

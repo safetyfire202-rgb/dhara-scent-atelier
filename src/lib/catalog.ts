@@ -1,14 +1,12 @@
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { listProducts } from "@/lib/catalog.functions";
-import { fromRow, type Product } from "@/lib/products";
+import { queryOptions } from "@tanstack/react-query";
+import { products, type Product } from "@/lib/products";
 
 export const productsQuery = queryOptions({
   queryKey: ["products"],
-  queryFn: () => listProducts(),
-  staleTime: 60_000,
+  queryFn: async () => products,
+  staleTime: Infinity,
 });
 
 export function useProducts(): Product[] {
-  const { data } = useSuspenseQuery(productsQuery);
-  return data.map(fromRow);
+  return products;
 }
