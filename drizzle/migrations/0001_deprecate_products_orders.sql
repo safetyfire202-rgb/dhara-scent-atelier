@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.products IS 'DEPRECATED: catalog moved back into site code; CRM removed'; COMMENT ON TABLE public.orders IS 'DEPRECATED: CRM removed';
