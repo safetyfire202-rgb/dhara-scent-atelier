@@ -17,7 +17,6 @@ import { Header, Footer } from "@/components/site";
 import { Toaster } from "@/components/ui/sonner";
 import { GoldCursor } from "@/components/signature";
 import { productsQuery } from "@/lib/catalog";
-import { useLocation } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -122,16 +121,14 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const staff = useLocation({ select: (l) => l.pathname.startsWith("/admin") });
-
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
-        {!staff && <Header />}
+        <Header />
         <main>
           <Outlet />
         </main>
-        {!staff && <Footer />}
+        <Footer />
         <Toaster theme="light" position="bottom-right" />
         <GoldCursor />
       </CartProvider>
