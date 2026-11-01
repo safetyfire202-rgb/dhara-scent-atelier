@@ -17,7 +17,6 @@ import { Header, Footer } from "@/components/site";
 import { Toaster } from "@/components/ui/sonner";
 import { GoldCursor } from "@/components/signature";
 import { productsQuery } from "@/lib/catalog";
-import { useLocation } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
