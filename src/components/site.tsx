@@ -173,6 +173,14 @@ export function PageHero({ eyebrow, title, image, children }: { eyebrow: string;
   );
 }
 
+export function Chip({ on, children, onClick }: { on: boolean; children: ReactNode; onClick: () => void }) {
+  return (
+    <button onClick={onClick} aria-pressed={on} className={`border px-4 py-2 text-xs tracking-widest uppercase transition duration-300 ${on ? "border-primary bg-primary text-primary-foreground shadow-soft" : "bg-card hover:border-gold hover:text-gold"}`}>
+      {children}
+    </button>
+  );
+}
+
 const trustIcons: Record<string, LucideIcon> = { Leaf, ShieldCheck, Sparkles, Truck };
 
 export function TrustBar({ items }: { items: [string, string, string][] }) {
