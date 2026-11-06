@@ -16,6 +16,7 @@ export function ScentFinder() {
   const [who, setWho] = useState("All");
 
   const results = useMemo(() => products.filter((p) => matches(p, { occ, ings, who })), [products, occ, ings, who]);
+  const onlyFamily = new Set(results.map((p) => p.family)).size === 1 ? results[0]!.family : undefined;
   const reset = () => { setStep(0); setOcc(""); setIngs([]); setWho("All"); };
   const toggleIng = (i: string) => setIngs((t) => (t.includes(i) ? t.filter((x) => x !== i) : [...t, i]));
 
@@ -117,7 +118,7 @@ export function ScentFinder() {
                         {results.slice(0, 4).map((p) => <ProductCard key={p.slug} p={p} />)}
                       </div>
                       {results.length > 4 && (
-                        <Link to="/shop" search={{ family: results.length === 1 || new Set(results.map((p) => p.family)).size === 1 ? (results[0]!.family as (typeof fams)[number]) : undefined }} className="mt-9 inline-flex items-center gap-2 border-b border-gold pb-1 text-sm tracking-widest text-gold uppercase">
+                        <Link to="/shop" search={{ family: onlyFamily }} className="mt-9 inline-flex items-center gap-2 border-b border-gold pb-1 text-sm tracking-widest text-gold uppercase">
                           See all {results.length} in the shop <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       )}
