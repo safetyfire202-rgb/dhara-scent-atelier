@@ -1,16 +1,11 @@
 # Roadmap
 
-## Current: Light luxury consistency + info sections + verification
-- [ ] Add shared info-section components (TrustBar, InfoGrid, ProcessSteps, CtaBanner) to site.tsx
-- [ ] Home: add "How to wear" ritual section + ingredient spotlight
-- [ ] Shop: add trust bar + shopping guide info section
-- [ ] Product detail: add longevity/application info section
-- [ ] Collections: add family guide info section
-- [ ] Attars: add distillation process steps + attar ritual info
-- [ ] Gifting: add wrapping/occasions info section
-- [ ] About: add timeline/values info sections
-- [ ] Journal: add newsletter/topics info section
-- [ ] Contact: add visit/FAQ-teaser info section
-- [ ] FAQ: add contact-teaser info section
-- [ ] Cart: add trust bar + shipping info section
-- [ ] Verify all 10 pages on desktop + mobile via Playwright (screenshots, no errors)
+## Done
+- [x] Shared info-section components (TrustBar, InfoGrid, ProcessSteps, CtaBanner, InfoColumns, SplitInfo) in site.tsx
+- [x] Info sections on all 10 pages (home, shop, product, collections, attars, gifting, about, journal, contact, faq, cart)
+- [x] Verify all 10 pages on desktop + mobile (no layout, image or overflow issues)
+- [x] Shop filters: ingredient, scent family, occasion
+- [x] Home page "Select your scent" step-by-step finder (occasion → notes → wearer)
+
+## Open
+- [ ] Checkout does not reach you yet — orders need a real channel (email or online payment)
