@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, RotateCcw } from "lucide-react";
 import { Chip, ProductCard, Reveal } from "@/components/site";
 import { useProducts } from "@/lib/catalog";
-import { fams, ingredients, matches, occasions } from "@/lib/match";
+import { ingredients, matches, occasions } from "@/lib/match";
 
 const steps = ["Occasion", "Notes", "Wearer"];
 const wearers: [string, string][] = [["All", "Anyone"], ["Him", "For him"], ["Her", "For her"], ["Unisex", "Unisex only"]];

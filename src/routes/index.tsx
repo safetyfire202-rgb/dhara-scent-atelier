@@ -14,6 +14,7 @@ import p6 from "@/assets/p6.jpg";
 import gift from "@/assets/gift.jpg";
 import atelier from "@/assets/atelier.jpg";
 import { useProducts } from "@/lib/catalog";
+import { ScentFinder } from "@/components/scent-finder";
 import { CtaBanner, ProcessSteps, ProductCard, Reveal, SplitInfo, Tilt } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -68,6 +69,8 @@ function Index() {
           {products.slice(0, 8).map((p) => <Reveal key={p.slug}><ProductCard p={p} /></Reveal>)}
         </div>
       </section>
+
+      <ScentFinder />
 
       <section className="perspective relative my-24 overflow-hidden py-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center px-6">

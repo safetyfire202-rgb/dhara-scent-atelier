@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import hero from "@/assets/hero.jpg";
-import type { Product } from "@/lib/products";
 import { useProducts } from "@/lib/catalog";
-import { InfoColumns, PageHero, ProductCard, Reveal, TrustBar } from "@/components/site";
+import { Chip, InfoColumns, PageHero, ProductCard, Reveal, TrustBar } from "@/components/site";
+import { fams, ingredients, matches, occasions } from "@/lib/match";
 
 type S = { family?: string | undefined };
 
@@ -22,32 +22,6 @@ export const Route = createFileRoute("/shop")({
   component: Shop,
 });
 
-const fams = ["Oriental", "Woody", "Floral", "Attar", "Fresh", "Aquatic"];
-const ingredients = ["Saffron", "Rose", "Oud", "Amber", "Vanilla", "Jasmine", "Sandal", "Vetiver", "Musk", "Leather", "Citrus"];
-const citrus = /lemon|bergamot|mandarin|grapefruit|lime|neroli|petitgrain/i;
-const hasIngredient = (p: Product, i: string) => {
-  const notes = `${p.top} ${p.heart} ${p.base}`;
-  return i === "Citrus" ? citrus.test(notes) : notes.toLowerCase().includes(i.toLowerCase());
-};
-
-const occasionMap: Record<string, Product["family"][]> = {
-  "Everyday": ["Fresh", "Aquatic", "Floral"],
-  "Office": ["Fresh", "Floral"],
-  "Evening": ["Oriental", "Woody"],
-  "Wedding & Festive": ["Attar", "Oriental"],
-  "Summer": ["Fresh", "Aquatic"],
-  "Winter": ["Oriental", "Woody", "Attar"],
-};
-const occasions = Object.keys(occasionMap);
-
-function Chip({ on, children, onClick }: { on: boolean; children: React.ReactNode; onClick: () => void }) {
-  return (
-    <button onClick={onClick} aria-pressed={on} className={`border px-4 py-2 text-xs tracking-widest uppercase transition duration-300 ${on ? "border-primary bg-primary text-primary-foreground shadow-soft" : "bg-card hover:border-gold hover:text-gold"}`}>
-      {children}
-    </button>
-  );
-}
-
 const toggle = (arr: string[], v: string) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
 
 function Shop() {
@@ -60,11 +34,7 @@ function Shop() {
   const [sort, setSort] = useState("featured");
 
   const list = useMemo(() => {
-    let l = products.filter((p) =>
-      (fam.length === 0 || fam.includes(p.family)) &&
-      (ing.length === 0 || ing.some((i) => hasIngredient(p, i))) &&
-      (!occ || occasionMap[occ]!.includes(p.family)) &&
-      (who === "All" || p.for === who));
+    let l = products.filter((p) => matches(p, { fams: fam, ings: ing, occ, who }));
     if (sort === "low") l = [...l].sort((a, b) => a.price - b.price);
     if (sort === "high") l = [...l].sort((a, b) => b.price - a.price);
     return l;
