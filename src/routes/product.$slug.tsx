@@ -44,6 +44,7 @@ function ProductPage() {
   return (
     <div className="mx-auto max-w-7xl px-6 pt-32 pb-16">
       <div className="grid gap-16 md:grid-cols-2">
+        <div>
         <Tilt max={18}>
           <div className="relative">
             <img src={main} alt={p.name} width={800} height={1008} className="aspect-[4/5] w-full bg-card object-cover shadow-glow" />
@@ -51,7 +52,7 @@ function ProductPage() {
           </div>
         </Tilt>
         {p.gallery.length > 1 && (
-          <div className="-mt-10 flex flex-wrap gap-3 md:col-start-1">
+          <div className="mt-5 flex flex-wrap gap-3">
             {p.gallery.map((g, i) => (
               <button key={g} onClick={() => setShot(i)} aria-label={`Photo ${i + 1}`} className={`h-20 w-16 overflow-hidden border transition ${i === shot ? "border-gold" : "opacity-70 hover:opacity-100"}`}>
                 <img src={g} alt="" loading="lazy" className="h-full w-full object-cover" />
@@ -59,6 +60,7 @@ function ProductPage() {
             ))}
           </div>
         )}
+        </div>
         <div className="flex flex-col justify-center">
           <p className="eyebrow">For {p.for} · Eau de Parfum</p>
           <h1 className="mt-4 text-6xl md:text-7xl">{p.name}</h1>
