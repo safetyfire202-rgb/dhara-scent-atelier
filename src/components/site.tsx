@@ -46,8 +46,8 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <Link to="/" className="flex h-20 flex-col items-center justify-center px-7">
-          <img src={logo} alt="Dhara" width={34} height={40} className={`h-10 w-auto transition-all duration-500 ${overlay ? "[filter:drop-shadow(0_0_5px_oklch(0_0_0/85%))_drop-shadow(0_1px_2px_oklch(0_0_0/80%))]" : ""}`} />
+        <Link to="/" className="flex h-20 flex-col items-center justify-center gap-0.5 px-7">
+          <img src={logo} alt="Dhara" width={34} height={40} className={`h-7 w-auto transition-all duration-500 ${overlay ? "[filter:drop-shadow(0_0_5px_oklch(0_0_0/85%))_drop-shadow(0_1px_2px_oklch(0_0_0/80%))]" : ""}`} />
           <span className={`font-display text-xl font-semibold tracking-[0.3em] transition-colors duration-500 ${overlay ? "text-on-image [text-shadow:0_1px_12px_oklch(0_0_0/60%)]" : "text-primary"}`}>DHARA</span>
           <span className={`text-[0.55rem] tracking-[0.45em] transition-colors duration-500 ${overlay ? "text-on-image/85 [text-shadow:0_1px_8px_oklch(0_0_0/70%)]" : "text-primary/55"}`}>PARFUMS</span>
         </Link>
