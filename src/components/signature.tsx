@@ -3,12 +3,12 @@ import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site";
 
 const origins = [
-  { n: "Saffron", r: "Pampore, Kashmir", x: 34, y: 12, s: "Hand-picked at dawn each October, three crimson threads per flower.", slug: "kesar-attar" },
-  { n: "Rose", r: "Kannauj, Uttar Pradesh", x: 47, y: 32, s: "Damask petals distilled into sandalwood in copper deg stills, as for 400 years.", slug: "rose-rooh" },
-  { n: "Mitti", r: "Kannauj, Uttar Pradesh", x: 50, y: 36, s: "Sun-baked earth distilled to capture the scent of the first monsoon rain.", slug: "mitti" },
-  { n: "Vetiver", r: "Bharatpur, Rajasthan", x: 38, y: 38, s: "Cool, smoky roots of khus — the grass once woven into summer screens.", slug: "vetiver-mist" },
-  { n: "Jasmine", r: "Madurai, Tamil Nadu", x: 48, y: 82, s: "Malli buds gathered closed at dusk, opening their scent through the night.", slug: "tuberose-nights" },
-  { n: "Sandalwood", r: "Mysuru, Karnataka", x: 42, y: 74, s: "Creamy heartwood, aged slowly — the soft base of every Dhara attar.", slug: "shahi-oud" },
+  { n: "Saffron", r: "Pampore, Kashmir", x: 34, y: 12, s: "Hand-picked at dawn each October, three crimson threads per flower.", slug: "saffron-vibes" },
+  { n: "Rose", r: "Kannauj, Uttar Pradesh", x: 47, y: 32, s: "Damask petals distilled into sandalwood in copper deg stills, as for 400 years.", slug: "attar-al-reem" },
+  { n: "Mitti", r: "Kannauj, Uttar Pradesh", x: 50, y: 36, s: "Sun-baked earth distilled to capture the scent of the first monsoon rain.", slug: "ebony" },
+  { n: "Vetiver", r: "Bharatpur, Rajasthan", x: 38, y: 38, s: "Cool, smoky roots of khus — the grass once woven into summer screens.", slug: "wild" },
+  { n: "Jasmine", r: "Madurai, Tamil Nadu", x: 48, y: 82, s: "Malli buds gathered closed at dusk, opening their scent through the night.", slug: "orchid" },
+  { n: "Sandalwood", r: "Mysuru, Karnataka", x: 42, y: 74, s: "Creamy heartwood, aged slowly — the soft base of every Dhara attar.", slug: "imperial-oud" },
 ];
 
 export function ScentOrigins() {

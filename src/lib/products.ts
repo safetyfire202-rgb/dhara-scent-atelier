@@ -1,26 +1,3 @@
-import p1 from "@/assets/p1.jpg";
-import p2 from "@/assets/p2.jpg";
-import p3 from "@/assets/p3.jpg";
-import p4 from "@/assets/p4.jpg";
-import p5 from "@/assets/p5.jpg";
-import p6 from "@/assets/p6.jpg";
-import hero from "@/assets/hero.jpg";
-import gift from "@/assets/gift.jpg";
-import i0 from "@/assets/kesar-attar.jpg";
-import i1 from "@/assets/midnight-leather.jpg";
-import i2 from "@/assets/mitti.jpg";
-import i3 from "@/assets/velvet-vanilla.jpg";
-import i4 from "@/assets/azure-coast.jpg";
-import i5 from "@/assets/neroli-sun.jpg";
-import i6 from "@/assets/rose-rooh.jpg";
-import i7 from "@/assets/smoked-cedar.jpg";
-import i8 from "@/assets/tuberose-nights.jpg";
-import i9 from "@/assets/royal-oud.jpg";
-import i10 from "@/assets/vetiver-mist.jpg";
-import i11 from "@/assets/monsoon-lily.jpg";
-import i12 from "@/assets/dhara-signature.jpg";
-
-
 export type Family = "Oriental" | "Floral" | "Attar" | "Fresh" | "Aquatic" | "Woody";
 export type Product = {
   id: string;
@@ -30,6 +7,7 @@ export type Product = {
   for: "Him" | "Her" | "Unisex";
   price: number;
   image: string;
+  gallery: string[];
   tagline: string;
   top: string;
   heart: string;
@@ -37,30 +15,41 @@ export type Product = {
   stock: number;
 };
 
-const imgBySlug: Record<string, string> = {"amber-noir": hero, "fleur-noire": p1, "ivory-jasmine": p2, "shahi-oud": p3, "peony-veil": p4, "tide": p5, "bergamot-bloom": p6, "kesar-attar": i0, "midnight-leather": i1, "mitti": i2, "velvet-vanilla": i3, "azure-coast": i4, "neroli-sun": i5, "rose-rooh": i6, "smoked-cedar": i7, "tuberose-nights": i8, "royal-oud-intense": i9, "vetiver-mist": i10, "monsoon-lily": i11, "dhara-signature": i12};
+const files = import.meta.glob("../assets/products/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const photos = (slug: string) =>
+  Object.keys(files)
+    .filter((k) => new RegExp(`/${slug}-\\d+\\.jpg$`).test(k))
+    .sort((a, b) => Number(a.match(/-(\d+)\.jpg$/)![1]) - Number(b.match(/-(\d+)\.jpg$/)![1]))
+    .map((k) => files[k]!);
 
-export const products: Product[] = [
-  { id: "amber-noir", slug: "amber-noir", name: "Amber Noir", family: "Oriental", for: "Unisex", price: 2499, tagline: "Molten amber after midnight", top: "Saffron, Pink Pepper", heart: "Amber, Labdanum", base: "Vanilla, Benzoin", stock: 50, image: imgBySlug["amber-noir"] ?? gift },
-  { id: "fleur-noire", slug: "fleur-noire", name: "Fleur Noire", family: "Woody", for: "Her", price: 2299, tagline: "A dark rose in velvet", top: "Blackcurrant", heart: "Damask Rose", base: "Patchouli, Oud", stock: 50, image: imgBySlug["fleur-noire"] ?? gift },
-  { id: "ivory-jasmine", slug: "ivory-jasmine", name: "Ivory Jasmine", family: "Floral", for: "Her", price: 1999, tagline: "Moonlit sambac petals", top: "Neroli", heart: "Jasmine Sambac", base: "White Musk", stock: 50, image: imgBySlug["ivory-jasmine"] ?? gift },
-  { id: "shahi-oud", slug: "shahi-oud", name: "Shahi Oud", family: "Attar", for: "Unisex", price: 3499, tagline: "Royal oud, slow-distilled", top: "Saffron", heart: "Cambodian Oud", base: "Sandalwood", stock: 50, image: imgBySlug["shahi-oud"] ?? gift },
-  { id: "peony-veil", slug: "peony-veil", name: "Peony Veil", family: "Floral", for: "Her", price: 1899, tagline: "Soft as blush silk", top: "Lychee", heart: "Peony, Rose", base: "Cashmere Musk", stock: 50, image: imgBySlug["peony-veil"] ?? gift },
-  { id: "tide", slug: "tide", name: "Tide", family: "Aquatic", for: "Him", price: 1799, tagline: "Salt air on warm stone", top: "Sea Salt, Lemon", heart: "Marine Accord", base: "Driftwood", stock: 50, image: imgBySlug["tide"] ?? gift },
-  { id: "bergamot-bloom", slug: "bergamot-bloom", name: "Bergamot Bloom", family: "Fresh", for: "Unisex", price: 1599, tagline: "Morning in a citrus grove", top: "Bergamot", heart: "Petitgrain", base: "Vetiver", stock: 50, image: imgBySlug["bergamot-bloom"] ?? gift },
-  { id: "kesar-attar", slug: "kesar-attar", name: "Kesar Attar", family: "Attar", for: "Unisex", price: 2799, tagline: "Liquid gold of Kashmir", top: "Saffron", heart: "Rose Otto", base: "Amber", stock: 50, image: imgBySlug["kesar-attar"] ?? gift },
-  { id: "midnight-leather", slug: "midnight-leather", name: "Midnight Leather", family: "Woody", for: "Him", price: 2599, tagline: "Worn leather, cool night", top: "Cardamom", heart: "Leather", base: "Cedar, Tonka", stock: 50, image: imgBySlug["midnight-leather"] ?? gift },
-  { id: "mitti", slug: "mitti", name: "Mitti", family: "Attar", for: "Unisex", price: 2199, tagline: "First rain on earth", top: "Petrichor", heart: "Baked Clay", base: "Vetiver", stock: 50, image: imgBySlug["mitti"] ?? gift },
-  { id: "velvet-vanilla", slug: "velvet-vanilla", name: "Velvet Vanilla", family: "Oriental", for: "Her", price: 2199, tagline: "Warm skin, sweet smoke", top: "Pear", heart: "Orchid", base: "Bourbon Vanilla", stock: 50, image: imgBySlug["velvet-vanilla"] ?? gift },
-  { id: "azure-coast", slug: "azure-coast", name: "Azure Coast", family: "Aquatic", for: "Him", price: 1899, tagline: "Endless blue horizon", top: "Grapefruit", heart: "Sea Fennel", base: "Ambergris", stock: 50, image: imgBySlug["azure-coast"] ?? gift },
-  { id: "neroli-sun", slug: "neroli-sun", name: "Neroli Sun", family: "Fresh", for: "Her", price: 1699, tagline: "Sunlight through orange blossom", top: "Mandarin", heart: "Neroli", base: "Musk", stock: 50, image: imgBySlug["neroli-sun"] ?? gift },
-  { id: "rose-rooh", slug: "rose-rooh", name: "Rose Rooh", family: "Attar", for: "Her", price: 2999, tagline: "Pure Kannauj rose spirit", top: "Rose Water", heart: "Rose Absolute", base: "Sandal", stock: 50, image: imgBySlug["rose-rooh"] ?? gift },
-  { id: "smoked-cedar", slug: "smoked-cedar", name: "Smoked Cedar", family: "Woody", for: "Him", price: 2399, tagline: "Embers in a forest", top: "Black Pepper", heart: "Cedarwood", base: "Birch Tar", stock: 50, image: imgBySlug["smoked-cedar"] ?? gift },
-  { id: "tuberose-nights", slug: "tuberose-nights", name: "Tuberose Nights", family: "Floral", for: "Her", price: 2099, tagline: "Intoxicating, unapologetic", top: "Green Notes", heart: "Tuberose", base: "Coconut Musk", stock: 50, image: imgBySlug["tuberose-nights"] ?? gift },
-  { id: "royal-oud-intense", slug: "royal-oud-intense", name: "Royal Oud Intense", family: "Oriental", for: "Him", price: 3999, tagline: "Power in a single spray", top: "Elemi", heart: "Oud, Incense", base: "Leather, Amber", stock: 50, image: imgBySlug["royal-oud-intense"] ?? gift },
-  { id: "vetiver-mist", slug: "vetiver-mist", name: "Vetiver Mist", family: "Fresh", for: "Him", price: 1799, tagline: "Green, crisp, grounded", top: "Lime", heart: "Haitian Vetiver", base: "Oakmoss", stock: 50, image: imgBySlug["vetiver-mist"] ?? gift },
-  { id: "monsoon-lily", slug: "monsoon-lily", name: "Monsoon Lily", family: "Aquatic", for: "Unisex", price: 1999, tagline: "Lilies after the storm", top: "Rain Accord", heart: "Water Lily", base: "Soft Woods", stock: 50, image: imgBySlug["monsoon-lily"] ?? gift },
-  { id: "dhara-signature", slug: "dhara-signature", name: "Dhara Signature", family: "Oriental", for: "Unisex", price: 4499, tagline: "The essence of Dhara", top: "Saffron, Bergamot", heart: "Rose, Oud", base: "Amber, Sandalwood", stock: 50, image: imgBySlug["dhara-signature"] ?? gift },
+type Base = Omit<Product, "id" | "image" | "gallery" | "stock">;
+const list: Base[] = [
+  { slug: "imperial-oud", name: "Imperial Oud", family: "Oriental", for: "Unisex", price: 3499, tagline: "Niche oud crowned in gold", top: "Saffron, Pink Pepper", heart: "Oud, Rose", base: "Amber, Sandalwood" },
+  { slug: "royal-oud", name: "Royal Oud", family: "Oriental", for: "Him", price: 3299, tagline: "A regal trail of smoke and resin", top: "Elemi, Cardamom", heart: "Oud, Incense", base: "Leather, Amber" },
+  { slug: "oud-al-ameer", name: "Oud Al Ameer", family: "Woody", for: "Him", price: 2999, tagline: "The prince of dark woods", top: "Bergamot, Black Pepper", heart: "Oud, Cedarwood", base: "Vetiver, Musk" },
+  { slug: "oud-sultan", name: "Oud Sultan", family: "Oriental", for: "Unisex", price: 2899, tagline: "Rich, ruby and unhurried", top: "Saffron, Plum", heart: "Rose, Oud", base: "Vanilla, Benzoin" },
+  { slug: "d-blue", name: "D'Blue", family: "Aquatic", for: "Him", price: 1999, tagline: "Cool blue, sharp and clean", top: "Grapefruit, Sea Salt", heart: "Marine Accord, Lavender", base: "Ambergris, Cedar" },
+  { slug: "ebony", name: "Ebony", family: "Fresh", for: "Unisex", price: 1899, tagline: "Green freshness on dark wood", top: "Lime, Green Notes", heart: "Petitgrain, Mint", base: "Vetiver, Ebony Wood" },
+  { slug: "orchid", name: "Orchid", family: "Floral", for: "Her", price: 2299, tagline: "Golden petals from the Eternal collection", top: "Pear, Mandarin", heart: "Orchid, Jasmine", base: "Vanilla, Musk" },
+  { slug: "vanilla-smog", name: "Vanilla Smog", family: "Oriental", for: "Unisex", price: 2499, tagline: "Sweet smoke from the Blends of Dubai", top: "Pink Pepper", heart: "Bourbon Vanilla, Tobacco", base: "Tonka, Amber" },
+  { slug: "swag", name: "Swag", family: "Woody", for: "Him", price: 2499, tagline: "Bold, golden and confident", top: "Cardamom, Bergamot", heart: "Leather, Iris", base: "Oud, Cedar" },
+  { slug: "saffron-vibes", name: "Saffron Vibes", family: "Attar", for: "Unisex", price: 2699, tagline: "Liquid saffron, Dubai style", top: "Saffron", heart: "Rose Otto, Jasmine", base: "Amber, Oud" },
+  { slug: "oud-galore", name: "Oud Galore", family: "Oriental", for: "Him", price: 2799, tagline: "Oud in every breath", top: "Saffron, Elemi", heart: "Oud, Patchouli", base: "Leather, Sandalwood" },
+  { slug: "wild", name: "Wild", family: "Fresh", for: "Him", price: 1799, tagline: "Untamed citrus, open sky", top: "Lemon, Bergamot", heart: "Neroli, Sage", base: "Vetiver, Musk" },
+  { slug: "oud-blend", name: "Oud Blend", family: "Attar", for: "Unisex", price: 3199, tagline: "A crowned blend of rare woods", top: "Saffron", heart: "Oud, Rose", base: "Sandalwood, Musk" },
+  { slug: "oud-exotic", name: "Oud Exotic", family: "Oriental", for: "Unisex", price: 3299, tagline: "Extrait richness, royal finish", top: "Plum, Saffron", heart: "Oud, Incense", base: "Amber, Vanilla" },
+  { slug: "avant", name: "Avant", family: "Floral", for: "Her", price: 1999, tagline: "Soft peach and bright blossom", top: "Peach, Mandarin", heart: "Peony, Rose", base: "Cashmere Musk" },
+  { slug: "mukhallat-aria", name: "Mukhallat Aria", family: "Attar", for: "Unisex", price: 2599, tagline: "A jade-green mukhallat", top: "Green Notes, Bergamot", heart: "Rose, Jasmine", base: "Oud, Sandalwood" },
+  { slug: "emerald-oud", name: "Emerald Oud", family: "Woody", for: "Him", price: 3499, tagline: "Limited edition, intensely deep", top: "Black Pepper, Saffron", heart: "Oud, Cedarwood", base: "Leather, Amber" },
+  { slug: "oud-zahir", name: "Oud Zahir", family: "Woody", for: "Him", price: 2899, tagline: "Dark, carved and magnetic", top: "Cardamom", heart: "Oud, Leather", base: "Birch Tar, Musk" },
+  { slug: "attar-al-reem", name: "Attar Al Reem", family: "Attar", for: "Her", price: 2699, tagline: "Rose amber in fluted glass", top: "Rose Water, Saffron", heart: "Rose Absolute", base: "Amber, Sandal" },
+  { slug: "oud-ayaan", name: "Oud Ayaan", family: "Floral", for: "Her", price: 2799, tagline: "Plum-dark rose with a jewel cap", top: "Blackcurrant, Plum", heart: "Damask Rose, Tuberose", base: "Oud, Patchouli" },
 ];
 
-export const bundledImage = (slug: string) => imgBySlug[slug] ?? null;
+export const products: Product[] = list.map((p) => {
+  const g = photos(p.slug);
+  return { ...p, id: p.slug, stock: 50, image: g[0] ?? "", gallery: g };
+});
+
+export const bundledImage = (slug: string) => products.find((p) => p.slug === slug)?.image ?? null;
 export const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
