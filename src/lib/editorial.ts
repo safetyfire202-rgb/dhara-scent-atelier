@@ -2,7 +2,6 @@ import type { Product } from "@/lib/products";
 
 export const stories: Record<string, string> = {
   "imperial-oud": "Our niche flagship, dressed in a gold lattice cap and an engraved oval label. Saffron and rose open onto a deep oud that settles into warm amber and sandalwood.",
-  "royal-oud": "Made for grand evenings, Royal Oud lets incense and resin rise slowly from the skin. Leather and amber give it a long, regal trail.",
   "oud-al-ameer": "Al Ameer means 'the prince'. Black pepper and bergamot lead into oud and cedar, poured into a heavy black bottle framed in gold arabesque.",
   "oud-sultan": "A ruby-toned bottle for a ruby-toned scent. Plum and saffron melt into rose and oud, then soften into vanilla and benzoin.",
   "d-blue": "Part of our French Collection, D'Blue is a cool breath of the sea — grapefruit and salt over a smooth ambergris base.",
@@ -10,11 +9,8 @@ export const stories: Record<string, string> = {
   "orchid": "From the Eternal Collection, Orchid glows like honey in its glass. Pear and jasmine open onto a soft vanilla musk.",
   "vanilla-smog": "One of our Blends of Dubai: bourbon vanilla curled with a ribbon of tobacco smoke, finished with tonka and amber.",
   "swag": "Under the golden carved cap sits a confident blend of cardamom, leather and iris, with oud and cedar beneath.",
-  "saffron-vibes": "Saffron, the gold of spices, poured into rose and jasmine and laid over amber and oud — a festive scent from our Blends of Dubai.",
-  "oud-galore": "For those who want oud and nothing less. Saffron and elemi lift a rich oud-patchouli heart over leather and sandalwood.",
   "wild": "Fresh, open and full of energy. Lemon and bergamot over neroli and sage, drying down to clean vetiver.",
   "oud-blend": "Crowned with a jewelled cap, Oud Blend is a traditional mix of oud, rose and saffron on a creamy sandalwood base.",
-  "oud-exotic": "An extrait de parfum with a royal finish — plum and saffron, oud and incense, wrapped in amber and vanilla.",
   "avant": "Light and modern, Avant pairs juicy peach and mandarin with peony and rose on a soft cashmere musk.",
   "mukhallat-aria": "A mukhallat is a blend of many oils. Aria mixes green notes and rose with oud and sandalwood in a jade-green bottle.",
   "emerald-oud": "A limited edition, deep and powerful. Black pepper and saffron open onto oud and cedar, with leather and amber that last for hours.",

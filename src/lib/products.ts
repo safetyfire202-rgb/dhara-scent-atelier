@@ -25,7 +25,6 @@ const photos = (slug: string) =>
 type Base = Omit<Product, "id" | "image" | "gallery" | "stock">;
 const list: Base[] = [
   { slug: "imperial-oud", name: "Imperial Oud", family: "Oriental", for: "Unisex", price: 3499, tagline: "Niche oud crowned in gold", top: "Saffron, Pink Pepper", heart: "Oud, Rose", base: "Amber, Sandalwood" },
-  { slug: "royal-oud", name: "Royal Oud", family: "Oriental", for: "Him", price: 3299, tagline: "A regal trail of smoke and resin", top: "Elemi, Cardamom", heart: "Oud, Incense", base: "Leather, Amber" },
   { slug: "oud-al-ameer", name: "Oud Al Ameer", family: "Woody", for: "Him", price: 2999, tagline: "The prince of dark woods", top: "Bergamot, Black Pepper", heart: "Oud, Cedarwood", base: "Vetiver, Musk" },
   { slug: "oud-sultan", name: "Oud Sultan", family: "Oriental", for: "Unisex", price: 2899, tagline: "Rich, ruby and unhurried", top: "Saffron, Plum", heart: "Rose, Oud", base: "Vanilla, Benzoin" },
   { slug: "d-blue", name: "D'Blue", family: "Aquatic", for: "Him", price: 1999, tagline: "Cool blue, sharp and clean", top: "Grapefruit, Sea Salt", heart: "Marine Accord, Lavender", base: "Ambergris, Cedar" },
@@ -33,11 +32,8 @@ const list: Base[] = [
   { slug: "orchid", name: "Orchid", family: "Floral", for: "Her", price: 2299, tagline: "Golden petals from the Eternal collection", top: "Pear, Mandarin", heart: "Orchid, Jasmine", base: "Vanilla, Musk" },
   { slug: "vanilla-smog", name: "Vanilla Smog", family: "Oriental", for: "Unisex", price: 2499, tagline: "Sweet smoke from the Blends of Dubai", top: "Pink Pepper", heart: "Bourbon Vanilla, Tobacco", base: "Tonka, Amber" },
   { slug: "swag", name: "Swag", family: "Woody", for: "Him", price: 2499, tagline: "Bold, golden and confident", top: "Cardamom, Bergamot", heart: "Leather, Iris", base: "Oud, Cedar" },
-  { slug: "saffron-vibes", name: "Saffron Vibes", family: "Attar", for: "Unisex", price: 2699, tagline: "Liquid saffron, Dubai style", top: "Saffron", heart: "Rose Otto, Jasmine", base: "Amber, Oud" },
-  { slug: "oud-galore", name: "Oud Galore", family: "Oriental", for: "Him", price: 2799, tagline: "Oud in every breath", top: "Saffron, Elemi", heart: "Oud, Patchouli", base: "Leather, Sandalwood" },
   { slug: "wild", name: "Wild", family: "Fresh", for: "Him", price: 1799, tagline: "Untamed citrus, open sky", top: "Lemon, Bergamot", heart: "Neroli, Sage", base: "Vetiver, Musk" },
   { slug: "oud-blend", name: "Oud Blend", family: "Attar", for: "Unisex", price: 3199, tagline: "A crowned blend of rare woods", top: "Saffron", heart: "Oud, Rose", base: "Sandalwood, Musk" },
-  { slug: "oud-exotic", name: "Oud Exotic", family: "Oriental", for: "Unisex", price: 3299, tagline: "Extrait richness, royal finish", top: "Plum, Saffron", heart: "Oud, Incense", base: "Amber, Vanilla" },
   { slug: "avant", name: "Avant", family: "Floral", for: "Her", price: 1999, tagline: "Soft peach and bright blossom", top: "Peach, Mandarin", heart: "Peony, Rose", base: "Cashmere Musk" },
   { slug: "mukhallat-aria", name: "Mukhallat Aria", family: "Attar", for: "Unisex", price: 2599, tagline: "A jade-green mukhallat", top: "Green Notes, Bergamot", heart: "Rose, Jasmine", base: "Oud, Sandalwood" },
   { slug: "emerald-oud", name: "Emerald Oud", family: "Woody", for: "Him", price: 3499, tagline: "Limited edition, intensely deep", top: "Black Pepper, Saffron", heart: "Oud, Cedarwood", base: "Leather, Amber" },

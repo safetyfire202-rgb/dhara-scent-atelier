@@ -13,12 +13,12 @@ describe("Scent finder matching", () => {
   });
 
   it("Wedding & Festive offers attars and orientals", () => {
-    expect(matches(bySlug("saffron-vibes"), { occ: "Wedding & Festive" })).toBe(true);
+    expect(matches(bySlug("oud-blend"), { occ: "Wedding & Festive" })).toBe(true);
     expect(matches(bySlug("d-blue"), { occ: "Wedding & Festive" })).toBe(false);
   });
 
   it("matches ingredients against the note pyramid", () => {
-    expect(hasIngredient(bySlug("saffron-vibes"), "Saffron")).toBe(true);
+    expect(hasIngredient(bySlug("oud-blend"), "Saffron")).toBe(true);
     expect(hasIngredient(bySlug("d-blue"), "Citrus")).toBe(true);
     expect(hasIngredient(bySlug("d-blue"), "Oud")).toBe(false);
     expect(matches(bySlug("attar-al-reem"), { ings: ["Rose", "Sandal"] })).toBe(true);
