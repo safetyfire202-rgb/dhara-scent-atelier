@@ -36,6 +36,8 @@ function ProductPage() {
   const products = useProducts();
   const { add } = useCart();
   const [size, setSize] = useState(50);
+  const [shot, setShot] = useState(0);
+  const main = p.gallery[shot] ?? p.image;
   const price = Math.round(p.price * (size === 100 ? 1.7 : size === 20 ? 0.5 : 1));
   const related = products.filter((x) => x.family === p.family && x.slug !== p.slug).slice(0, 4);
   const origins = originsFor(p);
@@ -44,10 +46,19 @@ function ProductPage() {
       <div className="grid gap-16 md:grid-cols-2">
         <Tilt max={18}>
           <div className="relative">
-            <img src={p.image} alt={p.name} width={800} height={1008} className="aspect-[4/5] w-full object-cover shadow-glow" />
+            <img src={main} alt={p.name} width={800} height={1008} className="aspect-[4/5] w-full bg-card object-cover shadow-glow" />
             <div className="absolute top-6 left-6 bg-card/85 px-4 py-2 backdrop-blur" style={{ transform: "translateZ(60px)" }}><span className="eyebrow">{p.family}</span></div>
           </div>
         </Tilt>
+        {p.gallery.length > 1 && (
+          <div className="-mt-10 flex flex-wrap gap-3 md:col-start-1">
+            {p.gallery.map((g, i) => (
+              <button key={g} onClick={() => setShot(i)} aria-label={`Photo ${i + 1}`} className={`h-20 w-16 overflow-hidden border transition ${i === shot ? "border-gold" : "opacity-70 hover:opacity-100"}`}>
+                <img src={g} alt="" loading="lazy" className="h-full w-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
         <div className="flex flex-col justify-center">
           <p className="eyebrow">For {p.for} · Eau de Parfum</p>
           <h1 className="mt-4 text-6xl md:text-7xl">{p.name}</h1>
