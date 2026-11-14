@@ -153,8 +153,8 @@ function Index() {
 
 const slides = [
   { img: slide1, eyebrow: "The White Rose Edit", title: "Soft light, lasting impressions", text: "Luminous florals and warm amber that whisper from morning until midnight.", to: "/collections" as const },
-  { img: slide2, eyebrow: "Oud Ayaan", title: "Royalty, worn on the skin", text: "A palace-courtyard oud wrapped in rose and gold — the scent of grand entrances.", to: "/product/oud-ayaan" as const },
-  { img: slide3, eyebrow: "Oud Exotic", title: "Born of golden sands", text: "Extrait-strength oud, dark and magnetic, made for nights that become stories.", to: "/product/oud-exotic" as const },
+  { img: slide2, eyebrow: "Oud Ayaan", title: "Royalty, worn on the skin", text: "A palace-courtyard oud wrapped in rose and gold — the scent of grand entrances.", to: "/product/$slug" as const, params: { slug: "oud-ayaan" } },
+  { img: slide3, eyebrow: "Oud Exotic", title: "Born of golden sands", text: "Extrait-strength oud, dark and magnetic, made for nights that become stories.", to: "/product/$slug" as const, params: { slug: "oud-exotic" } },
 ];
 
 function HeroSlider() {
