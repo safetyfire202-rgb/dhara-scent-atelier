@@ -8,4 +8,7 @@
 - [x] Home page "Select your scent" step-by-step finder (occasion → notes → wearer)
 
 ## Open
+- [ ] Add the confirmed Saffron Vibes, Oud Galore and Oud Exotic listings and update Vanilla Smog's photo.
+- [ ] Keep all four uploaded originals available in the project's GitHub-synced files.
+- [ ] Verify the updated photos, product pages and bag on desktop and phone.
 - [ ] Checkout does not reach you yet — orders need a real channel (email or online payment)
