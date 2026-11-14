@@ -1,3 +1,8 @@
+import saffronVibesCover from "@/assets/products/saffron-vibes-cover.jpeg";
+import vanillaSmogCover from "@/assets/products/vanilla-smog-cover.jpeg";
+import oudGaloreCover from "@/assets/products/oud-galore-cover.jpeg";
+import oudExoticCover from "@/assets/products/oud-exotic-cover.jpeg";
+
 export type Family = "Oriental" | "Floral" | "Attar" | "Fresh" | "Aquatic" | "Woody";
 export type Product = {
   id: string;
@@ -16,11 +21,18 @@ export type Product = {
 };
 
 const files = import.meta.glob("../assets/products/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const coverImages: Record<string, string> = {
+  "saffron-vibes": saffronVibesCover,
+  "vanilla-smog": vanillaSmogCover,
+  "oud-galore": oudGaloreCover,
+  "oud-exotic": oudExoticCover,
+};
+const photoNumber = (path: string) => Number(path.match(/-(\d+)\.jpg$/)?.[1] ?? 0);
 const photos = (slug: string) =>
   Object.keys(files)
     .filter((k) => new RegExp(`/${slug}-\\d+\\.jpg$`).test(k))
-    .sort((a, b) => Number(a.match(/-(\d+)\.jpg$/)![1]) - Number(b.match(/-(\d+)\.jpg$/)![1]))
-    .map((k) => files[k]!);
+    .sort((a, b) => photoNumber(a) - photoNumber(b))
+    .flatMap((k) => files[k] ? [files[k]] : []);
 
 type Base = Omit<Product, "id" | "image" | "gallery" | "stock">;
 const list: Base[] = [
@@ -31,6 +43,9 @@ const list: Base[] = [
   { slug: "ebony", name: "Ebony", family: "Fresh", for: "Unisex", price: 1899, tagline: "Green freshness on dark wood", top: "Lime, Green Notes", heart: "Petitgrain, Mint", base: "Vetiver, Ebony Wood" },
   { slug: "orchid", name: "Orchid", family: "Floral", for: "Her", price: 2299, tagline: "Golden petals from the Eternal collection", top: "Pear, Mandarin", heart: "Orchid, Jasmine", base: "Vanilla, Musk" },
   { slug: "vanilla-smog", name: "Vanilla Smog", family: "Oriental", for: "Unisex", price: 2499, tagline: "Sweet smoke from the Blends of Dubai", top: "Pink Pepper", heart: "Bourbon Vanilla, Tobacco", base: "Tonka, Amber" },
+  { slug: "saffron-vibes", name: "Saffron Vibes", family: "Attar", for: "Unisex", price: 2699, tagline: "Liquid saffron, Dubai style", top: "Saffron", heart: "Rose Otto, Jasmine", base: "Amber, Oud" },
+  { slug: "oud-galore", name: "Oud Galore", family: "Oriental", for: "Him", price: 2799, tagline: "Oud in every breath", top: "Saffron, Elemi", heart: "Oud, Patchouli", base: "Leather, Sandalwood" },
+  { slug: "oud-exotic", name: "Oud Exotic", family: "Oriental", for: "Unisex", price: 3299, tagline: "Extrait richness, royal finish", top: "Plum, Saffron", heart: "Oud, Incense", base: "Amber, Vanilla" },
   { slug: "swag", name: "Swag", family: "Woody", for: "Him", price: 2499, tagline: "Bold, golden and confident", top: "Cardamom, Bergamot", heart: "Leather, Iris", base: "Oud, Cedar" },
   { slug: "wild", name: "Wild", family: "Fresh", for: "Him", price: 1799, tagline: "Untamed citrus, open sky", top: "Lemon, Bergamot", heart: "Neroli, Sage", base: "Vetiver, Musk" },
   { slug: "oud-blend", name: "Oud Blend", family: "Attar", for: "Unisex", price: 3199, tagline: "A crowned blend of rare woods", top: "Saffron", heart: "Oud, Rose", base: "Sandalwood, Musk" },
@@ -43,7 +58,8 @@ const list: Base[] = [
 ];
 
 export const products: Product[] = list.map((p) => {
-  const g = photos(p.slug);
+  const cover = coverImages[p.slug];
+  const g = cover ? [cover, ...photos(p.slug)] : photos(p.slug);
   return { ...p, id: p.slug, stock: 50, image: g[0] ?? "", gallery: g };
 });
 

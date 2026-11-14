@@ -24,6 +24,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Discover Dhara: long-lasting luxury perfumes, pure attars and gift sets, handcrafted in India." },
       { property: "og:title", content: "Dhara — Luxury Perfumes & Attars" },
       { property: "og:description", content: "Long-lasting luxury perfumes, pure attars and gift sets." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,

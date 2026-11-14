@@ -10,6 +10,8 @@ export const Route = createFileRoute("/attars")({
       { name: "description", content: "Alcohol-free attars from Dhara: oud, saffron, rose and mitti, distilled the traditional way." },
       { property: "og:title", content: "Pure Attars — Dhara" },
       { property: "og:description", content: "Alcohol-free attars distilled the traditional way." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Attars,

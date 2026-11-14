@@ -10,6 +10,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Get in touch with Dhara for orders, gifting and fragrance consultations." },
       { property: "og:title", content: "Contact — Dhara" },
       { property: "og:description", content: "Orders, gifting and fragrance consultations." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,

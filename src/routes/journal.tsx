@@ -13,6 +13,8 @@ export const Route = createFileRoute("/journal")({
       { name: "description", content: "Stories, guides and rituals from the world of Dhara perfumes." },
       { property: "og:title", content: "The Journal — Dhara" },
       { property: "og:description", content: "Stories, guides and rituals from Dhara." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Journal,

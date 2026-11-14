@@ -13,6 +13,8 @@ export const Route = createFileRoute("/cart")({
       { name: "description", content: "Review the Dhara perfumes in your bag." },
       { property: "og:title", content: "Your Bag — Dhara" },
       { property: "og:description", content: "Review your Dhara bag." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cart,
