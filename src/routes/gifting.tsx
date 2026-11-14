@@ -11,6 +11,8 @@ export const Route = createFileRoute("/gifting")({
       { name: "description", content: "Curated Dhara perfume gift sets and discovery boxes, beautifully wrapped." },
       { property: "og:title", content: "Luxury Gift Sets — Dhara" },
       { property: "og:description", content: "Curated perfume gift sets, beautifully wrapped." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Gifting,

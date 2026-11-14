@@ -13,6 +13,8 @@ export const Route = createFileRoute("/cart")({
       { name: "description", content: "Review the Dhara perfumes in your bag." },
       { property: "og:title", content: "Your Bag — Dhara" },
       { property: "og:description", content: "Review your Dhara bag." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cart,
@@ -58,19 +60,19 @@ function Cart() {
         <div className="mt-12 grid gap-12 md:grid-cols-3">
           <ul className="space-y-6 md:col-span-2">
             {items.map(({ p, qty }) => (
-              <li key={p.slug} className="flex gap-6 border-b pb-6">
-                <img src={p.image} alt={p.name} className="h-32 w-24 object-cover" />
-                <div className="flex-1">
+              <li key={p.slug} className="grid grid-cols-[4rem_minmax(0,1fr)] gap-x-4 gap-y-2 border-b pb-6 sm:grid-cols-[6rem_minmax(0,1fr)_auto] sm:gap-x-6">
+                <img src={p.image} alt={p.name} className="row-span-2 h-24 w-16 object-contain sm:row-span-1 sm:h-32 sm:w-24" />
+                <div className="min-w-0">
                   <h2 className="text-2xl">{p.name}</h2>
                   <p className="text-sm text-muted-foreground">{p.family}</p>
-                  <div className="mt-4 flex items-center gap-3">
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
                     <button onClick={() => setQty(p.slug, qty - 1)} className="h-8 w-8 border">−</button>
                     <span>{qty}</span>
                     <button onClick={() => setQty(p.slug, qty + 1)} className="h-8 w-8 border">+</button>
-                    <button onClick={() => remove(p.slug)} className="ml-4 text-xs text-muted-foreground uppercase hover:text-destructive">Remove</button>
+                    <button onClick={() => remove(p.slug)} className="text-xs text-muted-foreground uppercase hover:text-destructive sm:ml-4">Remove</button>
                   </div>
                 </div>
-                <p className="text-gold">{inr(p.price * qty)}</p>
+                <p className="col-start-2 text-gold sm:col-auto">{inr(p.price * qty)}</p>
               </li>
             ))}
           </ul>

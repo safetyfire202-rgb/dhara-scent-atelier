@@ -10,6 +10,8 @@ export const Route = createFileRoute("/faq")({
       { name: "description", content: "Answers about Dhara shipping, returns, longevity and attars." },
       { property: "og:title", content: "FAQ — Dhara" },
       { property: "og:description", content: "Shipping, returns, longevity and attars." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Faq,

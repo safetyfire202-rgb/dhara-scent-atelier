@@ -21,8 +21,18 @@ export const Route = createFileRoute("/product/$slug")({
           { name: "description", content: `${loaderData.name}: ${loaderData.tagline}. ${loaderData.family} fragrance by Dhara.` },
           { property: "og:title", content: `${loaderData.name} — Dhara` },
           { property: "og:description", content: loaderData.tagline },
+          { property: "og:type", content: "product" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
-      : [{ title: "Fragrance not found — Dhara" }, { name: "robots", content: "noindex" }],
+      : [
+          { title: "Fragrance not found — Dhara" },
+          { name: "description", content: "This Dhara fragrance is unavailable. Explore the current perfume collection." },
+          { property: "og:title", content: "Fragrance not found — Dhara" },
+          { property: "og:description", content: "Explore the current Dhara perfume collection." },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "robots", content: "noindex" },
+        ],
   }),
   errorComponent: () => <div className="py-40 text-center"><h1 className="text-4xl">This fragrance didn't load</h1><Link to="/shop" className="mt-6 inline-block text-gold">Back to shop</Link></div>,
   notFoundComponent: () => (

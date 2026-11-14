@@ -10,6 +10,8 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Dhara means a flowing stream. Discover the house, the craft and the people behind our perfumes." },
       { property: "og:title", content: "Our Story — Dhara" },
       { property: "og:description", content: "The house, the craft and the people behind Dhara." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,

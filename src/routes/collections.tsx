@@ -15,6 +15,8 @@ export const Route = createFileRoute("/collections")({
       { name: "description", content: "Explore Dhara's fragrance families: oriental, woody, floral, attar, fresh and aquatic." },
       { property: "og:title", content: "Collections — Dhara" },
       { property: "og:description", content: "Six fragrance families, one house." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Collections,
