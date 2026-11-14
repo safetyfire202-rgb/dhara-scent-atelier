@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import slide1 from "@/assets/slide1.jpg";
-import slide2 from "@/assets/slide2.jpg";
-import slide3 from "@/assets/slide3.jpg";
+import slide1 from "@/assets/hero-slide-roses.png";
+import slide2 from "@/assets/hero-slide-ayaan.png";
+import slide3 from "@/assets/hero-slide-exotic.png";
 import hero from "@/assets/hero.jpg";
 import p1 from "@/assets/p1.jpg";
 import p2 from "@/assets/p2.jpg";
@@ -152,9 +152,9 @@ function Index() {
 }
 
 const slides = [
-  { img: slide1, eyebrow: "Oud & Sandalwood", title: "Find the fragrance that defines you", text: "A curated house of perfumes crafted from the finest ingredients, made for moments worth remembering.", to: "/shop" as const },
-  { img: slide2, eyebrow: "The White Rose Edit", title: "Soft light, lasting impressions", text: "Luminous florals that whisper from morning until midnight.", to: "/collections" as const },
-  { img: slide3, eyebrow: "The Attar House", title: "Heritage, distilled", text: "Pure, alcohol-free attars made the way Indian royalty wore them.", to: "/attars" as const },
+  { img: slide1, eyebrow: "The White Rose Edit", title: "Soft light, lasting impressions", text: "Luminous florals and warm amber that whisper from morning until midnight.", to: "/collections" as const },
+  { img: slide2, eyebrow: "Oud Ayaan", title: "Royalty, worn on the skin", text: "A palace-courtyard oud wrapped in rose and gold — the scent of grand entrances.", to: "/product/oud-ayaan" as const },
+  { img: slide3, eyebrow: "Oud Exotic", title: "Born of golden sands", text: "Extrait-strength oud, dark and magnetic, made for nights that become stories.", to: "/product/oud-exotic" as const },
 ];
 
 function HeroSlider() {
