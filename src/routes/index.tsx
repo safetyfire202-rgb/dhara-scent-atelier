@@ -189,7 +189,7 @@ function HeroSlider() {
         <p className="eyebrow animate-in fade-in slide-in-from-bottom-4 text-gold-soft duration-700">{s.eyebrow}</p>
         <h1 className="animate-in fade-in slide-in-from-bottom-6 mt-5 max-w-3xl text-5xl leading-[1.05] text-on-image duration-1000 md:text-7xl">{s.title}</h1>
         <p className="animate-in fade-in slide-in-from-bottom-6 mt-6 max-w-xl text-lg font-light text-on-image/85 duration-1000">{s.text}</p>
-        <Link to={s.to} className="group animate-in fade-in mt-10 flex w-fit items-center gap-1 duration-1000">
+        <Link to={s.to} params={"params" in s ? s.params : {}} className="group animate-in fade-in mt-10 flex w-fit items-center gap-1 duration-1000">
           <span className="flex h-14 w-14 items-center justify-center rounded-full bg-on-image text-ink transition-transform duration-500 group-hover:rotate-45">
             <ArrowUpRight className="h-5 w-5" />
           </span>
