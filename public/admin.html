@@ -50,7 +50,7 @@
         <div class="auth-banner-tags">
           <span class="auth-tag"><i class="bi bi-patch-check-fill"></i> Artisanal Fragrance House</span>
           <span class="auth-tag"><i class="bi bi-shield-lock-fill"></i> Role Protected Access</span>
-          <span class="auth-tag"><i class="bi bi-geo-alt-fill"></i> Bandra West, Mumbai</span>
+          <span class="auth-tag"><i class="bi bi-shield-check"></i> High Security Portal</span>
         </div>
       </div>
 
@@ -74,7 +74,7 @@
             <label class="auth-field-label" for="authUser">Username</label>
             <div class="auth-input-wrapper">
               <i class="bi bi-person auth-icon-left"></i>
-              <input type="text" id="authUser" value="admin" placeholder="Enter admin username" required autocomplete="username">
+              <input type="text" id="authUser" value="" placeholder="Enter admin username" required autocomplete="username">
             </div>
           </div>
 
@@ -82,7 +82,7 @@
             <label class="auth-field-label" for="authPass">Password</label>
             <div class="auth-input-wrapper">
               <i class="bi bi-lock auth-icon-left"></i>
-              <input type="password" id="authPass" value="dhara2026" placeholder="Enter password" required autocomplete="current-password">
+              <input type="password" id="authPass" value="" placeholder="Enter password" required autocomplete="current-password">
               <button type="button" class="auth-toggle-pwd" id="togglePasswordBtn" title="Toggle Password Visibility" aria-label="Toggle Password Visibility">
                 <i class="bi bi-eye-slash-fill"></i>
               </button>
@@ -104,7 +104,7 @@
 
         <div class="auth-support-footer">
           <p class="auth-support-query">Need concierge access or assistance?</p>
-          <p class="auth-support-contact">Contact atelier administrator at <a href="tel:+919820012345"><b>+91 98200 12345</b></a></p>
+          <p class="auth-support-contact">Please contact your store administrator for access.</p>
         </div>
       </div>
     </div>
@@ -153,11 +153,11 @@
         </button>
         <button type="button" class="tab-btn" data-crm-tab="customers">
           <span class="tab-btn-content"><i class="bi bi-people"></i> <span>Customers</span></span>
-          <span class="badge-pill" id="navCountCustomers">4</span>
+          <span class="badge-pill" id="navCountCustomers">0</span>
         </button>
         <button type="button" class="tab-btn" data-crm-tab="orders">
           <span class="tab-btn-content"><i class="bi bi-bag-check"></i> <span>Orders</span></span>
-          <span class="badge-pill" id="navCountOrders">4</span>
+          <span class="badge-pill" id="navCountOrders">0</span>
         </button>
         <button type="button" class="tab-btn" data-crm-tab="reports">
           <span class="tab-btn-content"><i class="bi bi-bar-chart-line"></i> <span>Reports & Audit</span></span>
@@ -183,13 +183,13 @@
         </button>
         <button type="button" class="tab-btn" data-crm-tab="support">
           <span class="tab-btn-content"><i class="bi bi-headset"></i> <span>Support & Reviews</span></span>
-          <span class="badge-pill" id="navCountTickets">1</span>
+          <span class="badge-pill" id="navCountTickets">0</span>
         </button>
 
         <div class="nav-section-title">System & Diagnostics</div>
         <button type="button" class="tab-btn tab-btn-highlight" data-crm-tab="testing">
           <span class="tab-btn-content"><i class="bi bi-play-circle-fill" style="color:var(--gold)"></i> <span>Test Scenarios</span></span>
-          <span class="badge-pill" id="navCountTests">11/11</span>
+          <span class="badge-pill" id="navCountTests">0/11</span>
         </button>
         <button type="button" class="tab-btn" data-crm-tab="settings">
           <span class="tab-btn-content"><i class="bi bi-gear"></i> <span>Settings & Roles</span></span>
@@ -372,10 +372,9 @@
                 <div style="font-size:12px;font-weight:600;color:var(--fg);margin-bottom:4px">
                   <i class="bi bi-geo-alt-fill" style="color:var(--accent)"></i> Atelier Flagship & Concierge
                 </div>
-                <div style="font-size:11.5px;color:var(--muted);line-height:1.5">
-                  Dhara Scent Atelier<br>
-                  Fragrance Pavilion, Level 2, Bandra West, Mumbai 400050<br>
-                  Concierge Desk: <b>+91 98200 12345</b>
+                <div id="overviewHqInfo" style="font-size:11.5px;color:var(--muted);line-height:1.5">
+                  <b>Dhara Scent Atelier</b><br>
+                  <span style="color:var(--muted)">Store contact & address not configured yet (set in Settings)</span>
                 </div>
               </div>
 
@@ -1164,49 +1163,49 @@
             <div class="form-row">
               <div class="form-group">
                 <label>Official Store Name</label>
-                <input type="text" id="setStoreName" required>
+                <input type="text" id="setStoreName" placeholder="e.g. Dhara Scent Atelier" required>
               </div>
               <div class="form-group">
                 <label>Tagline / Slogan</label>
-                <input type="text" id="setTagline" required>
+                <input type="text" id="setTagline" placeholder="e.g. Artisanal Haute Parfumerie" required>
               </div>
             </div>
 
             <div class="form-row" style="margin-top:14px">
               <div class="form-group">
                 <label>Contact Phone Number</label>
-                <input type="text" id="setPhone" required>
+                <input type="text" id="setPhone" placeholder="e.g. +91 98000 00000" required>
               </div>
               <div class="form-group">
                 <label>WhatsApp Concierge Number (without +)</label>
-                <input type="text" id="setWhatsapp" required>
+                <input type="text" id="setWhatsapp" placeholder="e.g. 919800000000" required>
               </div>
             </div>
 
             <div class="form-row" style="margin-top:14px">
               <div class="form-group">
                 <label>Official Support Email</label>
-                <input type="email" id="setEmail" required>
+                <input type="email" id="setEmail" placeholder="e.g. concierge@yourdomain.com" required>
               </div>
               <div class="form-group">
                 <label>GSTIN / Tax ID</label>
-                <input type="text" id="setGstin" required>
+                <input type="text" id="setGstin" placeholder="e.g. 27AAAAA0000A1Z5" required>
               </div>
             </div>
 
             <div class="form-group" style="margin-top:14px">
               <label>Flagship Atelier Address</label>
-              <textarea id="setAddress" rows="2" required></textarea>
+              <textarea id="setAddress" rows="2" placeholder="e.g. Atelier Suite, Mumbai, India" required></textarea>
             </div>
 
             <div class="form-row" style="margin-top:14px">
               <div class="form-group">
                 <label>Free Delivery Threshold (₹)</label>
-                <input type="number" id="setFreeDelivery" required>
+                <input type="number" id="setFreeDelivery" placeholder="2500" required>
               </div>
               <div class="form-group">
                 <label>Standard Shipping Charge (₹)</label>
-                <input type="number" id="setShippingFee" required>
+                <input type="number" id="setShippingFee" placeholder="100" required>
               </div>
             </div>
 
@@ -1225,8 +1224,8 @@
               <i class="bi bi-credit-card-2-front" style="color:var(--accent)"></i> Razorpay Payment Gateway Integration
             </div>
             <div>
-              <span id="razorpayStatusBadge" class="status-badge" style="font-size:11.5px;padding:3px 10px;background:rgba(21,128,61,0.12);color:#15803d;border:1px solid rgba(21,128,61,0.3)">
-                <i class="bi bi-shield-check-fill"></i> Gateway Ready (Live)
+              <span id="razorpayStatusBadge" class="status-badge" style="font-size:11.5px;padding:3px 10px;background:var(--surface-alt);color:var(--muted);border:1px solid var(--line)">
+                <i class="bi bi-circle"></i> Not Configured
               </span>
             </div>
           </div>
@@ -1238,7 +1237,7 @@
                 <span style="font-size:12px;color:var(--muted)">Accept UPI, Google Pay, PhonePe, Cards & Netbanking.</span>
               </div>
               <label class="toggle-switch">
-                <input type="checkbox" id="setRzpEnabled" checked>
+                <input type="checkbox" id="setRzpEnabled">
                 <span class="toggle-slider"></span>
               </label>
             </div>
@@ -1254,7 +1253,7 @@
 
               <div class="form-group">
                 <label>Razorpay Key ID</label>
-                <input type="text" id="setRzpKeyId" value="rzp_live_DharaLuxe2026" required>
+                <input type="text" id="setRzpKeyId" value="" placeholder="e.g. rzp_live_xxxxxxxxxxxxxx" required>
               </div>
             </div>
 
@@ -1292,7 +1291,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label>Primary Recipient Email</label>
-                <input type="email" id="setNotifRecipient" value="concierge@dharascentatelier.com" required>
+                <input type="email" id="setNotifRecipient" value="" placeholder="e.g. orders@yourdomain.com" required>
               </div>
               <div class="form-group">
                 <label>SMTP Host</label>
@@ -1303,7 +1302,7 @@
             <div class="form-row" style="margin-top:14px">
               <div class="form-group">
                 <label>SMTP Username / Sender Email</label>
-                <input type="email" id="setSmtpUser" value="concierge@dharascentatelier.com">
+                <input type="email" id="setSmtpUser" value="" placeholder="e.g. notifications@yourdomain.com">
               </div>
               <div class="form-group">
                 <label>App Password (16 Characters)</label>
@@ -1639,13 +1638,13 @@
           </div>
           <div class="form-group">
             <label>Minimum Order Amount (₹)</label>
-            <input type="number" id="couponFormMinOrder" min="0" value="2500">
+            <input type="number" id="couponFormMinOrder" min="0" placeholder="2500">
           </div>
         </div>
         <div class="form-row" style="margin-top:14px">
           <div class="form-group">
             <label>Expiry Date</label>
-            <input type="date" id="couponFormExpiry" value="2026-12-31">
+            <input type="date" id="couponFormExpiry">
           </div>
           <div class="form-group">
             <label>Description</label>

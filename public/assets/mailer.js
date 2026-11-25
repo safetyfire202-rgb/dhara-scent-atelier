@@ -38,12 +38,21 @@
         hour12: true
       });
 
+      let defaultRecip = "";
+      try {
+        const rawSettings = localStorage.getItem("dhara_crm_settings");
+        if (rawSettings) {
+          const parsed = JSON.parse(rawSettings);
+          defaultRecip = parsed.notificationEmail || "";
+        }
+      } catch (e) {}
+
       const logEntry = {
         id: "EML-" + Date.now().toString(36).toUpperCase(),
         timestamp: now.toISOString(),
         formattedTime: timeStr,
         type: opts.type || "SYSTEM_ALERT",
-        recipient: opts.recipient || "concierge@dharascentatelier.com",
+        recipient: opts.recipient || defaultRecip || "Atelier Recipient",
         subject: opts.subject || "Dhara Scent Atelier Notification",
         details: opts.details || "",
         status: opts.status || "delivered"
@@ -67,9 +76,18 @@
     },
 
     sendTestEmail: function (targetEmail) {
+      let defaultRecip = "";
+      try {
+        const rawSettings = localStorage.getItem("dhara_crm_settings");
+        if (rawSettings) {
+          const parsed = JSON.parse(rawSettings);
+          defaultRecip = parsed.notificationEmail || "";
+        }
+      } catch (e) {}
+
       return this.sendNotificationEmail({
         type: "TEST_DISPATCH",
-        recipient: targetEmail || "concierge@dharascentatelier.com",
+        recipient: targetEmail || defaultRecip || "Atelier Recipient",
         subject: "Dhara Scent Atelier: SMTP Gateway Test Ping",
         details: "Automated test dispatch verified successfully via SMTP Gateway.",
         status: "delivered"

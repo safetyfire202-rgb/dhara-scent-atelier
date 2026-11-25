@@ -1,6 +1,7 @@
 /**
  * DHARA SCENT ATELIER · STAFF CRM & COMMERCE ADMIN HUB
- * Complete 14-Module Reactive Commerce Engine & Verification Suite
+ * Clean Production Commerce Engine & Verification Suite
+ * (Zero dummy / default data: starts completely fresh with actual catalog)
  */
 
 (function () {
@@ -26,27 +27,27 @@
     CAMPAIGNS: "dhara_crm_campaigns"
   };
 
-  // Default Store Profile & Settings
+  // Default Clean Store Settings (No fake contact info or keys)
   const DEFAULT_SETTINGS = {
     storeName: "Dhara Scent Atelier",
-    tagline: "Fine Fragrances & Pure Attars, Crafted to Linger",
-    phone: "(+91) 98200 12345",
-    whatsapp: "919820012345",
-    email: "concierge@dharascentatelier.com",
-    address: "Fragrance Pavilion, Level 2, Bandra West, Mumbai, Maharashtra - 400050",
-    gstin: "27AAACD9876K1Z2",
+    tagline: "",
+    phone: "",
+    whatsapp: "",
+    email: "",
+    address: "",
+    gstin: "",
     freeDeliveryThreshold: 2500,
-    shippingFee: 150,
+    shippingFee: 100,
     currencySymbol: "₹",
-    razorpayEnabled: true,
+    razorpayEnabled: false,
     razorpayMode: "live",
-    razorpayKeyId: "rzp_live_DharaLuxe2026",
+    razorpayKeyId: "",
     razorpayMerchantName: "Dhara Scent Atelier",
     razorpayThemeColor: "#b88628",
     defaultCourier: "BlueDart Apex Express",
-    notificationEmail: "concierge@dharascentatelier.com",
+    notificationEmail: "",
     smtpHost: "smtp.gmail.com",
-    smtpUser: "concierge@dharascentatelier.com",
+    smtpUser: "",
     smtpPass: "",
     notifTriggerOrder: true,
     notifTriggerInquiry: true,
@@ -66,7 +67,7 @@
       minPrice: 3499,
       maxPrice: 6499,
       sizes: "50 ml EDP · 100 ml EDP · 12 ml Attar",
-      stock: 45,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/imperial-oud-1.jpg",
@@ -81,7 +82,7 @@
       minPrice: 2999,
       maxPrice: 5499,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 38,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/oud-al-ameer-1.jpg",
@@ -96,7 +97,7 @@
       minPrice: 2899,
       maxPrice: 5299,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 32,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/oud-sultan-1.jpg",
@@ -111,7 +112,7 @@
       minPrice: 1999,
       maxPrice: 3699,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 55,
+      stock: 50,
       status: "in-stock",
       bestseller: false,
       img: "assets/products/d-blue-1.jpg",
@@ -126,7 +127,7 @@
       minPrice: 1899,
       maxPrice: 3499,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 40,
+      stock: 50,
       status: "in-stock",
       bestseller: false,
       img: "assets/products/ebony-1.jpg",
@@ -141,7 +142,7 @@
       minPrice: 2299,
       maxPrice: 4299,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 30,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/orchid-1.jpg",
@@ -156,7 +157,7 @@
       minPrice: 2499,
       maxPrice: 4699,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 28,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/vanilla-smog-1.jpg",
@@ -171,7 +172,7 @@
       minPrice: 2499,
       maxPrice: 4699,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 34,
+      stock: 50,
       status: "in-stock",
       bestseller: false,
       img: "assets/products/swag-1.jpg",
@@ -201,7 +202,7 @@
       minPrice: 3199,
       maxPrice: 5899,
       sizes: "12 ml Pure Attar · 6 ml Concentrated Oil",
-      stock: 22,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/oud-blend-1.jpg",
@@ -216,7 +217,7 @@
       minPrice: 1999,
       maxPrice: 3699,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 36,
+      stock: 50,
       status: "in-stock",
       bestseller: false,
       img: "assets/products/avant-1.jpg",
@@ -231,7 +232,7 @@
       minPrice: 2599,
       maxPrice: 4899,
       sizes: "12 ml Pure Attar · 6 ml Concentrated Oil",
-      stock: 25,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/mukhallat-aria-1.jpg",
@@ -246,8 +247,8 @@
       minPrice: 3499,
       maxPrice: 6499,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 18,
-      status: "low-stock",
+      stock: 50,
+      status: "in-stock",
       bestseller: true,
       img: "assets/products/emerald-oud-1.jpg",
       desc: "Limited atelier edition, intensely deep: crushed black peppercorns, Spanish saffron, charred cedarwood, and saddle leather."
@@ -261,7 +262,7 @@
       minPrice: 2899,
       maxPrice: 5399,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 26,
+      stock: 50,
       status: "in-stock",
       bestseller: false,
       img: "assets/products/oud-zahir-1.jpg",
@@ -276,7 +277,7 @@
       minPrice: 2699,
       maxPrice: 4999,
       sizes: "12 ml Pure Attar · 6 ml Concentrated Oil",
-      stock: 20,
+      stock: 50,
       status: "in-stock",
       bestseller: true,
       img: "assets/products/attar-al-reem-1.jpg",
@@ -291,7 +292,7 @@
       minPrice: 2799,
       maxPrice: 5199,
       sizes: "50 ml EDP · 100 ml EDP",
-      stock: 24,
+      stock: 50,
       status: "in-stock",
       bestseller: false,
       img: "assets/products/oud-ayaan-1.jpg",
@@ -299,233 +300,30 @@
     }
   ];
 
-  // Default Luxury Orders
-  const DEFAULT_ORDERS = [
-    {
-      id: "DHA-2026-0812",
-      date: "25 Nov 2026, 11:20 AM",
-      customer: "Aarav Singhania",
-      phone: "+91 98201 44552",
-      email: "aarav.singhania@apexcorp.in",
-      city: "Mumbai",
-      address: "Penthouse 14B, Altamount Road, Cumballa Hill, Mumbai 400026",
-      payment: "Razorpay (UPI / Netbanking)",
-      paymentStatus: "PAID",
-      gatewayRef: "pay_Rzp99281Aarav",
-      status: "shipped",
-      courier: "BlueDart Apex Express",
-      awb: "BLUEDART-8829104",
-      total: 6498,
-      items: [
-        { id: "imperial-oud", name: "Imperial Oud", size: "50 ml EDP", qty: 1, price: 3499 },
-        { id: "oud-al-ameer", name: "Oud Al Ameer", size: "50 ml EDP", qty: 1, price: 2999 }
-      ]
-    },
-    {
-      id: "DHA-2026-0811",
-      date: "25 Nov 2026, 09:45 AM",
-      customer: "Meera Kapoor",
-      phone: "+91 98112 33901",
-      email: "meera.kapoor@atelierstyle.com",
-      city: "New Delhi",
-      address: "18 Amrita Shergill Marg, Golf Links, New Delhi 110003",
-      payment: "Razorpay (Credit Card)",
-      paymentStatus: "PAID",
-      gatewayRef: "pay_Rzp11029Meera",
-      status: "confirmed",
-      courier: "Delhivery Surface",
-      awb: "DELH-9921003",
-      total: 5198,
-      items: [
-        { id: "orchid", name: "Orchid", size: "50 ml EDP", qty: 1, price: 2299 },
-        { id: "oud-sultan", name: "Oud Sultan", size: "50 ml EDP", qty: 1, price: 2899 }
-      ]
-    },
-    {
-      id: "DHA-2026-0810",
-      date: "24 Nov 2026, 06:15 PM",
-      customer: "Rohan Varma",
-      phone: "+91 97422 88123",
-      email: "rohan.varma@techventures.io",
-      city: "Bengaluru",
-      address: "Villa 42, Palm Meadows, Whitefield, Bengaluru 560066",
-      payment: "Cash on Delivery (COD)",
-      paymentStatus: "PENDING_COD",
-      gatewayRef: "COD-CASH-DELIVERY",
-      status: "processing",
-      courier: "BlueDart Apex Express",
-      awb: "BLUEDART-5542190",
-      total: 3199,
-      items: [
-        { id: "oud-blend", name: "Oud Blend", size: "12 ml Pure Attar", qty: 1, price: 3199 }
-      ]
-    },
-    {
-      id: "DHA-2026-0809",
-      date: "24 Nov 2026, 02:30 PM",
-      customer: "Dr. Ananya Roy",
-      phone: "+91 98300 55198",
-      email: "ananya.roy@medresearch.org",
-      city: "Kolkata",
-      address: "7 Ballygunge Circular Road, Kolkata 700019",
-      payment: "Razorpay (UPI / Google Pay)",
-      paymentStatus: "PAID",
-      gatewayRef: "pay_Rzp77281Ananya",
-      status: "delivered",
-      courier: "BlueDart Apex Express",
-      awb: "BLUEDART-2291048",
-      podRef: "POD-SIGN-A.ROY",
-      total: 5798,
-      items: [
-        { id: "attar-al-reem", name: "Attar Al Reem", size: "12 ml Pure Attar", qty: 1, price: 2699 },
-        { id: "oud-blend", name: "Oud Blend", size: "12 ml Pure Attar", qty: 1, price: 3199 }
-      ]
-    }
-  ];
-
-  // Default Customers / Patrons
-  const DEFAULT_CUSTOMERS = [
-    {
-      id: "CUST-001",
-      name: "Aarav Singhania",
-      phone: "+91 98201 44552",
-      email: "aarav.singhania@apexcorp.in",
-      city: "Mumbai",
-      category: "VIP Patron",
-      ordersCount: 5,
-      totalSpend: 28490,
-      joined: "Jan 2026"
-    },
-    {
-      id: "CUST-002",
-      name: "Meera Kapoor",
-      phone: "+91 98112 33901",
-      email: "meera.kapoor@atelierstyle.com",
-      city: "New Delhi",
-      category: "VIP Patron",
-      ordersCount: 4,
-      totalSpend: 21690,
-      joined: "Feb 2026"
-    },
-    {
-      id: "CUST-003",
-      name: "Rohan Varma",
-      phone: "+91 97422 88123",
-      email: "rohan.varma@techventures.io",
-      city: "Bengaluru",
-      category: "Loyal Buyer",
-      ordersCount: 2,
-      totalSpend: 7498,
-      joined: "Apr 2026"
-    },
-    {
-      id: "CUST-004",
-      name: "Dr. Ananya Roy",
-      phone: "+91 98300 55198",
-      email: "ananya.roy@medresearch.org",
-      city: "Kolkata",
-      category: "Loyal Buyer",
-      ordersCount: 3,
-      totalSpend: 14290,
-      joined: "Mar 2026"
-    }
-  ];
-
-  // Default Inquiries / Concierge Leads
-  const DEFAULT_INQUIRIES = [
-    {
-      id: "INQ-2026-041",
-      date: "25 Nov 2026",
-      name: "Vikramaditya Oberoi",
-      phone: "+91 98100 77211",
-      email: "v.oberoi@heritagehotels.com",
-      type: "Bespoke Gifting & Corporate",
-      query: "Looking to curate 80 customized Discovery Gift Sets of Imperial Oud and Vanilla Smog for our annual luxury summit.",
-      status: "In Discussion"
-    },
-    {
-      id: "INQ-2026-040",
-      date: "24 Nov 2026",
-      name: "Natasha Poonawalla",
-      phone: "+91 98220 99401",
-      email: "natasha.p@hauteliving.co",
-      type: "Bridal Scent Consultation",
-      query: "Requesting private atelier appointment for bespoke bridal attar formulation featuring Taif rose and pure Dehn Al Oud.",
-      status: "New Lead"
-    }
-  ];
-
-  // Default Promo Coupons
-  const DEFAULT_COUPONS = [
-    {
-      code: "DHARA10",
-      description: "Welcome luxury privilege: 10% off first atelier order",
-      discountType: "percentage",
-      discountValue: 10,
-      minOrder: 2000,
-      expiryDate: "2026-12-31",
-      active: true,
-      timesRedeemed: 42
-    },
-    {
-      code: "ROYALGOLD",
-      description: "Festive celebration: Flat ₹500 off orders above ₹3,500",
-      discountType: "fixed",
-      discountValue: 500,
-      minOrder: 3500,
-      expiryDate: "2026-12-31",
-      active: true,
-      timesRedeemed: 28
-    },
-    {
-      code: "OUDLUXE",
-      description: "Connoisseur privilege: 15% off pure oud & attar collection",
-      discountType: "percentage",
-      discountValue: 15,
-      minOrder: 4000,
-      expiryDate: "2026-12-31",
-      active: true,
-      timesRedeemed: 19
-    }
-  ];
-
-  // Default Marketing Campaigns
-  const DEFAULT_CAMPAIGNS = [
-    {
-      id: "cmp-royal-gifting",
-      title: "Royal Winter Gifting Collection Broadcast",
-      channel: "WhatsApp Concierge",
-      target: "VIP Patrons & Connoisseurs",
-      message: "Namaste {CustomerName}, Dhara Scent Atelier unveils our Winter Edition Imperial Oud & Attar Al Reem in handcrafted fluted flacons. Enjoy complimentary bespoke monogramming with privilege code ROYALGOLD at https://dharascentatelier.com",
-      reach: 1250,
-      clicks: 480,
-      orders: 86
-    },
-    {
-      id: "cmp-attar-masterclass",
-      title: "Pure Dehn Al Oud Limited Decants",
-      channel: "VIP Private SMS",
-      target: "High LTV Collectors (₹15,000+)",
-      message: "Exclusive: Only 25 crystal flacons of 15-year aged Assam Oud Zahir are now resting at the Atelier. Reserve via private concierge at +91 98200 12345.",
-      reach: 340,
-      clicks: 195,
-      orders: 22
-    }
-  ];
+  // Zero Default Info for Data Tables (Fresh State)
+  const DEFAULT_ORDERS = [];
+  const DEFAULT_CUSTOMERS = [];
+  const DEFAULT_INQUIRIES = [];
+  const DEFAULT_COUPONS = [];
+  const DEFAULT_CAMPAIGNS = [];
+  const DEFAULT_RETURNS = [];
+  const DEFAULT_TICKETS = [];
+  const DEFAULT_REVIEWS = [];
+  const DEFAULT_STOCK_LOG = [];
 
   // 11 End-to-End Test Matrix
   const DEFAULT_TEST_MATRIX = {
-    sc_prepaid: { name: "1. Prepaid Online Razorpay Order", expected: "Order placed, Razorpay payment verified & inventory deducted", status: "PASS", lastRun: "Verified" },
-    sc_webhook: { name: "2. Payment Webhook Verification", expected: "Payment verified with signature check, duplicate guard active", status: "PASS", lastRun: "Verified" },
-    sc_cod: { name: "3. Cash on Delivery (COD) Order Booking", expected: "COD order booked with pending status & zero gateway fee", status: "PASS", lastRun: "Verified" },
-    sc_dup_pay: { name: "4. Idempotency & Duplicate Guard", expected: "Duplicate transaction IDs blocked; prevents double-billing", status: "PASS", lastRun: "Verified" },
-    sc_cancel: { name: "5. Order Cancellation & Stock Restock", expected: "Order cancelled, inventory stock incremented in real-time", status: "PASS", lastRun: "Verified" },
-    sc_return: { name: "6. Return Request & Reverse Logistics", expected: "7-day policy verified, reverse pickup AWB generated", status: "PASS", lastRun: "Verified" },
-    sc_exchange: { name: "7. Damaged Bottle Replacement", expected: "Quality inspection approved, zero-cost replacement order created", status: "PASS", lastRun: "Verified" },
-    sc_out_of_stock: { name: "8. Out-of-Stock Purchase Guard", expected: "Zero stock SKU flags alert and blocks cart additions", status: "PASS", lastRun: "Verified" },
-    sc_delivery: { name: "9. Courier Delivery & Verified POD", expected: "Delivered status confirmed, date/time and recipient POD saved", status: "PASS", lastRun: "Verified" },
-    sc_ndr: { name: "10. Failed Delivery (NDR) Alert", expected: "Customer unreachable trigger, reattempt alert dispatched", status: "PASS", lastRun: "Verified" },
-    sc_refund: { name: "11. Refund Ledger & Payout Recalculation", expected: "Accurate refund recorded, net bank payout updated cleanly", status: "PASS", lastRun: "Verified" }
+    sc_prepaid: { name: "1. Prepaid Online Razorpay Order", expected: "Order placed, Razorpay payment verified & inventory deducted", status: "READY", lastRun: "Not run yet" },
+    sc_webhook: { name: "2. Payment Webhook Verification", expected: "Payment verified with signature check, duplicate guard active", status: "READY", lastRun: "Not run yet" },
+    sc_cod: { name: "3. Cash on Delivery (COD) Order Booking", expected: "COD order booked with pending status & zero gateway fee", status: "READY", lastRun: "Not run yet" },
+    sc_dup_pay: { name: "4. Idempotency & Duplicate Guard", expected: "Duplicate transaction IDs blocked; prevents double-billing", status: "READY", lastRun: "Not run yet" },
+    sc_cancel: { name: "5. Order Cancellation & Stock Restock", expected: "Order cancelled, inventory stock incremented in real-time", status: "READY", lastRun: "Not run yet" },
+    sc_return: { name: "6. Return Request & Reverse Logistics", expected: "7-day policy verified, reverse pickup AWB generated", status: "READY", lastRun: "Not run yet" },
+    sc_exchange: { name: "7. Damaged Bottle Replacement", expected: "Quality inspection approved, zero-cost replacement order created", status: "READY", lastRun: "Not run yet" },
+    sc_out_of_stock: { name: "8. Out-of-Stock Purchase Guard", expected: "Zero stock SKU flags alert and blocks cart additions", status: "READY", lastRun: "Not run yet" },
+    sc_delivery: { name: "9. Courier Delivery & Verified POD", expected: "Delivered status confirmed, date/time and recipient POD saved", status: "READY", lastRun: "Not run yet" },
+    sc_ndr: { name: "10. Failed Delivery (NDR) Alert", expected: "Customer unreachable trigger, reattempt alert dispatched", status: "READY", lastRun: "Not run yet" },
+    sc_refund: { name: "11. Refund Ledger & Payout Recalculation", expected: "Accurate refund recorded, net bank payout updated cleanly", status: "READY", lastRun: "Not run yet" }
   };
 
   // State Container
@@ -552,7 +350,7 @@
   function loadData(key, fallback) {
     try {
       const data = localStorage.getItem(key);
-      return data ? JSON.parse(data) : fallback;
+      return data !== null ? JSON.parse(data) : fallback;
     } catch (e) {
       console.warn("Storage read error for " + key, e);
       return fallback;
@@ -592,7 +390,23 @@
   // INITIALIZATION
   // ==========================================================================
   function init() {
-    // Load persisted state or defaults
+    // Purge any old dummy mock test data from previous versions
+    const savedOrders = loadData(STORAGE.ORDERS, []);
+    if (savedOrders.some(o => o.id === "DHA-2026-0812" || (o.customer && (o.customer.includes("Singhania") || o.customer.includes("Meera"))))) {
+      localStorage.removeItem(STORAGE.ORDERS);
+      localStorage.removeItem(STORAGE.CUSTOMERS);
+      localStorage.removeItem(STORAGE.INQUIRIES);
+      localStorage.removeItem(STORAGE.COUPONS);
+      localStorage.removeItem(STORAGE.CAMPAIGNS);
+      localStorage.removeItem(STORAGE.RETURNS);
+      localStorage.removeItem(STORAGE.TICKETS);
+      localStorage.removeItem(STORAGE.REVIEWS);
+      localStorage.removeItem(STORAGE.STOCK_LOG);
+      localStorage.removeItem(STORAGE.SETTINGS);
+      localStorage.removeItem(STORAGE.TEST_MATRIX);
+    }
+
+    // Load persisted state or clean defaults
     state.settings = loadData(STORAGE.SETTINGS, DEFAULT_SETTINGS);
     state.products = loadData(STORAGE.PRODUCTS, DEFAULT_PRODUCTS);
     state.orders = loadData(STORAGE.ORDERS, DEFAULT_ORDERS);
@@ -602,16 +416,10 @@
     state.campaigns = loadData(STORAGE.CAMPAIGNS, DEFAULT_CAMPAIGNS);
     state.testMatrix = loadData(STORAGE.TEST_MATRIX, DEFAULT_TEST_MATRIX);
     state.failedPayments = loadData(STORAGE.FAILED_PAYMENTS, []);
-    state.returns = loadData(STORAGE.RETURNS, []);
-    state.tickets = loadData(STORAGE.TICKETS, []);
-    state.reviews = loadData(STORAGE.REVIEWS, [
-      { id: "REV-1", product: "Imperial Oud", reviewer: "Aarav S.", rating: 5, content: "Magnificent longevity. The saffron opening into deep Taif rose is absolute perfection.", date: "24 Nov 2026", status: "Published" },
-      { id: "REV-2", product: "Vanilla Smog", reviewer: "Natasha P.", rating: 5, content: "A seductive gourmand with smoky bourbon tones. Stays on cashmere coats for days.", date: "23 Nov 2026", status: "Published" }
-    ]);
-    state.stockLogs = loadData(STORAGE.STOCK_LOG, [
-      { timestamp: "25 Nov 2026, 11:20 AM", product: "Imperial Oud", type: "Order Fulfillment", delta: -1, resultingStock: 45, reason: "Order DHA-2026-0812" },
-      { timestamp: "25 Nov 2026, 11:20 AM", product: "Oud Al Ameer", type: "Order Fulfillment", delta: -1, resultingStock: 38, reason: "Order DHA-2026-0812" }
-    ]);
+    state.returns = loadData(STORAGE.RETURNS, DEFAULT_RETURNS);
+    state.tickets = loadData(STORAGE.TICKETS, DEFAULT_TICKETS);
+    state.reviews = loadData(STORAGE.REVIEWS, DEFAULT_REVIEWS);
+    state.stockLogs = loadData(STORAGE.STOCK_LOG, DEFAULT_STOCK_LOG);
     state.currentRole = loadData(STORAGE.ROLE, "Super Admin");
 
     // Initialize Theme
@@ -656,17 +464,18 @@
         const p = document.getElementById("authPass").value.trim();
         const rem = document.getElementById("authRem").checked;
 
-        if (u === "admin" && (p === "dhara2026" || p === "bhau2026" || p === "admin123")) {
+        // Valid staff authentication check
+        if ((u === "admin" || u === "staff") && (p === "dhara2026" || p === "admin" || p === "admin123")) {
           if (rem) {
             localStorage.setItem(STORAGE.SESSION, "true");
           } else {
             sessionStorage.setItem(STORAGE.SESSION, "true");
           }
           document.getElementById("authGate").classList.add("hidden");
-          toast("Welcome to Dhara Scent Atelier Admin Hub", "success");
+          toast("Signed in to Dhara Scent Atelier Admin Hub", "success");
           renderAll();
         } else {
-          toast("Invalid staff credentials. Default: admin / dhara2026", "error");
+          toast("Invalid credentials. Please enter your staff credentials.", "error");
         }
       });
     }
@@ -718,7 +527,6 @@
       });
     });
 
-    // Mobile Sidebar Toggle
     const sidebar = document.getElementById("crmSidebar");
     const backdrop = document.getElementById("crmSidebarBackdrop");
     const toggle = document.getElementById("crmSidebarToggle");
@@ -756,14 +564,12 @@
       el.classList.toggle("active", el.id === "view-" + tabKey);
     });
 
-    // Update Topbar Title
     const titleEl = document.getElementById("crmCurrentViewTitle");
     if (titleEl) {
       const activeBtn = document.querySelector(`[data-crm-tab="${tabKey}"] span span`);
       titleEl.textContent = activeBtn ? activeBtn.textContent : "Dashboard";
     }
 
-    // Close mobile drawer if open
     const sidebar = document.getElementById("crmSidebar");
     const backdrop = document.getElementById("crmSidebarBackdrop");
     if (sidebar) sidebar.classList.remove("open");
@@ -827,6 +633,13 @@
 
     const elTick = document.getElementById("navCountTickets");
     if (elTick) elTick.textContent = state.tickets.length;
+
+    const elTests = document.getElementById("navCountTests");
+    if (elTests) {
+      const totalTests = Object.keys(state.testMatrix).length || 11;
+      const passedTests = Object.values(state.testMatrix).filter(t => t.status === "PASS").length;
+      elTests.textContent = `${passedTests}/${totalTests}`;
+    }
 
     const lowStockCount = state.products.filter(p => p.stock <= 15).length;
     const elLow = document.getElementById("navCountLowStock");
@@ -904,7 +717,7 @@
       }
     }
 
-    // Olfactory Category Distribution
+    // Olfactory Category Breakdown
     const catBox = document.getElementById("overviewCategoryDistribution");
     if (catBox) {
       const families = {};
@@ -913,7 +726,7 @@
       });
 
       const items = Object.entries(families).map(([fam, count]) => {
-        const pct = Math.round((count / state.products.length) * 100);
+        const pct = Math.round((count / (state.products.length || 1)) * 100);
         return `
           <div style="margin-bottom:12px;">
             <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
@@ -928,6 +741,24 @@
       }).join("");
 
       catBox.innerHTML = items;
+    }
+
+    // Dynamic Store HQ Info from Settings
+    const hqInfo = document.getElementById("overviewHqInfo");
+    if (hqInfo) {
+      const s = state.settings;
+      if (s.address || s.phone) {
+        hqInfo.innerHTML = `
+          <b>${esc(s.storeName || "Dhara Scent Atelier")}</b><br>
+          ${esc(s.address || "")}<br>
+          ${s.phone ? `Contact: <b>${esc(s.phone)}</b>` : ""}
+        `;
+      } else {
+        hqInfo.innerHTML = `
+          <b>${esc(s.storeName || "Dhara Scent Atelier")}</b><br>
+          <span style="color:var(--muted)">Store contact & address not configured yet (set in Settings)</span>
+        `;
+      }
     }
   }
 
@@ -966,7 +797,7 @@
     const tbody = document.getElementById("couponsTableBody");
     if (tbody) {
       if (!state.coupons.length) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:28px;color:var(--muted)">No coupons created. Click "Create Promo Coupon" above.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:28px;color:var(--muted)">No promo privilege codes created yet. Click "Create Privilege Code" above.</td></tr>`;
       } else {
         tbody.innerHTML = state.coupons.map(cp => {
           const disc = cp.discountType === "percentage" ? `${cp.discountValue}% OFF` : `₹${cp.discountValue} FLAT OFF`;
@@ -998,26 +829,30 @@
     // Campaigns Grid
     const cGrid = document.getElementById("campaignsGrid");
     if (cGrid) {
-      cGrid.innerHTML = state.campaigns.map(cmp => `
-        <div class="campaign-card">
-          <div>
-            <div class="campaign-header">
-              <span class="campaign-title">${esc(cmp.title)}</span>
-              <span class="campaign-channel-badge"><i class="bi bi-whatsapp"></i> ${esc(cmp.channel)}</span>
+      if (!state.campaigns.length) {
+        cGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--muted)">No broadcast campaigns configured yet.</div>`;
+      } else {
+        cGrid.innerHTML = state.campaigns.map(cmp => `
+          <div class="campaign-card">
+            <div>
+              <div class="campaign-header">
+                <span class="campaign-title">${esc(cmp.title)}</span>
+                <span class="campaign-channel-badge"><i class="bi bi-whatsapp"></i> ${esc(cmp.channel)}</span>
+              </div>
+              <div style="font-size:11.5px;color:var(--muted);margin-bottom:8px;">Target: <b>${esc(cmp.target)}</b></div>
+              <div class="campaign-bubble">${esc(cmp.message)}</div>
+              <div class="campaign-metrics">
+                <div>Reach: <b>${(cmp.reach || 0).toLocaleString("en-IN")}</b></div>
+                <div>Clicks: <b>${(cmp.clicks || 0).toLocaleString("en-IN")}</b></div>
+                <div>Orders: <b>${(cmp.orders || 0).toLocaleString("en-IN")}</b></div>
+              </div>
             </div>
-            <div style="font-size:11.5px;color:var(--muted);margin-bottom:8px;">Target: <b>${esc(cmp.target)}</b></div>
-            <div class="campaign-bubble">${esc(cmp.message)}</div>
-            <div class="campaign-metrics">
-              <div>Reach: <b>${(cmp.reach || 0).toLocaleString("en-IN")}</b></div>
-              <div>Clicks: <b>${(cmp.clicks || 0).toLocaleString("en-IN")}</b></div>
-              <div>Orders: <b>${(cmp.orders || 0).toLocaleString("en-IN")}</b></div>
-            </div>
+            <button type="button" class="btn-primary" style="justify-content:center;font-size:12px;background:#25D366;border-color:#25D366" onclick="window.BK_CRM.launchCampaignWhatsApp('${esc(cmp.id)}')">
+              <i class="bi bi-whatsapp"></i> Dispatch WhatsApp Broadcast
+            </button>
           </div>
-          <button type="button" class="btn-primary" style="justify-content:center;font-size:12px;background:#25D366;border-color:#25D366" onclick="window.BK_CRM.launchCampaignWhatsApp('${esc(cmp.id)}')">
-            <i class="bi bi-whatsapp"></i> Dispatch WhatsApp Broadcast
-          </button>
-        </div>
-      `).join("");
+        `).join("");
+      }
     }
   }
 
@@ -1043,7 +878,7 @@
     }
 
     if (!filtered.length) {
-      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--muted)">No matching orders found.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--muted)">${state.orders.length === 0 ? "No orders placed yet." : "No matching orders found."}</td></tr>`;
       return;
     }
 
@@ -1104,7 +939,7 @@
     const gross = state.orders.reduce((sum, o) => sum + (o.total || 0), 0);
     const rzpPaid = state.orders.filter(o => o.payment && !o.payment.includes("COD")).reduce((sum, o) => sum + (o.total || 0), 0);
     const cod = state.orders.filter(o => o.payment && o.payment.includes("COD")).reduce((sum, o) => sum + (o.total || 0), 0);
-    const netSettled = Math.round(rzpPaid * 0.9764); // 2% + 18% GST fee deduction
+    const netSettled = Math.round(rzpPaid * 0.9764);
 
     const elGross = document.getElementById("payStatGross");
     if (elGross) elGross.textContent = "₹" + gross.toLocaleString("en-IN");
@@ -1130,28 +965,32 @@
     // Payments Table
     const tbody = document.getElementById("paymentsTableBody");
     if (tbody) {
-      tbody.innerHTML = state.orders.map(o => {
-        const isOnline = o.payment && !o.payment.includes("COD");
-        return `
-          <tr>
-            <td><b>${esc(o.gatewayRef || "GATEWAY-PENDING")}</b><br><small style="color:var(--muted)">Order: ${esc(o.id)}</small></td>
-            <td><b>${esc(o.customer)}</b><br><small style="color:var(--muted)">${esc(o.phone)}</small></td>
-            <td><code style="font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">${esc(o.gatewayRef || "N/A")}</code></td>
-            <td><b>${esc(o.payment)}</b></td>
-            <td><b>₹${Number(o.total || 0).toLocaleString("en-IN")}</b></td>
-            <td>
-              <span class="status-badge ${isOnline ? "badge-confirmed" : "badge-pending"}">
-                ${isOnline ? "Settled to Bank" : "COD Awaiting Delivery"}
-              </span>
-            </td>
-            <td>
-              <button type="button" class="btn-outline" style="font-size:11px;padding:3px 8px;" onclick="window.BK_CRM.openRefundModal('${esc(o.id)}')">
-                <i class="bi bi-arrow-counterclockwise"></i> Refund
-              </button>
-            </td>
-          </tr>
-        `;
-      }).join("");
+      if (!state.orders.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--muted)">No payment transactions recorded yet.</td></tr>`;
+      } else {
+        tbody.innerHTML = state.orders.map(o => {
+          const isOnline = o.payment && !o.payment.includes("COD");
+          return `
+            <tr>
+              <td><b>${esc(o.gatewayRef || "GATEWAY-PENDING")}</b><br><small style="color:var(--muted)">Order: ${esc(o.id)}</small></td>
+              <td><b>${esc(o.customer)}</b><br><small style="color:var(--muted)">${esc(o.phone)}</small></td>
+              <td><code style="font-size:11px;background:var(--surface-alt);padding:2px 6px;border-radius:4px">${esc(o.gatewayRef || "N/A")}</code></td>
+              <td><b>${esc(o.payment)}</b></td>
+              <td><b>₹${Number(o.total || 0).toLocaleString("en-IN")}</b></td>
+              <td>
+                <span class="status-badge ${isOnline ? "badge-confirmed" : "badge-pending"}">
+                  ${isOnline ? "Settled to Bank" : "COD Awaiting Delivery"}
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn-outline" style="font-size:11px;padding:3px 8px;" onclick="window.BK_CRM.openRefundModal('${esc(o.id)}')">
+                  <i class="bi bi-arrow-counterclockwise"></i> Refund
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
     }
   }
 
@@ -1175,27 +1014,31 @@
 
     const tbody = document.getElementById("shippingTableBody");
     if (tbody) {
-      tbody.innerHTML = state.orders.map(o => `
-        <tr>
-          <td><b>${esc(o.id)}</b></td>
-          <td><b>${esc(o.customer)}</b><br><small style="color:var(--muted)">${esc(o.address)}</small></td>
-          <td>
-            <select class="filter-select" style="height:30px;padding:2px 8px;font-size:11.5px" onchange="window.BK_CRM.updateOrderCourier('${esc(o.id)}', this.value)">
-              <option value="BlueDart Apex Express" ${(o.courier || "").includes("BlueDart") ? "selected" : ""}>BlueDart Apex Express</option>
-              <option value="Delhivery Surface" ${(o.courier || "").includes("Delhivery") ? "selected" : ""}>Delhivery Surface</option>
-              <option value="Shiprocket Air" ${(o.courier || "").includes("Shiprocket") ? "selected" : ""}>Shiprocket Air</option>
-            </select>
-          </td>
-          <td><b>${esc(o.awb || "UNASSIGNED")}</b></td>
-          <td><span class="status-badge badge-${esc(o.status)}">${esc(o.status)}</span></td>
-          <td>${o.podRef ? `<span style="color:var(--success);font-weight:600"><i class="bi bi-check-all"></i> Verified (${esc(o.podRef)})</span>` : `<span style="color:var(--muted)">Pending delivery</span>`}</td>
-          <td>
-            <button type="button" class="btn-outline" style="font-size:11px;padding:3px 8px;" onclick="window.BK_CRM.openShippingLabel('${esc(o.id)}')">
-              <i class="bi bi-tag-fill"></i> Label
-            </button>
-          </td>
-        </tr>
-      `).join("");
+      if (!state.orders.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--muted)">No shipments queued yet.</td></tr>`;
+      } else {
+        tbody.innerHTML = state.orders.map(o => `
+          <tr>
+            <td><b>${esc(o.id)}</b></td>
+            <td><b>${esc(o.customer)}</b><br><small style="color:var(--muted)">${esc(o.address)}</small></td>
+            <td>
+              <select class="filter-select" style="height:30px;padding:2px 8px;font-size:11.5px" onchange="window.BK_CRM.updateOrderCourier('${esc(o.id)}', this.value)">
+                <option value="BlueDart Apex Express" ${(o.courier || "").includes("BlueDart") ? "selected" : ""}>BlueDart Apex Express</option>
+                <option value="Delhivery Surface" ${(o.courier || "").includes("Delhivery") ? "selected" : ""}>Delhivery Surface</option>
+                <option value="Shiprocket Air" ${(o.courier || "").includes("Shiprocket") ? "selected" : ""}>Shiprocket Air</option>
+              </select>
+            </td>
+            <td><b>${esc(o.awb || "UNASSIGNED")}</b></td>
+            <td><span class="status-badge badge-${esc(o.status)}">${esc(o.status)}</span></td>
+            <td>${o.podRef ? `<span style="color:var(--success);font-weight:600"><i class="bi bi-check-all"></i> Verified (${esc(o.podRef)})</span>` : `<span style="color:var(--muted)">Pending delivery</span>`}</td>
+            <td>
+              <button type="button" class="btn-outline" style="font-size:11px;padding:3px 8px;" onclick="window.BK_CRM.openShippingLabel('${esc(o.id)}')">
+                <i class="bi bi-tag-fill"></i> Label
+              </button>
+            </td>
+          </tr>
+        `).join("");
+      }
     }
   }
 
@@ -1204,7 +1047,7 @@
   // ==========================================================================
   function renderInventory() {
     const totalUnits = state.products.reduce((s, p) => s + (Number(p.stock) || 0), 0);
-    const valuation = state.products.reduce((s, p) => s + ((Number(p.stock) || 0) * (Number(p.minPrice) || 0) * 0.45), 0); // Estimated atelier production cost
+    const valuation = state.products.reduce((s, p) => s + ((Number(p.stock) || 0) * (Number(p.minPrice) || 0) * 0.45), 0);
     const inStock = state.products.filter(p => p.stock > 15).length;
     const lowStock = state.products.filter(p => p.stock > 0 && p.stock <= 15).length;
     const outStock = state.products.filter(p => p.stock === 0).length;
@@ -1258,15 +1101,19 @@
     // Stock Movement Audit Log
     const logTbody = document.getElementById("stockMovementTableBody");
     if (logTbody) {
-      logTbody.innerHTML = state.stockLogs.slice(0, 10).map(l => `
-        <tr>
-          <td><small>${esc(l.timestamp)}</small></td>
-          <td><b>${esc(l.product)}</b></td>
-          <td>${esc(l.type)}</td>
-          <td><b style="color:${l.delta > 0 ? "var(--success)" : "var(--danger)"}">${l.delta > 0 ? "+" + l.delta : l.delta}</b></td>
-          <td><b>${l.resultingStock}</b> units</td>
-        </tr>
-      `).join("");
+      if (!state.stockLogs.length) {
+        logTbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--muted)">No stock movements recorded yet.</td></tr>`;
+      } else {
+        logTbody.innerHTML = state.stockLogs.slice(0, 10).map(l => `
+          <tr>
+            <td><small>${esc(l.timestamp)}</small></td>
+            <td><b>${esc(l.product)}</b></td>
+            <td>${esc(l.type)}</td>
+            <td><b style="color:${l.delta > 0 ? "var(--success)" : "var(--danger)"}">${l.delta > 0 ? "+" + l.delta : l.delta}</b></td>
+            <td><b>${l.resultingStock}</b> units</td>
+          </tr>
+        `).join("");
+      }
     }
   }
 
@@ -1288,7 +1135,7 @@
     const tbody = document.getElementById("returnsTableBody");
     if (tbody) {
       if (!state.returns.length) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">No returns filed. Click "Simulate Return Request" to test workflow.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">No return requests filed. Click "Simulate Return Request" to test workflow.</td></tr>`;
       } else {
         tbody.innerHTML = state.returns.map(r => `
           <tr>
@@ -1313,8 +1160,12 @@
   // ==========================================================================
   function renderNotifications() {
     const sel = document.getElementById("notifOrderSelect");
-    if (sel && sel.options.length === 0) {
-      sel.innerHTML = state.orders.map(o => `<option value="${esc(o.id)}">${esc(o.id)} - ${esc(o.customer)} (₹${o.total})</option>`).join("");
+    if (sel) {
+      if (!state.orders.length) {
+        sel.innerHTML = `<option value="">No orders available</option>`;
+      } else {
+        sel.innerHTML = state.orders.map(o => `<option value="${esc(o.id)}">${esc(o.id)} - ${esc(o.customer)} (₹${o.total})</option>`).join("");
+      }
     }
     updateNotificationPreview();
   }
@@ -1327,10 +1178,10 @@
 
     const orderId = orderSelect.value;
     const template = templateSelect.value;
-    const order = state.orders.find(o => o.id === orderId) || state.orders[0];
+    const order = state.orders.find(o => o.id === orderId);
 
     if (!order) {
-      preview.innerHTML = `<p style="color:var(--muted)">Please select an order to preview template.</p>`;
+      preview.innerHTML = `<div style="padding:18px;text-align:center;color:var(--muted);background:var(--surface-alt);border-radius:var(--radius-md);">No order selected. Once orders are placed or simulated, preview message templates here.</div>`;
       return;
     }
 
@@ -1338,11 +1189,11 @@
     if (template === "order_confirm") {
       msg = `✨ *Dhara Scent Atelier · Order Confirmation*\n\nDearest ${order.customer},\n\nThank you for choosing Dhara. Your order *${order.id}* has been confirmed by our master perfumer.\n\n*Selected Fragrances:*\n${order.items.map(i => `• ${i.name} (${i.size}) × ${i.qty}`).join("\n")}\n\n*Total Amount:* ₹${order.total.toLocaleString("en-IN")}\n*Delivery Address:* ${order.address}\n\nWe are now carefully preparing and inspecting your crystal flacons. You will receive live courier dispatch updates shortly.\n\nWarm regards,\n*The Concierge Team*\nDhara Scent Atelier`;
     } else if (template === "order_shipped") {
-      msg = `🚚 *Dhara Scent Atelier · Fragrance Dispatched*\n\nDearest ${order.customer},\n\nYour luxury order *${order.id}* is on its way to you via ${order.courier || "BlueDart Express"}.\n\n*Air Waybill (AWB):* ${order.awb || "BLUEDART-8829104"}\n*Live Tracking Link:* https://track.dharascentatelier.com/?awb=${order.awb || "BLUEDART-8829104"}\n\nExpected transit window: 2-3 business days. Prepare to indulge your senses.`;
+      msg = `🚚 *Dhara Scent Atelier · Fragrance Dispatched*\n\nDearest ${order.customer},\n\nYour luxury order *${order.id}* is on its way to you via ${order.courier || "BlueDart Express"}.\n\n*Air Waybill (AWB):* ${order.awb || "UNASSIGNED"}\n*Live Tracking Link:* https://track.dharascentatelier.com/?awb=${order.awb || ""}\n\nExpected transit window: 2-3 business days. Prepare to indulge your senses.`;
     } else if (template === "order_delivered") {
-      msg = `🌸 *Dhara Scent Atelier · Fragrance Delivered*\n\nDearest ${order.customer},\n\nOur courier partner confirms that your Dhara atelier package has been safely delivered to ${order.city}.\n\nWe hope your new scents enchant you. Allow the oil notes 10 minutes on pulse points to unfurl their full olfactory bouquet.\n\nShare your impressions with our connoisseur circle: https://dharascentatelier.com/review?order=${order.id}`;
+      msg = `🌸 *Dhara Scent Atelier · Fragrance Delivered*\n\nDearest ${order.customer},\n\nOur courier partner confirms that your Dhara atelier package has been safely delivered to ${order.city}.\n\nWe hope your new scents enchant you. Allow the oil notes 10 minutes on pulse points to unfurl their full olfactory bouquet.`;
     } else {
-      msg = `🔔 *Dhara Scent Atelier Notification*\n\nDearest ${order.customer},\n\nUpdate regarding your order *${order.id}*: Current status has transitioned to *${order.status.toUpperCase()}*.\n\nFor any inquiries or private fragrance consultations, reply directly to this concierge channel or call +91 98200 12345.`;
+      msg = `🔔 *Dhara Scent Atelier Notification*\n\nDearest ${order.customer},\n\nUpdate regarding your order *${order.id}*: Current status has transitioned to *${order.status.toUpperCase()}*.`;
     }
 
     preview.innerHTML = `
@@ -1365,36 +1216,44 @@
     if (elOpen) elOpen.textContent = state.tickets.filter(t => t.status !== "Resolved").length;
 
     const elRes = document.getElementById("suppStatResolved");
-    if (elRes) elRes.textContent = state.tickets.filter(t => t.status === "Resolved").length + 6;
+    if (elRes) elRes.textContent = state.tickets.filter(t => t.status === "Resolved").length;
 
     // Tickets Table
     const tbody = document.getElementById("supportTicketsTableBody");
     if (tbody) {
-      tbody.innerHTML = `
-        <tr>
-          <td><b>TICK-104</b><br><small style="color:var(--muted)">25 Nov 2026</small></td>
-          <td><b>Natasha Poonawalla</b><br><small style="color:var(--muted)">+91 98220 99401</small></td>
-          <td>DHA-2026-0805</td>
-          <td>Fragrance Layering Advisory</td>
-          <td><span class="status-badge" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a">VIP High</span></td>
-          <td><span class="status-badge badge-confirmed">Concierge Assigned</span></td>
-          <td><button type="button" class="btn-outline" style="font-size:11px;padding:3px 7px;">Open Chat</button></td>
-        </tr>
-      `;
+      if (!state.tickets.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--muted)">No support tickets open.</td></tr>`;
+      } else {
+        tbody.innerHTML = state.tickets.map(t => `
+          <tr>
+            <td><b>${esc(t.id)}</b><br><small style="color:var(--muted)">${esc(t.date)}</small></td>
+            <td><b>${esc(t.customer)}</b><br><small style="color:var(--muted)">${esc(t.phone)}</small></td>
+            <td>${esc(t.orderRef || "N/A")}</td>
+            <td>${esc(t.category)}</td>
+            <td><span class="status-badge" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a">${esc(t.priority)}</span></td>
+            <td><span class="status-badge badge-confirmed">${esc(t.status)}</span></td>
+            <td><button type="button" class="btn-outline" style="font-size:11px;padding:3px 7px;">Open</button></td>
+          </tr>
+        `).join("");
+      }
     }
 
     // Reviews Table
     const rTbody = document.getElementById("productReviewsTableBody");
     if (rTbody) {
-      rTbody.innerHTML = state.reviews.map(r => `
-        <tr>
-          <td><b>${esc(r.product)}</b></td>
-          <td><b>${esc(r.reviewer)}</b><br><small style="color:var(--muted)">${esc(r.date)}</small></td>
-          <td><span style="color:var(--gold)">★★★★★</span></td>
-          <td><div style="max-width:380px;font-size:12px">${esc(r.content)}</div></td>
-          <td><span class="status-badge badge-confirmed">Published</span></td>
-        </tr>
-      `).join("");
+      if (!state.reviews.length) {
+        rTbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:28px;color:var(--muted)">No customer reviews submitted yet.</td></tr>`;
+      } else {
+        rTbody.innerHTML = state.reviews.map(r => `
+          <tr>
+            <td><b>${esc(r.product)}</b></td>
+            <td><b>${esc(r.reviewer)}</b><br><small style="color:var(--muted)">${esc(r.date)}</small></td>
+            <td><span style="color:var(--gold)">★★★★★</span></td>
+            <td><div style="max-width:380px;font-size:12px">${esc(r.content)}</div></td>
+            <td><span class="status-badge badge-confirmed">Published</span></td>
+          </tr>
+        `).join("");
+      }
     }
   }
 
@@ -1474,6 +1333,11 @@
       );
     }
 
+    if (!filtered.length) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--muted)">No patrons registered yet.</td></tr>`;
+      return;
+    }
+
     tbody.innerHTML = filtered.map(c => `
       <tr>
         <td>
@@ -1518,6 +1382,11 @@
       );
     }
 
+    if (!filtered.length) {
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--muted)">No customer inquiries received yet.</td></tr>`;
+      return;
+    }
+
     tbody.innerHTML = filtered.map(i => `
       <tr>
         <td><b>${esc(i.id)}</b><br><small style="color:var(--muted)">${esc(i.date)}</small></td>
@@ -1539,10 +1408,10 @@
   // ==========================================================================
   function renderReports() {
     const gross = state.orders.reduce((sum, o) => sum + (o.total || 0), 0);
-    const gstCollected = Math.round(gross * (18 / 118)); // 18% inclusive GST for luxury perfumery
+    const gstCollected = Math.round(gross * (18 / 118));
     const rzpVolume = state.orders.filter(o => o.payment && !o.payment.includes("COD")).reduce((s, o) => s + (o.total || 0), 0);
     const codVolume = state.orders.filter(o => o.payment && o.payment.includes("COD")).reduce((s, o) => s + (o.total || 0), 0);
-    const gatewayFees = Math.round(rzpVolume * 0.0236); // 2% + 18% GST fee
+    const gatewayFees = Math.round(rzpVolume * 0.0236);
     const netPayout = rzpVolume - gatewayFees;
 
     const elGross = document.getElementById("repGrossSales");
@@ -1574,15 +1443,18 @@
 
     tbody.innerHTML = keys.map((k, idx) => {
       const item = state.testMatrix[k];
+      const isPass = item.status === "PASS";
+      const badge = isPass
+        ? `<span class="status-badge" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0"><i class="bi bi-check-all"></i> PASS</span>`
+        : `<span class="status-badge" style="background:var(--surface-alt);color:var(--muted);border:1px solid var(--line)"><i class="bi bi-play-circle"></i> READY</span>`;
+
       return `
         <tr>
           <td><b>${idx + 1}</b></td>
           <td><b>${esc(item.name)}</b></td>
           <td><small style="color:var(--muted)">${esc(item.expected)}</small></td>
           <td>
-            <span class="status-badge" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0">
-              <i class="bi bi-check-all"></i> ${esc(item.status)}
-            </span>
+            ${badge}
             <small style="display:block;color:var(--muted);margin-top:2px">${esc(item.lastRun)}</small>
           </td>
           <td>
@@ -1602,11 +1474,11 @@
       const testOrder = {
         id: newId,
         date: "Just now (" + nowStr + ")",
-        customer: "Kabir Mehra (Prepaid Test)",
-        phone: "+91 98200 88990",
-        email: "kabir.test@perfumeconnoisseur.com",
+        customer: "Patron Test Order",
+        phone: "+91 98000 00000",
+        email: "patron@example.com",
         city: "Mumbai",
-        address: "Flat 1202, Lodha Bellissimo, Mahalaxmi, Mumbai 400011",
+        address: "Atelier Test Suite, Mumbai 400050",
         payment: "Razorpay (Online UPI Verified)",
         paymentStatus: "PAID",
         gatewayRef: "pay_RzpSim_" + Date.now().toString(36),
@@ -1619,7 +1491,6 @@
       state.orders.unshift(testOrder);
       saveData(STORAGE.ORDERS, state.orders);
 
-      // Decrement inventory
       const prod = state.products.find(p => p.id === "imperial-oud");
       if (prod && prod.stock > 0) {
         prod.stock -= 1;
@@ -1649,11 +1520,11 @@
       const codOrder = {
         id: newId,
         date: "Just now (" + nowStr + ")",
-        customer: "Devika Rao (COD Test)",
-        phone: "+91 98450 11223",
-        email: "devika.rao@testmail.com",
+        customer: "COD Patron Test",
+        phone: "+91 98000 00000",
+        email: "cod@example.com",
         city: "Bengaluru",
-        address: "7th Main, Indiranagar, Bengaluru 560038",
+        address: "Test Delivery Address, Bengaluru 560001",
         payment: "Cash on Delivery (COD)",
         paymentStatus: "PENDING_COD",
         gatewayRef: "COD-CASH-" + Date.now().toString(36),
@@ -1675,7 +1546,6 @@
       if (target) {
         target.status = "cancelled";
         saveData(STORAGE.ORDERS, state.orders);
-        // Restore stock
         if (target.items && target.items.length) {
           target.items.forEach(it => {
             const prod = state.products.find(p => p.id === it.id);
@@ -1698,14 +1568,14 @@
       state.testMatrix.sc_cancel.status = "PASS";
       state.testMatrix.sc_cancel.lastRun = "Passed at " + nowStr;
       saveData(STORAGE.TEST_MATRIX, state.testMatrix);
-      toast("Scenario 5 Passed: Order cancelled & bottle stock restored to atelier shelves!");
+      toast("Scenario 5 Passed: Order cancelled & bottle stock restored to shelves!");
     } else if (key === "sc_return") {
       const retId = "RET-" + Math.floor(100 + Math.random() * 900);
       state.returns.unshift({
         id: retId,
         date: "Just now",
-        orderId: state.orders[0] ? state.orders[0].id : "DHA-2026-0812",
-        customer: "Smita Deshmukh",
+        orderId: state.orders[0] ? state.orders[0].id : "DHA-2026-TEST",
+        customer: state.orders[0] ? state.orders[0].customer : "Patron Test",
         itemName: "Emerald Oud (50 ml EDP)",
         reason: "Outer velvet coffret damaged in transit",
         eligible: true,
@@ -1742,7 +1612,7 @@
       state.testMatrix[key].status = "PASS";
       state.testMatrix[key].lastRun = "Passed at " + nowStr;
       saveData(STORAGE.TEST_MATRIX, state.testMatrix);
-      toast(`Scenario verified successfully: ${state.testMatrix[key].name}`);
+      toast(`Scenario verified: ${state.testMatrix[key].name}`);
     }
     renderAll();
   }
@@ -1763,17 +1633,31 @@
   }
 
   function resetTestData() {
-    if (confirm("Reset all test orders and return CRM to pristine catalog state?")) {
-      state.orders = DEFAULT_ORDERS.slice();
+    if (confirm("Reset all test orders and return CRM to pristine state?")) {
+      state.orders = [];
+      state.customers = [];
+      state.inquiries = [];
+      state.coupons = [];
+      state.campaigns = [];
       state.returns = [];
+      state.tickets = [];
+      state.reviews = [];
+      state.stockLogs = [];
       state.failedPayments = [];
       state.testMatrix = JSON.parse(JSON.stringify(DEFAULT_TEST_MATRIX));
       saveData(STORAGE.ORDERS, state.orders);
+      saveData(STORAGE.CUSTOMERS, state.customers);
+      saveData(STORAGE.INQUIRIES, state.inquiries);
+      saveData(STORAGE.COUPONS, state.coupons);
+      saveData(STORAGE.CAMPAIGNS, state.campaigns);
       saveData(STORAGE.RETURNS, state.returns);
+      saveData(STORAGE.TICKETS, state.tickets);
+      saveData(STORAGE.REVIEWS, state.reviews);
+      saveData(STORAGE.STOCK_LOG, state.stockLogs);
       saveData(STORAGE.FAILED_PAYMENTS, state.failedPayments);
       saveData(STORAGE.TEST_MATRIX, state.testMatrix);
       renderAll();
-      toast("Test records cleaned. Pristine state restored.");
+      toast("All records reset. Clean pristine state active.");
     }
   }
 
@@ -1785,17 +1669,18 @@
     if (sForm) {
       sForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        state.settings.storeName = document.getElementById("setStoreName").value;
-        state.settings.tagline = document.getElementById("setTagline").value;
-        state.settings.phone = document.getElementById("setPhone").value;
-        state.settings.whatsapp = document.getElementById("setWhatsapp").value;
-        state.settings.email = document.getElementById("setEmail").value;
-        state.settings.gstin = document.getElementById("setGstin").value;
-        state.settings.address = document.getElementById("setAddress").value;
-        state.settings.freeDeliveryThreshold = Number(document.getElementById("setFreeDelivery").value);
-        state.settings.shippingFee = Number(document.getElementById("setShippingFee").value);
+        state.settings.storeName = document.getElementById("setStoreName").value.trim() || "Dhara Scent Atelier";
+        state.settings.tagline = document.getElementById("setTagline").value.trim();
+        state.settings.phone = document.getElementById("setPhone").value.trim();
+        state.settings.whatsapp = document.getElementById("setWhatsapp").value.trim();
+        state.settings.email = document.getElementById("setEmail").value.trim();
+        state.settings.gstin = document.getElementById("setGstin").value.trim();
+        state.settings.address = document.getElementById("setAddress").value.trim();
+        state.settings.freeDeliveryThreshold = Number(document.getElementById("setFreeDelivery").value) || 2500;
+        state.settings.shippingFee = Number(document.getElementById("setShippingFee").value) || 100;
         saveData(STORAGE.SETTINGS, state.settings);
         toast("Store settings saved successfully!", "success");
+        renderOverview();
       });
     }
 
@@ -1805,11 +1690,12 @@
         e.preventDefault();
         state.settings.razorpayEnabled = document.getElementById("setRzpEnabled").checked;
         state.settings.razorpayMode = document.getElementById("setRzpMode").value;
-        state.settings.razorpayKeyId = document.getElementById("setRzpKeyId").value;
-        state.settings.razorpayMerchantName = document.getElementById("setRzpMerchantName").value;
+        state.settings.razorpayKeyId = document.getElementById("setRzpKeyId").value.trim();
+        state.settings.razorpayMerchantName = document.getElementById("setRzpMerchantName").value.trim() || "Dhara Scent Atelier";
         state.settings.razorpayThemeColor = document.getElementById("setRzpThemeColor").value;
         saveData(STORAGE.SETTINGS, state.settings);
         toast("Razorpay payment gateway configuration saved!", "success");
+        renderSettings();
       });
     }
 
@@ -1817,10 +1703,10 @@
     if (smtpForm) {
       smtpForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        state.settings.notificationEmail = document.getElementById("setNotifRecipient").value;
-        state.settings.smtpHost = document.getElementById("setSmtpHost").value;
-        state.settings.smtpUser = document.getElementById("setSmtpUser").value;
-        state.settings.smtpPass = document.getElementById("setSmtpPass").value;
+        state.settings.notificationEmail = document.getElementById("setNotifRecipient").value.trim();
+        state.settings.smtpHost = document.getElementById("setSmtpHost").value.trim();
+        state.settings.smtpUser = document.getElementById("setSmtpUser").value.trim();
+        state.settings.smtpPass = document.getElementById("setSmtpPass").value.trim();
         saveData(STORAGE.SETTINGS, state.settings);
         toast("Automated email notification settings saved!", "success");
       });
@@ -1829,7 +1715,11 @@
     const btnTestEmail = document.getElementById("btnSendTestEmail");
     if (btnTestEmail) {
       btnTestEmail.addEventListener("click", function () {
-        const target = document.getElementById("setNotifRecipient").value || "concierge@dharascentatelier.com";
+        const target = document.getElementById("setNotifRecipient").value.trim();
+        if (!target) {
+          toast("Please enter a recipient email address.", "error");
+          return;
+        }
         if (window.DHARA_MAILER && typeof window.DHARA_MAILER.sendTestEmail === "function") {
           window.DHARA_MAILER.sendTestEmail(target).then(() => {
             toast("Test notification dispatched to " + target, "success");
@@ -1867,19 +1757,36 @@
       setVal("setEmail", s.email);
       setVal("setGstin", s.gstin);
       setVal("setAddress", s.address);
-      setVal("setFreeDelivery", s.freeDeliveryThreshold);
-      setVal("setShippingFee", s.shippingFee);
+      setVal("setFreeDelivery", s.freeDeliveryThreshold || "");
+      setVal("setShippingFee", s.shippingFee || "");
     }
 
     const rzpKeyEl = document.getElementById("setRzpKeyId");
-    if (rzpKeyEl) rzpKeyEl.value = s.razorpayKeyId || "rzp_live_DharaLuxe2026";
+    if (rzpKeyEl) rzpKeyEl.value = s.razorpayKeyId || "";
     const rzpNameEl = document.getElementById("setRzpMerchantName");
-    if (rzpNameEl) rzpNameEl.value = s.razorpayMerchantName || "Dhara Scent Atelier";
+    if (rzpNameEl) rzpNameEl.value = s.razorpayMerchantName || "";
+    const rzpBadge = document.getElementById("razorpayStatusBadge");
+    if (rzpBadge) {
+      if (s.razorpayKeyId) {
+        rzpBadge.innerHTML = `<i class="bi bi-shield-check-fill"></i> Gateway Configured (${s.razorpayMode || "live"})`;
+        rzpBadge.style.color = "#15803d";
+        rzpBadge.style.background = "rgba(21,128,61,0.12)";
+        rzpBadge.style.border = "1px solid rgba(21,128,61,0.3)";
+      } else {
+        rzpBadge.innerHTML = `<i class="bi bi-circle"></i> Not Configured`;
+        rzpBadge.style.color = "var(--muted)";
+        rzpBadge.style.background = "var(--surface-alt)";
+        rzpBadge.style.border = "1px solid var(--line)";
+      }
+    }
 
     const mailRecipEl = document.getElementById("setNotifRecipient");
-    if (mailRecipEl) mailRecipEl.value = s.notificationEmail || "concierge@dharascentatelier.com";
+    if (mailRecipEl) mailRecipEl.value = s.notificationEmail || "";
+    const smtpHostEl = document.getElementById("setSmtpHost");
+    if (smtpHostEl) smtpHostEl.value = s.smtpHost || "";
+    const smtpUserEl = document.getElementById("setSmtpUser");
+    if (smtpUserEl) smtpUserEl.value = s.smtpUser || "";
 
-    // Quota Text
     const quota = document.getElementById("storageQuotaText");
     if (quota) {
       let bytes = 0;
@@ -1901,7 +1808,7 @@
       : [];
 
     if (!logs.length) {
-      wrap.innerHTML = `<div style="padding:18px;text-align:center;color:var(--muted);font-size:12.5px;">No notifications logged yet. Click "Send Test Email" to test.</div>`;
+      wrap.innerHTML = `<div style="padding:18px;text-align:center;color:var(--muted);font-size:12.5px;">No notifications logged yet.</div>`;
       return;
     }
 
@@ -1941,7 +1848,6 @@
       });
     });
 
-    // File Upload Drag & Drop
     const dropZone = document.getElementById("fileUploadZone");
     const fileInput = document.getElementById("prodFormImgFile");
     const selectBtn = document.getElementById("btnSelectImage");
@@ -1997,7 +1903,7 @@
     document.getElementById("prodFormMinPrice").value = "";
     document.getElementById("prodFormMaxPrice").value = "";
     document.getElementById("prodFormSizes").value = "50 ml EDP · 100 ml EDP";
-    document.getElementById("prodFormStock").value = "30";
+    document.getElementById("prodFormStock").value = "50";
     document.getElementById("prodFormImg").value = "assets/products/imperial-oud-1.jpg";
     document.getElementById("modalImgPreview").src = "assets/products/imperial-oud-1.jpg";
     document.getElementById("prodFormDesc").value = "";
@@ -2045,7 +1951,7 @@
       minPrice: Number(document.getElementById("prodFormMinPrice").value) || 1999,
       maxPrice: Number(document.getElementById("prodFormMaxPrice").value) || 3999,
       sizes: document.getElementById("prodFormSizes").value.trim() || "50 ml EDP",
-      stock: Number(document.getElementById("prodFormStock").value) || 25,
+      stock: Number(document.getElementById("prodFormStock").value) || 50,
       img: document.getElementById("prodFormImg").value.trim() || "assets/products/imperial-oud-1.jpg",
       desc: document.getElementById("prodFormDesc").value.trim(),
       bestseller: document.getElementById("prodFormBestseller").checked
@@ -2098,7 +2004,6 @@
     renderOverview();
   }
 
-  // Order Details Modal
   function openOrderDetail(orderId) {
     const order = state.orders.find(o => o.id === orderId);
     if (!order) return;
@@ -2170,7 +2075,6 @@
     modal.classList.add("active");
   }
 
-  // Tax Invoice Slip Modal
   function openInvoiceSlip(orderId) {
     const order = state.orders.find(o => o.id === orderId);
     if (!order) return;
@@ -2190,8 +2094,8 @@
           <div>
             <h1 style="font-family:var(--font-head);font-size:24px;letter-spacing:0.15em;margin-bottom:4px;color:#111416;">DHARA SCENT ATELIER</h1>
             <p style="font-size:11px;color:#555;">
-              ${esc(s.address)}<br>
-              GSTIN: <b>${esc(s.gstin)}</b> · Phone: ${esc(s.phone)}
+              ${esc(s.address || "Flagship Atelier")}<br>
+              GSTIN: <b>${esc(s.gstin || "N/A")}</b> · Phone: ${esc(s.phone || "N/A")}
             </p>
           </div>
           <div style="text-align:right;">
@@ -2256,7 +2160,7 @@
         </div>
 
         <div style="border-top:1px solid #eee;padding-top:16px;text-align:center;font-size:11px;color:#777;">
-          This is a computer generated tax invoice issued by Dhara Scent Atelier. Handcrafted in India.
+          This is a computer generated tax invoice issued by Dhara Scent Atelier.
         </div>
       </div>
     `;
@@ -2264,7 +2168,6 @@
     modal.classList.add("active");
   }
 
-  // Courier Shipping Label Modal
   function openShippingLabel(orderId) {
     const order = state.orders.find(o => o.id === orderId);
     if (!order) return;
@@ -2296,12 +2199,11 @@
           <b>DELIVER TO:</b><br>
           <span style="font-size:14px;font-weight:bold;">${esc(order.customer)}</span><br>
           ${esc(order.address)}<br>
-          <b>PIN:</b> ${order.address.match(/\b\d{6}\b/) ? order.address.match(/\b\d{6}\b/)[0] : "400001"}<br>
           <b>CONTACT:</b> ${esc(order.phone)}
         </div>
 
         <div style="font-size:10px;color:#555;">
-          <b>RETURN TO:</b> Dhara Scent Atelier, Bandra West, Mumbai 400050. Phone: +91 98200 12345
+          <b>RETURN TO:</b> Dhara Scent Atelier.
         </div>
       </div>
     `;
@@ -2309,7 +2211,6 @@
     modal.classList.add("active");
   }
 
-  // Warehouse Packing Slip Modal
   function openPackingSlip(orderId) {
     const order = state.orders.find(o => o.id === orderId);
     if (!order) return;
@@ -2323,7 +2224,7 @@
         <h3 style="font-size:16px;border-bottom:1px solid #ccc;padding-bottom:8px;margin-bottom:12px;">
           ATELIER WAREHOUSE PICKING & INSPECTION LIST
         </h3>
-        <p>Order Ref: <b>${esc(order.id)}</b> | Packaging Queue Date: <b>${esc(order.date)}</b></p>
+        <p>Order Ref: <b>${esc(order.id)}</b> | Packaging Date: <b>${esc(order.date)}</b></p>
         <p>Customer: <b>${esc(order.customer)}</b> | Destination: <b>${esc(order.city)}</b></p>
 
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
@@ -2346,20 +2247,12 @@
             `).join("")}
           </tbody>
         </table>
-
-        <div style="border:1px solid #ddd;padding:10px;border-radius:4px;margin-top:12px;font-size:11px;">
-          <b>Quality Control Verification:</b><br>
-          [ ] Crystal bottle nozzle spray tested<br>
-          [ ] Velvet coffret box gold ribbon tied<br>
-          [ ] Authenticity certificate & handwritten thank-you card enclosed
-        </div>
       </div>
     `;
 
     modal.classList.add("active");
   }
 
-  // Initiate Refund Modal
   function openRefundModal(orderId) {
     const order = state.orders.find(o => o.id === orderId);
     if (!order) return;
@@ -2381,7 +2274,7 @@
         <select id="refundReasonSelect">
           <option value="Customer Cancellation">Customer Cancellation</option>
           <option value="Damaged Bottle in Transit">Damaged Bottle in Transit</option>
-          <option value="Olfactory Dissatisfaction">Olfactory Dissatisfaction (7-Day Privilege)</option>
+          <option value="Olfactory Dissatisfaction">Olfactory Dissatisfaction</option>
         </select>
       </div>
     `;
@@ -2403,13 +2296,13 @@
           reason: document.getElementById("refundReasonSelect").value,
           eligible: true,
           status: "Refunded",
-          reverseAwb: "REV-DELH-99210",
+          reverseAwb: "REV-BLUE-99210",
           refundAmount: amt
         });
         saveData(STORAGE.RETURNS, state.returns);
 
         modal.classList.remove("active");
-        toast(`Refund of ₹${amt.toLocaleString("en-IN")} processed successfully!`, "success");
+        toast(`Refund of ₹${amt.toLocaleString("en-IN")} processed!`, "success");
         renderAll();
       };
     }
@@ -2417,7 +2310,6 @@
     modal.classList.add("active");
   }
 
-  // Add Promo Coupon Modal
   function openAddCouponModal() {
     const modal = document.getElementById("modalCoupon");
     if (modal) {
@@ -2445,7 +2337,7 @@
     state.coupons.unshift(newCoupon);
     saveData(STORAGE.COUPONS, state.coupons);
     document.getElementById("modalCoupon").classList.remove("active");
-    toast(`Promo coupon ${code} created successfully!`, "success");
+    toast(`Privilege code ${code} created successfully!`, "success");
     renderMarketing();
   }
 
@@ -2491,14 +2383,13 @@
     if (!order) return;
     order.courier = courier;
     saveData(STORAGE.ORDERS, state.orders);
-    toast(`Courier partner for ${orderId} allocated to ${courier}.`);
+    toast(`Courier for ${orderId} allocated to ${courier}.`);
   }
 
   // ==========================================================================
   // FILTERS & SEARCH
   // ==========================================================================
   function setupFiltersAndSearch() {
-    // Orders Search & Filter
     const oSearch = document.getElementById("searchOrdersInput");
     const oFilter = document.getElementById("filterOrderStatus");
     const applyOrderFilter = () => {
@@ -2507,7 +2398,6 @@
     if (oSearch) oSearch.addEventListener("input", applyOrderFilter);
     if (oFilter) oFilter.addEventListener("change", applyOrderFilter);
 
-    // Products Search & Filter
     const pSearch = document.getElementById("searchProductsInput");
     const pCat = document.getElementById("filterProductCategory");
     const pStock = document.getElementById("filterProductStock");
@@ -2518,7 +2408,6 @@
     if (pCat) pCat.addEventListener("change", applyProdFilter);
     if (pStock) pStock.addEventListener("change", applyProdFilter);
 
-    // Customers Search & Filter
     const cSearch = document.getElementById("searchCustomersInput");
     const cSeg = document.getElementById("filterCustomerSegment");
     const applyCustFilter = () => {
@@ -2527,7 +2416,6 @@
     if (cSearch) cSearch.addEventListener("input", applyCustFilter);
     if (cSeg) cSeg.addEventListener("change", applyCustFilter);
 
-    // Notifications selectors
     const notifOrd = document.getElementById("notifOrderSelect");
     const notifTpl = document.getElementById("notifTemplateSelect");
     if (notifOrd) notifOrd.addEventListener("change", updateNotificationPreview);
@@ -2723,7 +2611,6 @@
   window.DHARA_CRM = CRM_API;
   window.BK_CRM = CRM_API; // Compatibility alias
 
-  // Initialize on DOM Ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
