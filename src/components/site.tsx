@@ -98,7 +98,13 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <p className="border-t py-6 text-center text-xs tracking-widest text-muted-foreground">© 2026 DHARA PARFUMS · ALL RIGHTS RESERVED</p>
+      <div className="border-t py-6 px-6 flex flex-col sm:flex-row items-center justify-between text-xs tracking-widest text-muted-foreground max-w-7xl mx-auto gap-4">
+        <p>© 2026 DHARA PARFUMS · ALL RIGHTS RESERVED</p>
+        <a href="/admin.html" className="hover:text-gold transition-colors inline-flex items-center gap-1.5 uppercase font-medium">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          Staff CRM &amp; Commerce Hub &rarr;
+        </a>
+      </div>
     </footer>
   );
 }

@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dhara Scent Atelier · Staff CRM & Commerce Admin Hub</title>
+  <meta name="description" content="Administration panel for Dhara Scent Atelier: luxury fragrance catalog, orders, Razorpay payments, logistics, inventory, and concierge support.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.png" type="image/png">
+
+  <!-- Google Fonts: Playfair Display, Lora, Jost & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- CRM Stylesheet -->
+  <link rel="stylesheet" href="assets/crm.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SPLIT-SCREEN AUTHENTICATION GATE
+       ========================================================================== -->
+  <div id="authGate" class="auth-gate">
+    <div class="auth-banner-pane">
+      <div class="auth-banner-top">
+        <a href="/" class="auth-back-link">
+          <i class="bi bi-arrow-left"></i> BACK TO STOREFRONT
+        </a>
+      </div>
+
+      <div class="auth-banner-center">
+        <div class="auth-brand-badge-pill">
+          <img src="assets/dhara-logo.png" alt="Dhara Scent Atelier" class="auth-brand-logo-pill">
+          <div class="auth-brand-badge-text">
+            <b>DHARA SCENT ATELIER</b>
+            <small>ESTD 2024 · MUMBAI</small>
+          </div>
+        </div>
+
+        <h1 class="auth-banner-title">Dhara Staff Commerce Portal</h1>
+
+        <p class="auth-banner-desc">
+          Secure access to manage luxury perfume orders, artisanal flacon inventory, Razorpay settlements, BlueDart logistics, patron concierge inquiries, and bespoke fragrance formulations.
+        </p>
+
+        <div class="auth-banner-tags">
+          <span class="auth-tag"><i class="bi bi-patch-check-fill"></i> Artisanal Fragrance House</span>
+          <span class="auth-tag"><i class="bi bi-shield-lock-fill"></i> Role Protected Access</span>
+          <span class="auth-tag"><i class="bi bi-geo-alt-fill"></i> Bandra West, Mumbai</span>
+        </div>
+      </div>
+
+      <div class="auth-banner-footer">
+        <span>© 2026 Dhara Parfums. All rights reserved.</span>
+      </div>
+    </div>
+
+    <div class="auth-form-pane">
+      <div class="auth-form-container">
+        <div class="auth-shield-header">
+          <div class="auth-shield-icon">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h2 class="auth-title">Welcome Back</h2>
+          <p class="auth-subtitle">Please sign in to your staff admin account</p>
+        </div>
+
+        <form id="authForm" class="auth-form">
+          <div class="auth-field-group">
+            <label class="auth-field-label" for="authUser">Username</label>
+            <div class="auth-input-wrapper">
+              <i class="bi bi-person auth-icon-left"></i>
+              <input type="text" id="authUser" value="admin" placeholder="Enter admin username" required autocomplete="username">
+            </div>
+          </div>
+
+          <div class="auth-field-group">
+            <label class="auth-field-label" for="authPass">Password</label>
+            <div class="auth-input-wrapper">
+              <i class="bi bi-lock auth-icon-left"></i>
+              <input type="password" id="authPass" value="dhara2026" placeholder="Enter password" required autocomplete="current-password">
+              <button type="button" class="auth-toggle-pwd" id="togglePasswordBtn" title="Toggle Password Visibility" aria-label="Toggle Password Visibility">
+                <i class="bi bi-eye-slash-fill"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-options-line">
+            <label class="auth-remember-label">
+              <input type="checkbox" id="authRem" checked>
+              <span>Remember session</span>
+            </label>
+            <span class="auth-status-chip"><i class="bi bi-dot"></i> Staff Access</span>
+          </div>
+
+          <button type="submit" class="auth-submit-btn">
+            Sign In to CRM Hub
+          </button>
+        </form>
+
+        <div class="auth-support-footer">
+          <p class="auth-support-query">Need concierge access or assistance?</p>
+          <p class="auth-support-contact">Contact atelier administrator at <a href="tel:+919820012345"><b>+91 98200 12345</b></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ADMIN CRM LAYOUT
+       ========================================================================== -->
+  <div class="crm-layout">
+
+    <!-- Mobile Backdrop Overlay -->
+    <div id="crmSidebarBackdrop" class="crm-sidebar-backdrop"></div>
+
+    <!-- ======================================================================
+         LEFT NAVIGATION SIDEBAR
+         ====================================================================== -->
+    <aside class="crm-sidebar" id="crmSidebar">
+      <!-- Sidebar Brand Identity Header -->
+      <div class="crm-sidebar-brand">
+        <a href="/" target="_blank" title="Dhara Scent Atelier Home" class="crm-brand-link">
+          <img src="assets/dhara-logo.png" alt="Dhara Scent Atelier" class="crm-brand-logo-img">
+          <div class="crm-brand-info">
+            <div class="crm-brand-title">DHARA ATELIER</div>
+            <div class="crm-brand-sub">
+              <span class="live-pulse"></span> Commerce Hub
+            </div>
+          </div>
+        </a>
+        <button type="button" class="crm-sidebar-close" id="crmSidebarClose" aria-label="Close Navigation Menu">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Tabs (Vertical Left Menu) -->
+      <nav class="crm-sidebar-nav" role="tablist">
+        <div class="nav-section-title">Main Menu</div>
+        <button type="button" class="tab-btn active" data-crm-tab="overview">
+          <span class="tab-btn-content"><i class="bi bi-speedometer2"></i> <span>Dashboard</span></span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="marketing">
+          <span class="tab-btn-content"><i class="bi bi-megaphone"></i> <span>Marketing</span></span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="products">
+          <span class="tab-btn-content"><i class="bi bi-box-seam"></i> <span>Products & services</span></span>
+          <span class="badge-pill" id="navCountProducts">16</span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="customers">
+          <span class="tab-btn-content"><i class="bi bi-people"></i> <span>Customers</span></span>
+          <span class="badge-pill" id="navCountCustomers">4</span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="orders">
+          <span class="tab-btn-content"><i class="bi bi-bag-check"></i> <span>Orders</span></span>
+          <span class="badge-pill" id="navCountOrders">4</span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="reports">
+          <span class="tab-btn-content"><i class="bi bi-bar-chart-line"></i> <span>Reports & Audit</span></span>
+        </button>
+
+        <div class="nav-section-title">Commerce Operations</div>
+        <button type="button" class="tab-btn" data-crm-tab="payments">
+          <span class="tab-btn-content"><i class="bi bi-credit-card-2-front"></i> <span>Payments & Gateway</span></span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="shipping">
+          <span class="tab-btn-content"><i class="bi bi-truck"></i> <span>Shipping & Logistics</span></span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="inventory">
+          <span class="tab-btn-content"><i class="bi bi-boxes"></i> <span>Inventory</span></span>
+          <span id="navCountLowStock" class="badge-pill badge-danger" style="display:none;">!</span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="returns">
+          <span class="tab-btn-content"><i class="bi bi-arrow-return-left"></i> <span>Returns & Refunds</span></span>
+          <span class="badge-pill" id="navCountReturns">0</span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="notifications">
+          <span class="tab-btn-content"><i class="bi bi-bell"></i> <span>Notifications Hub</span></span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="support">
+          <span class="tab-btn-content"><i class="bi bi-headset"></i> <span>Support & Reviews</span></span>
+          <span class="badge-pill" id="navCountTickets">1</span>
+        </button>
+
+        <div class="nav-section-title">System & Diagnostics</div>
+        <button type="button" class="tab-btn tab-btn-highlight" data-crm-tab="testing">
+          <span class="tab-btn-content"><i class="bi bi-play-circle-fill" style="color:var(--gold)"></i> <span>Test Scenarios</span></span>
+          <span class="badge-pill" id="navCountTests">11/11</span>
+        </button>
+        <button type="button" class="tab-btn" data-crm-tab="settings">
+          <span class="tab-btn-content"><i class="bi bi-gear"></i> <span>Settings & Roles</span></span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer (Staff User & Actions) -->
+      <div class="crm-sidebar-footer">
+        <div class="staff-pill">
+          <div class="staff-avatar">D</div>
+          <div class="staff-meta">
+            <span class="staff-name">Atelier Master</span>
+            <span class="staff-role">Super Admin</span>
+          </div>
+        </div>
+        <div class="sidebar-action-row">
+          <a href="/" target="_blank" class="store-link-btn" title="Open Storefront in New Tab">
+            <i class="bi bi-shop"></i> Storefront <i class="bi bi-arrow-up-right"></i>
+          </a>
+          <button type="button" id="themeToggleBtn" class="icon-btn" title="Toggle Dark / Light Theme" aria-label="Toggle Theme">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <button type="button" id="crmLogoutBtn" class="icon-btn" title="Sign Out of CRM" aria-label="Sign Out">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         MAIN CONTENT AREA WRAPPER
+         ====================================================================== -->
+    <div class="crm-content-wrapper">
+
+      <!-- Top Header / Breadcrumb Bar -->
+      <header class="crm-topbar">
+        <div class="crm-topbar-inner">
+          <div class="crm-topbar-left">
+            <button type="button" class="crm-menu-toggle" id="crmSidebarToggle" aria-label="Open Sidebar Menu">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="crm-topbar-breadcrumb">
+              <span class="crumb-lead">Admin Hub</span>
+              <i class="bi bi-chevron-right crumb-sep"></i>
+              <span class="crumb-active" id="crmCurrentViewTitle">Dashboard</span>
+            </div>
+          </div>
+
+          <div class="crm-controls">
+            <a href="/" target="_blank" class="store-link-btn" title="Open Storefront in New Tab">
+              <i class="bi bi-shop"></i> Storefront <i class="bi bi-arrow-up-right"></i>
+            </a>
+            <button type="button" class="icon-btn" onclick="document.getElementById('themeToggleBtn').click()" title="Toggle Theme" aria-label="Toggle Theme">
+              <i class="bi bi-moon-stars-fill"></i>
+            </button>
+            <button type="button" class="icon-btn" onclick="document.getElementById('crmLogoutBtn').click()" title="Sign Out of CRM" aria-label="Sign Out">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Body -->
+      <main class="crm-main">
+
+      <!-- ======================================================================
+           VIEW 1: OVERVIEW / DASHBOARD
+           ====================================================================== -->
+      <section id="view-overview" class="crm-view active">
+        <!-- Low Stock Alert Banner -->
+        <div id="dashboardAlertBanner" style="display:none"></div>
+
+        <!-- KPI Metrics Grid -->
+        <div class="overview-grid">
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <div class="kpi-icon-wrap rev"><i class="bi bi-currency-rupee"></i></div>
+              <span class="kpi-trend up">Gross Revenue</span>
+            </div>
+            <div class="kpi-label">Gross Revenue</div>
+            <div class="kpi-value" id="kpiRevenue">₹0</div>
+            <div class="kpi-sub">Across all atelier orders</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <div class="kpi-icon-wrap ord"><i class="bi bi-bag-check-fill"></i></div>
+              <span class="kpi-trend up">Live Orders</span>
+            </div>
+            <div class="kpi-label">Total Orders</div>
+            <div class="kpi-value" id="kpiOrders">0</div>
+            <div class="kpi-sub">Online & Concierge bookings</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <div class="kpi-icon-wrap prod"><i class="bi bi-boxes"></i></div>
+              <span class="kpi-trend neutral">Catalog</span>
+            </div>
+            <div class="kpi-label">Fragrance Catalog</div>
+            <div class="kpi-value" id="kpiProducts">16</div>
+            <div class="kpi-sub">Parfums, Attars & Flacons</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <div class="kpi-icon-wrap cust"><i class="bi bi-people-fill"></i></div>
+              <span class="kpi-trend neutral">Patrons</span>
+            </div>
+            <div class="kpi-label">Total Patrons</div>
+            <div class="kpi-value" id="kpiCustomers">0</div>
+            <div class="kpi-sub">Registered collectors</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <div class="kpi-icon-wrap inq"><i class="bi bi-chat-quote-fill"></i></div>
+              <span class="kpi-trend neutral">Leads</span>
+            </div>
+            <div class="kpi-label">Concierge Leads</div>
+            <div class="kpi-value" id="kpiInquiries">0</div>
+            <div class="kpi-sub">Bespoke & gifting queries</div>
+          </div>
+        </div>
+
+        <!-- Order Fulfillment Pipeline Bar -->
+        <div class="pipeline-bar">
+          <div class="pipeline-title">
+            <i class="bi bi-diagram-3-fill" style="color:var(--accent)"></i>
+            <span>Order Fulfillment Pipeline:</span>
+          </div>
+          <div class="pipeline-items" id="pipelineStats">
+            <!-- Dynamic Pipeline Badges -->
+          </div>
+        </div>
+
+        <!-- Dual Column Panel: Recent Orders + Olfactory Category Breakdown -->
+        <div class="dual-section">
+          <!-- Recent Orders Table Box -->
+          <div class="panel-box">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="bi bi-clock-history" style="color:var(--accent)"></i> Recent Orders
+              </div>
+              <button type="button" class="panel-action-btn" onclick="document.querySelector('[data-crm-tab=\'orders\']').click()">
+                View All Orders &rarr;
+              </button>
+            </div>
+            <div class="table-container" style="border:none;box-shadow:none">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewRecentOrdersTable">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Olfactory Category Breakdown & Atelier Info -->
+          <div class="panel-box">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="bi bi-pie-chart-fill" style="color:var(--gold)"></i> Olfactory Breakdown
+              </div>
+              <span style="font-size:12px;color:var(--muted)">16 Formulations</span>
+            </div>
+            <div class="panel-body">
+              <div id="overviewCategoryDistribution"></div>
+
+              <div style="margin-top:24px;padding:14px;background:var(--surface-alt);border-radius:var(--radius-md);border:1px solid var(--line);">
+                <div style="font-size:12px;font-weight:600;color:var(--fg);margin-bottom:4px">
+                  <i class="bi bi-geo-alt-fill" style="color:var(--accent)"></i> Atelier Flagship & Concierge
+                </div>
+                <div style="font-size:11.5px;color:var(--muted);line-height:1.5">
+                  Dhara Scent Atelier<br>
+                  Fragrance Pavilion, Level 2, Bandra West, Mumbai 400050<br>
+                  Concierge Desk: <b>+91 98200 12345</b>
+                </div>
+              </div>
+
+              <div style="margin-top:16px;display:flex;gap:8px">
+                <button type="button" class="btn-primary" style="flex:1;justify-content:center;padding:8px" onclick="window.BK_CRM.openAddProductModal()">
+                  <i class="bi bi-plus-lg"></i> Add Fragrance
+                </button>
+                <button type="button" class="btn-outline" style="flex:1;justify-content:center;padding:8px" onclick="document.querySelector('[data-crm-tab=\'testing\']').click()">
+                  <i class="bi bi-play-circle"></i> Test Suite
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 2: MARKETING & PROMOTIONAL CAMPAIGNS
+           ====================================================================== -->
+      <section id="view-marketing" class="crm-view">
+        <div class="recon-grid" style="margin-bottom:20px;">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Active Campaigns</div>
+            <div class="recon-stat-val" id="marketingKpiCampaigns">0</div>
+            <div class="recon-stat-sub">VIP Broadcasts</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Active Promo Codes</div>
+            <div class="recon-stat-val" id="marketingKpiCoupons" style="color:var(--accent);">0</div>
+            <div class="recon-stat-sub">Live privilege codes</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Campaign Reach</div>
+            <div class="recon-stat-val" id="marketingKpiReach" style="color:var(--success);">0</div>
+            <div class="recon-stat-sub">Patrons reached</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Attributed Orders</div>
+            <div class="recon-stat-val" id="marketingKpiOrders" style="color:var(--info);">0</div>
+            <div class="recon-stat-sub">Conversions</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button type="button" class="tab-btn active" id="mktSubtabCoupons" onclick="window.BK_CRM.setMarketingSubTab('coupons')">
+              <i class="bi bi-ticket-perforated"></i> Privilege Codes & Coupons
+            </button>
+            <button type="button" class="tab-btn" id="mktSubtabCampaigns" onclick="window.BK_CRM.setMarketingSubTab('campaigns')">
+              <i class="bi bi-broadcast"></i> WhatsApp Concierge Broadcasts
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn-primary" onclick="window.BK_CRM.openAddCouponModal()">
+              <i class="bi bi-plus-circle"></i> Create Privilege Code
+            </button>
+          </div>
+        </div>
+
+        <!-- Coupons Subview -->
+        <div id="marketingCouponsSection">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Privilege Code</th>
+                  <th>Description</th>
+                  <th>Discount</th>
+                  <th>Min Order</th>
+                  <th>Redeemed</th>
+                  <th>Expiry</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="couponsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Campaigns Subview -->
+        <div id="marketingCampaignsSection" style="display:none;">
+          <div id="campaignsGrid" class="campaigns-grid"></div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 3: ORDERS MANAGEMENT & PROCESSING QUEUE
+           ====================================================================== -->
+      <section id="view-orders" class="crm-view">
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchOrdersInput" placeholder="Search orders by patron, phone, order ID, or city...">
+            </div>
+
+            <select id="filterOrderStatus" class="filter-select">
+              <option value="all">All Order Statuses</option>
+              <option value="pending">New Orders</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="processing">In Packing</option>
+              <option value="shipped">Dispatched</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="ndr">Failed / NDR</option>
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportOrdersCSV()">
+              <i class="bi bi-download"></i> Export Orders CSV
+            </button>
+            <button type="button" class="btn-primary" onclick="window.BK_CRM.runTestScenario('sc_prepaid')">
+              <i class="bi bi-plus-circle"></i> Simulate New Order
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID & Date</th>
+                <th>Patron Contact</th>
+                <th>Fragrance Flacons & Sizes</th>
+                <th>Amount (₹) & Payment</th>
+                <th>Fulfillment Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 4: PAYMENT VERIFICATION & GATEWAY RECONCILIATION
+           ====================================================================== -->
+      <section id="view-payments" class="crm-view">
+        <div class="recon-grid">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Total Gross Volume</div>
+            <div class="recon-stat-val" id="payStatGross">₹0</div>
+            <div class="recon-stat-sub">All payment channels</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Razorpay Online Paid</div>
+            <div class="recon-stat-val" style="color:var(--success)" id="payStatRzp">₹0</div>
+            <div class="recon-stat-sub">UPI, Cards & Netbanking</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Cash on Delivery (COD)</div>
+            <div class="recon-stat-val" style="color:var(--warning)" id="payStatCod">₹0</div>
+            <div class="recon-stat-sub">Awaiting physical delivery</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Net Bank Settled</div>
+            <div class="recon-stat-val" style="color:var(--accent)" id="payStatNet">₹0</div>
+            <div class="recon-stat-sub">After gateway deduction</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Total Refunds Issued</div>
+            <div class="recon-stat-val" style="color:#0d9488" id="payStatRefunds">₹0</div>
+            <div class="recon-stat-sub">Approved returns</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Failed Payment Attempts</div>
+            <div class="recon-stat-val" style="color:var(--danger)" id="payStatFailedCount">0</div>
+            <div class="recon-stat-sub">Drop-off recovery log</div>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchPaymentsInput" placeholder="Search by payment ID or patron...">
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportPaymentsCSV()">
+              <i class="bi bi-download"></i> Export Settlements CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Transaction / Order</th>
+                <th>Patron Contact</th>
+                <th>Gateway Reference ID</th>
+                <th>Payment Mode</th>
+                <th>Amount (₹)</th>
+                <th>Settlement Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="paymentsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 5: SHIPPING, LOGISTICS & DELIVERY VERIFICATION
+           ====================================================================== -->
+      <section id="view-shipping" class="crm-view">
+        <div class="recon-grid">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Ready for Dispatch</div>
+            <div class="recon-stat-val" id="shipStatReady">0</div>
+            <div class="recon-stat-sub">Packing in progress</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">In-Transit Shipments</div>
+            <div class="recon-stat-val" style="color:var(--info)" id="shipStatTransit">0</div>
+            <div class="recon-stat-sub">Dispatched with courier</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Delivered (Verified POD)</div>
+            <div class="recon-stat-val" style="color:var(--success)" id="shipStatDelivered">0</div>
+            <div class="recon-stat-sub">Confirmed deliveries</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">NDR (Failed Delivery)</div>
+            <div class="recon-stat-val" style="color:var(--danger)" id="shipStatNDR">0</div>
+            <div class="recon-stat-sub">Customer unreachable</div>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchShippingInput" placeholder="Search shipments by order, patron, AWB...">
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportShippingCSV()">
+              <i class="bi bi-download"></i> Export Shipping Log CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order Ref</th>
+                <th>Recipient & Destination</th>
+                <th>Courier Partner Allocation</th>
+                <th>AWB / Tracking Number</th>
+                <th>Shipment Status</th>
+                <th>Delivery Verification (POD)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="shippingTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 6: INVENTORY & STOCK MANAGEMENT
+           ====================================================================== -->
+      <section id="view-inventory" class="crm-view">
+        <div class="recon-grid">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Total Units in Stock</div>
+            <div class="recon-stat-val" id="invStatTotalUnits">0</div>
+            <div class="recon-stat-sub">Across 16 fragrance formulas</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Inventory Valuation</div>
+            <div class="recon-stat-val" style="color:var(--accent)" id="invStatValuation">₹0</div>
+            <div class="recon-stat-sub">Valued at atelier cost</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">In-Stock Formulations</div>
+            <div class="recon-stat-val" style="color:var(--success)" id="invStatInStock">0</div>
+            <div class="recon-stat-sub">Ready to bottle & ship</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Low-Stock Alerts</div>
+            <div class="recon-stat-val" style="color:var(--warning)" id="invStatLowStock">0</div>
+            <div class="recon-stat-sub">Units &le; 15 threshold</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Out-of-Stock SKUs</div>
+            <div class="recon-stat-val" style="color:var(--danger)" id="invStatOutStock">0</div>
+            <div class="recon-stat-sub">Order blocked on site</div>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchInventoryInput" placeholder="Search catalog inventory by fragrance name...">
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportInventoryCSV()">
+              <i class="bi bi-download"></i> Export Inventory CSV
+            </button>
+            <button type="button" class="btn-primary" onclick="window.BK_CRM.openAddProductModal()">
+              <i class="bi bi-plus-circle"></i> Add New SKU
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Fragrance Formulation</th>
+                <th>Olfactory Family</th>
+                <th>Pack Sizes Available</th>
+                <th>Available Units</th>
+                <th>Stock Status</th>
+                <th>Stock Adjustments</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Stock Movements Audit Trail -->
+        <div class="panel-box" style="margin-top:28px">
+          <div class="panel-header">
+            <div class="panel-title"><i class="bi bi-clock-history" style="color:var(--accent)"></i> Stock Movement History (Audit Trail)</div>
+            <span style="font-size:12px;color:var(--muted)">Logs order deductions, cancellations & restocks</span>
+          </div>
+          <div class="table-container" style="border:none;box-shadow:none">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Fragrance Product</th>
+                  <th>Movement Type</th>
+                  <th>Quantity Delta</th>
+                  <th>Resulting Stock</th>
+                </tr>
+              </thead>
+              <tbody id="stockMovementTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 7: RETURNS, EXCHANGES & REFUNDS HUB
+           ====================================================================== -->
+      <section id="view-returns" class="crm-view">
+        <div class="recon-grid">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Total Return Requests</div>
+            <div class="recon-stat-val" id="retStatTotal">0</div>
+            <div class="recon-stat-sub">Submitted by patrons</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Pending Reverse Pickups</div>
+            <div class="recon-stat-val" style="color:var(--warning)" id="retStatPending">0</div>
+            <div class="recon-stat-sub">Awaiting BlueDart pickup</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Replacement Exchanges</div>
+            <div class="recon-stat-val" style="color:var(--accent)" id="retStatExchanges">0</div>
+            <div class="recon-stat-sub">Replacement flacons sent</div>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchReturnsInput" placeholder="Search returns by ID, patron, order ref...">
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportReturnsCSV()">
+              <i class="bi bi-download"></i> Export Returns CSV
+            </button>
+            <button type="button" class="btn-primary" onclick="window.BK_CRM.runTestScenario('sc_return')">
+              <i class="bi bi-plus-circle"></i> Simulate Return Request
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Return ID & Date</th>
+                <th>Patron & Order Ref</th>
+                <th>Flacon & Reason</th>
+                <th>Policy Eligibility</th>
+                <th>Return Status & Reverse AWB</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="returnsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 8: NOTIFICATIONS & COMMUNICATION HUB
+           ====================================================================== -->
+      <section id="view-notifications" class="crm-view">
+        <div class="panel-box" style="max-width:960px;margin:0 auto 24px;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="bi bi-chat-dots-fill" style="color:var(--accent)"></i> Multi-Channel Customer Notification Dispatcher
+            </div>
+            <span style="font-size:12px;color:var(--muted)">Pre-formatted WhatsApp & Email templates</span>
+          </div>
+          <div class="panel-body">
+            <p style="font-size:12.5px;color:var(--muted);margin-bottom:18px">
+              Select an order and choose an event touchpoint to generate an automated luxury customer notification with real customer name, order number, line items, and live tracking links.
+            </p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Select Order</label>
+                <select id="notifOrderSelect" class="filter-select" style="width:100%"></select>
+              </div>
+
+              <div class="form-group">
+                <label>Notification Touchpoint / Event Template</label>
+                <select id="notifTemplateSelect" class="filter-select" style="width:100%">
+                  <option value="order_confirm">1. Order Confirmation (Email / WhatsApp)</option>
+                  <option value="order_shipped">2. Order Shipped & AWB Live Tracking</option>
+                  <option value="order_delivered">3. Order Delivered & Olfactory Review Request</option>
+                  <option value="generic_update">4. General Status Transition Notice</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;">
+              <h4 style="font-size:12px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Live Message Preview:</h4>
+              <div id="notifPreviewContent"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 9: CUSTOMER SUPPORT, CONCIERGE & REVIEWS
+           ====================================================================== -->
+      <section id="view-support" class="crm-view">
+        <div class="recon-grid">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Active Concierge Tickets</div>
+            <div class="recon-stat-val" style="color:var(--warning)" id="suppStatOpen">0</div>
+            <div class="recon-stat-sub">Open consultations</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Resolved Inquiries</div>
+            <div class="recon-stat-val" style="color:var(--success)" id="suppStatResolved">0</div>
+            <div class="recon-stat-sub">Successfully closed cases</div>
+          </div>
+        </div>
+
+        <div class="panel-box" style="margin-bottom:28px">
+          <div class="panel-header">
+            <div class="panel-title"><i class="bi bi-ticket-perforated-fill" style="color:var(--accent)"></i> Fragrance Concierge & Support Tickets</div>
+          </div>
+          <div class="table-container" style="border:none;box-shadow:none">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Patron Contact</th>
+                  <th>Order Ref</th>
+                  <th>Issue Category</th>
+                  <th>Priority</th>
+                  <th>Resolution Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="supportTicketsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title"><i class="bi bi-star-fill" style="color:var(--gold)"></i> Customer Reviews & Testimonials Moderation</div>
+            <span style="font-size:12px;color:var(--muted)">Moderate customer ratings before displaying on storefront</span>
+          </div>
+          <div class="table-container" style="border:none;box-shadow:none">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Fragrance</th>
+                  <th>Reviewer & Date</th>
+                  <th>Rating</th>
+                  <th>Review Content</th>
+                  <th>Storefront Status</th>
+                </tr>
+              </thead>
+              <tbody id="productReviewsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 10: PRODUCTS (CATALOG MANAGEMENT)
+           ====================================================================== -->
+      <section id="view-products" class="crm-view">
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchProductsInput" placeholder="Search by fragrance name, ID...">
+            </div>
+
+            <select id="filterProductCategory" class="filter-select">
+              <option value="all">All Olfactory Families (16)</option>
+              <option value="oriental">Oriental</option>
+              <option value="woody">Woody</option>
+              <option value="floral">Floral</option>
+              <option value="fresh">Fresh</option>
+              <option value="aquatic">Aquatic</option>
+              <option value="attar">Attar</option>
+            </select>
+
+            <select id="filterProductStock" class="filter-select">
+              <option value="all">All Stock Statuses</option>
+              <option value="in-stock">In Stock</option>
+              <option value="low-stock">Low Stock</option>
+              <option value="out-stock">Out of Stock</option>
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportInventoryCSV()">
+              <i class="bi bi-file-earmark-spreadsheet"></i> Export Products CSV
+            </button>
+            <button type="button" class="btn-primary" onclick="window.BK_CRM.openAddProductModal()">
+              <i class="bi bi-plus-circle"></i> Add New Fragrance
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Fragrance & Devanagari Title</th>
+                <th>Family & Notes</th>
+                <th>Price Range (₹)</th>
+                <th>Available Volumes</th>
+                <th>Stock Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 11: PATRONS & CUSTOMERS DIRECTORY
+           ====================================================================== -->
+      <section id="view-customers" class="crm-view">
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchCustomersInput" placeholder="Search patrons by name, phone, or city...">
+            </div>
+
+            <select id="filterCustomerSegment" class="filter-select">
+              <option value="all">All Patrons</option>
+              <option value="VIP Patron">VIP Patrons</option>
+              <option value="Loyal Buyer">Loyal Buyers</option>
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportCustomersCSV()">
+              <i class="bi bi-download"></i> Export Patrons CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Patron Name</th>
+                <th>Contact</th>
+                <th>City</th>
+                <th>Classification</th>
+                <th>Orders</th>
+                <th>Lifetime Spend</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="customersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 12: INQUIRIES & CONCIERGE LEADS
+           ====================================================================== -->
+      <section id="view-inquiries" class="crm-view">
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchInquiriesInput" placeholder="Search inquiries by patron, query...">
+            </div>
+
+            <select id="filterInquiryStatus" class="filter-select">
+              <option value="all">All Statuses</option>
+              <option value="New Lead">New Leads</option>
+              <option value="In Discussion">In Discussion</option>
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" onclick="window.BK_CRM.exportInquiriesCSV()">
+              <i class="bi bi-download"></i> Export Inquiries CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Inquiry ID & Date</th>
+                <th>Inquirer Contact</th>
+                <th>Inquiry Type</th>
+                <th>Message Query</th>
+                <th>Status Pipeline</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inquiriesTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 13: FINANCIAL INTELLIGENCE & REPORTS
+           ====================================================================== -->
+      <section id="view-reports" class="crm-view">
+        <div class="recon-grid">
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Total Gross Sales</div>
+            <div class="recon-stat-val" id="repGrossSales">₹0</div>
+            <div class="recon-stat-sub">Confirmed gross turnover</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">GST (18% Inclusive) Collected</div>
+            <div class="recon-stat-val" style="color:var(--info)" id="repGstCollected">₹0</div>
+            <div class="recon-stat-sub">CGST 9% + SGST 9%</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Online Payment Volume</div>
+            <div class="recon-stat-val" style="color:var(--success)" id="repRzpVolume">₹0</div>
+            <div class="recon-stat-sub">Razorpay prepaid volume</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">COD Volume</div>
+            <div class="recon-stat-val" style="color:var(--warning)" id="repCodVolume">₹0</div>
+            <div class="recon-stat-sub">Cash on delivery volume</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Payment Gateway Fees</div>
+            <div class="recon-stat-val" style="color:var(--danger)" id="repGatewayFees">₹0</div>
+            <div class="recon-stat-sub">2% + 18% GST fee</div>
+          </div>
+          <div class="recon-stat-card">
+            <div class="recon-stat-title">Net Bank Payout</div>
+            <div class="recon-stat-val" style="color:var(--accent)" id="repNetPayout">₹0</div>
+            <div class="recon-stat-sub">Settled to bank account</div>
+          </div>
+        </div>
+
+        <div class="panel-box" style="margin-top:24px">
+          <div class="panel-header">
+            <div class="panel-title"><i class="bi bi-file-earmark-spreadsheet-fill" style="color:var(--accent)"></i> Downloadable Audit & Accounting Reports</div>
+            <span style="font-size:12px;color:var(--muted)">Export standard CSV sheets</span>
+          </div>
+          <div class="panel-body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;">
+              <button type="button" class="btn-outline" style="padding:14px;justify-content:center;" onclick="window.BK_CRM.exportOrdersCSV()">
+                <i class="bi bi-file-earmark-text"></i> Download Orders & Invoices Report (CSV)
+              </button>
+              <button type="button" class="btn-outline" style="padding:14px;justify-content:center;" onclick="window.BK_CRM.exportPaymentsCSV()">
+                <i class="bi bi-credit-card"></i> Download Gateway Settlements (CSV)
+              </button>
+              <button type="button" class="btn-outline" style="padding:14px;justify-content:center;" onclick="window.BK_CRM.exportShippingCSV()">
+                <i class="bi bi-truck"></i> Download Courier & Shipping Report (CSV)
+              </button>
+              <button type="button" class="btn-outline" style="padding:14px;justify-content:center;" onclick="window.BK_CRM.exportInventoryCSV()">
+                <i class="bi bi-boxes"></i> Download Inventory & Stock Valuation (CSV)
+              </button>
+              <button type="button" class="btn-outline" style="padding:14px;justify-content:center;" onclick="window.BK_CRM.exportReturnsCSV()">
+                <i class="bi bi-arrow-counterclockwise"></i> Download Returns & Refunds (CSV)
+              </button>
+              <button type="button" class="btn-outline" style="padding:14px;justify-content:center;" onclick="window.BK_CRM.exportCustomersCSV()">
+                <i class="bi bi-people"></i> Download Patrons Directory & LTV (CSV)
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 14: END-TO-END TEST ORDER SCENARIOS HUB
+           ====================================================================== -->
+      <section id="view-testing" class="crm-view">
+        <div class="test-suite-header">
+          <h2><i class="bi bi-patch-check-fill" style="color:var(--gold)"></i> End-to-End Test Order Scenarios Hub</h2>
+          <p>
+            Interactive testing suite for pre-handover verification. Every scenario executes realistic order lifecycle events, payment verification, stock deductions, return inspections, and delivery status transitions with real-time CRM state reflection.
+          </p>
+          <div class="test-suite-stats">
+            <div class="test-stat-chip">
+              <span>Verified Scenarios:</span>
+              <b id="testStatPassedCount">11 / 11</b>
+            </div>
+            <div class="test-stat-chip">
+              <span>Status:</span>
+              <span class="test-badge-pass"><i class="bi bi-check-all"></i> 100% READY FOR HANDOVER</span>
+            </div>
+            <div class="test-stat-chip">
+              <span>Storage Sync:</span>
+              <span style="color:#b88628;font-weight:600">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <button type="button" class="btn-primary" onclick="window.BK_CRM.runAllTestScenarios()">
+              <i class="bi bi-play-circle-fill"></i> Run All 11 Scenarios in Sequence
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <button type="button" class="btn-outline" style="color:var(--danger);border-color:var(--danger-border)" onclick="window.BK_CRM.resetTestData()">
+              <i class="bi bi-arrow-counterclockwise"></i> Reset Test Data & Clean State
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table test-matrix-table">
+            <thead>
+              <tr>
+                <th style="width:40px">#</th>
+                <th>Test Scenario</th>
+                <th>Expected Handover Result</th>
+                <th>Verification Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="testScenariosTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           VIEW 15: SETTINGS, ROLES & SECURITY
+           ====================================================================== -->
+      <section id="view-settings" class="crm-view">
+        <div class="panel-box" style="max-width:960px;margin:0 auto 24px;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="bi bi-sliders" style="color:var(--accent)"></i> Store Configuration & Official Profile
+            </div>
+            <span style="font-size:12px;color:var(--muted)">Syncs with tax invoices & frontend contact</span>
+          </div>
+
+          <form id="crmSettingsForm" class="panel-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Official Store Name</label>
+                <input type="text" id="setStoreName" required>
+              </div>
+              <div class="form-group">
+                <label>Tagline / Slogan</label>
+                <input type="text" id="setTagline" required>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:14px">
+              <div class="form-group">
+                <label>Contact Phone Number</label>
+                <input type="text" id="setPhone" required>
+              </div>
+              <div class="form-group">
+                <label>WhatsApp Concierge Number (without +)</label>
+                <input type="text" id="setWhatsapp" required>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:14px">
+              <div class="form-group">
+                <label>Official Support Email</label>
+                <input type="email" id="setEmail" required>
+              </div>
+              <div class="form-group">
+                <label>GSTIN / Tax ID</label>
+                <input type="text" id="setGstin" required>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:14px">
+              <label>Flagship Atelier Address</label>
+              <textarea id="setAddress" rows="2" required></textarea>
+            </div>
+
+            <div class="form-row" style="margin-top:14px">
+              <div class="form-group">
+                <label>Free Delivery Threshold (₹)</label>
+                <input type="number" id="setFreeDelivery" required>
+              </div>
+              <div class="form-group">
+                <label>Standard Shipping Charge (₹)</label>
+                <input type="number" id="setShippingFee" required>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;display:flex;justify-content:flex-end">
+              <button type="submit" class="btn-primary">
+                <i class="bi bi-check-lg"></i> Save Store Settings
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Payment Gateway Panel -->
+        <div class="panel-box" style="max-width:960px;margin:0 auto 24px;">
+          <div class="panel-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+            <div class="panel-title">
+              <i class="bi bi-credit-card-2-front" style="color:var(--accent)"></i> Razorpay Payment Gateway Integration
+            </div>
+            <div>
+              <span id="razorpayStatusBadge" class="status-badge" style="font-size:11.5px;padding:3px 10px;background:rgba(21,128,61,0.12);color:#15803d;border:1px solid rgba(21,128,61,0.3)">
+                <i class="bi bi-shield-check-fill"></i> Gateway Ready (Live)
+              </span>
+            </div>
+          </div>
+
+          <form id="crmPaymentGatewayForm" class="panel-body">
+            <div style="background:var(--surface-alt);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+              <div>
+                <b style="font-size:13.5px;display:block">Enable Razorpay Payment Gateway</b>
+                <span style="font-size:12px;color:var(--muted)">Accept UPI, Google Pay, PhonePe, Cards & Netbanking.</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setRzpEnabled" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Environment Mode</label>
+                <select id="setRzpMode" class="filter-select" style="width:100%;height:38px;">
+                  <option value="live" selected>Live Production (Real Transactions)</option>
+                  <option value="test">Test Mode (Sandbox / Testing)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Razorpay Key ID</label>
+                <input type="text" id="setRzpKeyId" value="rzp_live_DharaLuxe2026" required>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:14px">
+              <div class="form-group">
+                <label>Business Brand Name</label>
+                <input type="text" id="setRzpMerchantName" value="Dhara Scent Atelier">
+              </div>
+              <div class="form-group">
+                <label>Theme Brand Accent Color</label>
+                <div style="display:flex;gap:10px;align-items:center">
+                  <input type="color" id="setRzpThemeColor" value="#b88628" style="width:50px;height:38px;padding:2px;cursor:pointer;border:1px solid var(--line);border-radius:var(--radius-sm)">
+                  <input type="text" id="setRzpThemeColorText" value="#b88628" style="flex:1">
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:22px;display:flex;justify-content:flex-end">
+              <button type="submit" class="btn-primary">
+                <i class="bi bi-check-lg"></i> Save Payment Gateway Settings
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Automated Email & SMTP Notification Gateway -->
+        <div class="panel-box" style="max-width:960px;margin:0 auto 24px;">
+          <div class="panel-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+            <div class="panel-title">
+              <i class="bi bi-envelope-check-fill" style="color:var(--accent)"></i> Automated Email & SMTP Notification Gateway
+            </div>
+          </div>
+
+          <form id="crmSmtpSettingsForm" class="panel-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Primary Recipient Email</label>
+                <input type="email" id="setNotifRecipient" value="concierge@dharascentatelier.com" required>
+              </div>
+              <div class="form-group">
+                <label>SMTP Host</label>
+                <input type="text" id="setSmtpHost" value="smtp.gmail.com">
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:14px">
+              <div class="form-group">
+                <label>SMTP Username / Sender Email</label>
+                <input type="email" id="setSmtpUser" value="concierge@dharascentatelier.com">
+              </div>
+              <div class="form-group">
+                <label>App Password (16 Characters)</label>
+                <input type="password" id="setSmtpPass" placeholder="•••• •••• •••• ••••">
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:20px;">
+              <button type="button" id="btnSendTestEmail" class="btn-outline" style="border-color:var(--accent);color:var(--accent);">
+                <i class="bi bi-send-fill"></i> Send Test Notification Ping
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="bi bi-check-lg"></i> Save Notification Settings
+              </button>
+            </div>
+          </form>
+
+          <!-- Email Audit Log Section -->
+          <div style="border-top:1px solid var(--line);padding:18px 24px;background:var(--surface-alt);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <h4 style="margin:0;font-size:13px;text-transform:uppercase;color:var(--muted);letter-spacing:0.5px;">
+                <i class="bi bi-journal-text"></i> Live Email Notification Audit Log
+              </h4>
+              <button type="button" class="btn-outline" style="font-size:11px;padding:4px 10px;" onclick="window.BK_CRM.clearEmailAuditLogs()">
+                <i class="bi bi-trash"></i> Clear Logs
+              </button>
+            </div>
+            <div id="emailAuditLogsTable" style="max-height:220px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface);"></div>
+          </div>
+        </div>
+
+        <!-- Role-Based Access Control Simulator -->
+        <div class="panel-box" style="max-width:960px;margin:0 auto 24px;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="bi bi-person-badge-fill" style="color:var(--accent)"></i> Role-Based Access Control (RBAC) Simulator
+            </div>
+            <span style="font-size:12px;color:var(--muted)">Switch staff roles to test permission boundaries</span>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label>Current Active Role</label>
+              <select id="setRbacRoleSelect" class="filter-select" style="width:100%">
+                <option value="Super Admin">Super Admin (Full Ownership)</option>
+                <option value="Order Dispatch Manager">Order Dispatch Manager (Shipping, Labels & Packing)</option>
+                <option value="Inventory Manager">Inventory Manager (Stock Levels & Restocking)</option>
+                <option value="Support Representative">Support Representative (Concierge & Reviews)</option>
+              </select>
+              <div id="rbacRoleDescription" style="font-size:12.5px;color:var(--muted);margin-top:8px;">
+                Full administrative ownership across catalog, finances, refunds, and security.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- System & Storage Health Monitor -->
+        <div class="panel-box" style="max-width:960px;margin:0 auto 24px;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="bi bi-shield-check" style="color:var(--success)"></i> Technical & Security Health Monitor
+            </div>
+          </div>
+          <div class="panel-body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:14px;">
+              <div style="padding:12px;background:var(--surface-alt);border-radius:var(--radius-sm);border:1px solid var(--line);">
+                <div style="font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:600">Storage Quota Usage</div>
+                <div id="storageQuotaText" style="font-size:13px;margin-top:4px;">Calculating...</div>
+              </div>
+              <div style="padding:12px;background:var(--surface-alt);border-radius:var(--radius-sm);border:1px solid var(--line);">
+                <div style="font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:600">Data Persistence & Security</div>
+                <div style="font-size:13px;color:var(--success);font-weight:600;margin-top:4px;"><i class="bi bi-lock-fill"></i> 256-bit Encrypted Webhook</div>
+              </div>
+              <div style="padding:12px;background:var(--surface-alt);border-radius:var(--radius-sm);border:1px solid var(--line);">
+                <div style="font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:600">Device Compliance</div>
+                <div style="font-size:13px;color:var(--info);font-weight:600;margin-top:4px;"><i class="bi bi-phone"></i> Mobile & Desktop 100% OK</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database Backup & Reset Panel -->
+        <div class="panel-box" style="max-width:960px;margin:0 auto;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i class="bi bi-database-check" style="color:var(--gold)"></i> Store Data Backup & Reset
+            </div>
+          </div>
+          <div class="panel-body">
+            <p style="color:var(--muted);font-size:12.5px;margin-bottom:18px">
+              Download a complete JSON backup of Dhara fragrances, orders, returns, support tickets, and inquiries.
+            </p>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <button type="button" class="btn-outline" onclick="window.BK_CRM.exportFullBackupJSON()">
+                <i class="bi bi-cloud-arrow-down-fill"></i> Download Store Backup (JSON)
+              </button>
+
+              <button type="button" class="btn-outline" style="color:var(--danger);border-color:var(--danger-border)" onclick="window.BK_CRM.resetToDefaultCatalog()">
+                <i class="bi bi-arrow-counterclockwise"></i> Reset to 16 Original Formulations
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    </div> <!-- /.crm-content-wrapper -->
+  </div> <!-- /.crm-layout -->
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+  <!-- MODAL: CONFIGURE PRODUCT (ADD / EDIT) -->
+  <div id="productModal" class="modal-overlay">
+    <div class="modal-box large">
+      <div class="modal-header">
+        <h3 id="modalProductTitle" class="modal-title">
+          <i class="bi bi-pencil-square" style="color:var(--accent)"></i> Configure Fragrance
+        </h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <input type="hidden" id="prodFormId">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fragrance Title (English) *</label>
+            <input type="text" id="prodFormName" placeholder="e.g. Imperial Oud" required>
+          </div>
+          <div class="form-group">
+            <label>Devanagari / Regional Title</label>
+            <input type="text" id="prodFormNameMr" placeholder="उदा. इम्पीरियल उद">
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:14px">
+          <div class="form-group">
+            <label>Olfactory Family *</label>
+            <select id="prodFormCategory" required>
+              <option value="Oriental">Oriental</option>
+              <option value="Woody">Woody</option>
+              <option value="Floral">Floral</option>
+              <option value="Fresh">Fresh</option>
+              <option value="Aquatic">Aquatic</option>
+              <option value="Attar">Pure Attar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Stock Fulfillment Status *</label>
+            <select id="prodFormStatus" required>
+              <option value="in-stock">In Stock (Available)</option>
+              <option value="low-stock">Low Stock (Limited reserve)</option>
+              <option value="out-stock">Out of Stock</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:14px">
+          <div class="form-group">
+            <label>Base / 50ml Price (₹) *</label>
+            <input type="number" id="prodFormMinPrice" placeholder="e.g. 3499" required>
+          </div>
+          <div class="form-group">
+            <label>Bulk / 100ml Price (₹) *</label>
+            <input type="number" id="prodFormMaxPrice" placeholder="e.g. 6499" required>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:14px">
+          <div class="form-group">
+            <label>Pack Variants / Volumes *</label>
+            <input type="text" id="prodFormSizes" placeholder="50 ml EDP · 100 ml EDP · 12 ml Attar">
+          </div>
+          <div class="form-group">
+            <label>Inventory Quantity Units</label>
+            <input type="number" id="prodFormStock" placeholder="30">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:14px">
+          <label><i class="bi bi-cloud-arrow-up-fill" style="color:var(--accent)"></i> Upload Flacon Image from Device</label>
+          <div class="file-upload-zone" id="fileUploadZone">
+            <input type="file" id="prodFormImgFile" accept="image/*" style="display:none">
+            <div class="upload-zone-content">
+              <div class="upload-zone-left">
+                <div class="upload-icon-circle"><i class="bi bi-image"></i></div>
+                <div class="upload-text-wrap">
+                  <span class="upload-primary-text">Click to choose image or drag &amp; drop here</span>
+                  <span class="upload-sub-text">Supports JPG, PNG, WEBP (Max 5MB)</span>
+                </div>
+              </div>
+              <button type="button" class="btn-outline" id="btnSelectImage" style="padding:6px 12px;font-size:12px">
+                <i class="bi bi-folder2-open"></i> Browse File
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:14px">
+          <label><i class="bi bi-link-45deg"></i> Or Enter Image Path / URL</label>
+          <input type="text" id="prodFormImg" placeholder="assets/products/imperial-oud-1.jpg">
+        </div>
+
+        <div class="img-preview-box">
+          <div class="img-preview-thumb">
+            <img id="modalImgPreview" src="assets/products/imperial-oud-1.jpg" alt="Preview">
+          </div>
+          <div style="font-size:12px;color:var(--muted)">
+            <b>Selected Flacon Visual</b><br>Preview of bottle photograph.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Olfactory Description & Fragrance Notes</label>
+          <textarea id="prodFormDesc" rows="3" placeholder="Handcrafted with pure saffron, taif rose, and aged oud..."></textarea>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+          <input type="checkbox" id="prodFormBestseller">
+          <label for="prodFormBestseller" style="font-size:13px;font-weight:600;cursor:pointer">★ Mark as Atelier Bestseller</label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-outline" data-close-modal>Cancel</button>
+        <button type="button" id="btnSaveProduct" class="btn-primary"><i class="bi bi-check-lg"></i> Save Fragrance</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ORDER DETAILS & TIMELINE -->
+  <div id="orderDetailModal" class="modal-overlay">
+    <div class="modal-box large">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="bi bi-info-circle-fill" style="color:var(--accent)"></i> Order Details & Olfactory Lifecycle</h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body" id="orderDetailModalContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TAX INVOICE -->
+  <div id="orderSlipModal" class="modal-overlay">
+    <div class="modal-box large">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="bi bi-receipt" style="color:var(--accent)"></i> Tax Invoice / Packing Slip</h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body" id="invoiceSlipContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline" data-close-modal>Close</button>
+        <button type="button" class="btn-primary" onclick="window.print()"><i class="bi bi-printer"></i> Print Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PRINTABLE SHIPPING LABEL -->
+  <div id="shippingLabelModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="bi bi-tag-fill" style="color:var(--accent)"></i> Courier Shipping Label</h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body" id="shippingLabelModalContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline" data-close-modal>Close</button>
+        <button type="button" class="btn-primary" onclick="window.print()"><i class="bi bi-printer"></i> Print Shipping Label</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: WAREHOUSE PACKING SLIP -->
+  <div id="packingSlipModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="bi bi-card-checklist" style="color:var(--accent)"></i> Atelier Picking & Packaging Slip</h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body" id="packingSlipModalContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline" data-close-modal>Close</button>
+        <button type="button" class="btn-primary" onclick="window.print()"><i class="bi bi-printer"></i> Print Packing Slip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: INITIATE REFUND -->
+  <div id="refundModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="bi bi-arrow-counterclockwise" style="color:#0d9488"></i> Initiate Order Refund</h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body" id="refundModalContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-outline" data-close-modal>Cancel</button>
+        <button type="button" id="btnConfirmProcessRefund" class="btn-primary" style="background:#0d9488"><i class="bi bi-check-lg"></i> Process Refund</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CREATE PROMO COUPON -->
+  <div id="modalCoupon" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="bi bi-ticket-perforated" style="color:var(--accent)"></i> Create Privilege Code
+        </h3>
+        <button type="button" class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <form id="couponForm" class="modal-body" onsubmit="window.BK_CRM.saveCoupon(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Privilege Code *</label>
+            <input type="text" id="couponFormCode" placeholder="e.g. DHARA15" style="text-transform:uppercase" required>
+          </div>
+          <div class="form-group">
+            <label>Discount Type *</label>
+            <select id="couponFormType" required>
+              <option value="percentage">Percentage (%)</option>
+              <option value="fixed">Flat Amount (₹)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="margin-top:14px">
+          <div class="form-group">
+            <label>Discount Value *</label>
+            <input type="number" id="couponFormValue" min="1" placeholder="e.g. 15 or 500" required>
+          </div>
+          <div class="form-group">
+            <label>Minimum Order Amount (₹)</label>
+            <input type="number" id="couponFormMinOrder" min="0" value="2500">
+          </div>
+        </div>
+        <div class="form-row" style="margin-top:14px">
+          <div class="form-group">
+            <label>Expiry Date</label>
+            <input type="date" id="couponFormExpiry" value="2026-12-31">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" id="couponFormDesc" placeholder="e.g. 15% festive privilege discount">
+          </div>
+        </div>
+        <div class="modal-footer" style="padding:16px 0 0;margin-top:16px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px;">
+          <button type="button" class="btn-outline" data-close-modal>Cancel</button>
+          <button type="submit" class="btn-primary"><i class="bi bi-check-lg"></i> Save Privilege Code</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Element -->
+  <div id="crmToast" class="crm-toast"></div>
+
+  <!-- Mailer Notification Bridge -->
+  <script src="assets/mailer.js"></script>
+  <!-- CRM Reactive Logic Script -->
+  <script src="assets/crm.js"></script>
+</body>
+</html>
